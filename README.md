@@ -123,6 +123,8 @@ end
 <p>Utilized React Hooks for construction of later components such as the Comments, Modals and sidebar components. Below deomnstrates the first few lines of the CommentIndexItem, a single comment, and how the props and state do not utilize "this" and can have the syntax of a functional component. The second input for the useEffect function simulates componentDidMount, so that I can properly set specific jsx variables to be used in the html portion of the component.</p>
 
 ```
+... 
+
 const CommentIndexItem = props => {
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
@@ -144,6 +146,8 @@ const CommentIndexItem = props => {
     setNumberLikes(props.comment.likes);
     setNumberDislikes(props.comment.dislikes);
   }, []);
+  
+  ...
 ```
 
 <p>Code snippet of like function in CommentIndexItem component. Quite a bit of boolean logic to determine which button is selected, whether to change dislike to like, remove like if user already liked the video and clicked the like button, or to create a new like if like or dislike do not exist for the current user on the video / comment. Asychronous ajax calls interact with backend and upon successful change of data in Postgres Database, changes are reflected upon the Frontend React Components currently visiting.</p>
