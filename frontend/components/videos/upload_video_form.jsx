@@ -24,7 +24,9 @@ class UploadVideoForm extends React.Component {
       uploadIconElement: "",
       thumbnailElement: null,
       thumbnailContainerElement: null,
-      published: false
+      published: false,
+      titleInput: null,
+      descriptionInput: null
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,6 +36,11 @@ class UploadVideoForm extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    console.log("HERE IS THE TITLE HTML ELEMENT:  ", $("#upload-title"));
+    console.log(
+      "HERE IS THE DESCRIPTION HTML ELEMENT:  ",
+      $("#upload-description")
+    );
 
     this.setState({
       uploadIconElement: document.getElementsByClassName(
@@ -43,6 +50,8 @@ class UploadVideoForm extends React.Component {
       thumbnailContainerElement: document.getElementsByClassName(
         "custom-file-thumbnail"
       )
+      // titleInput: document.getElementById("upload-title"),
+      // descriptionInput: document.getElementById("upload-description")
     });
   }
 
@@ -61,6 +70,14 @@ class UploadVideoForm extends React.Component {
     formData.append("video[vid]", this.state.videoFile);
     formData.append("video[thumbnail]", this.state.thumbnailFile);
     this.setState({ published: true });
+    // this.state.titleInput.setAttribute;
+    $("#upload-title").attr("disabled", true);
+    $("#upload-title").css("background-color", "#ebebeb");
+    $("#upload-description").attr("disabled", true);
+    $("#upload-description").css("background-color", "#ebebeb");
+    $("#upload-video").attr("disabled", true);
+    $("#upload-thumbnail").attr("disabled", true);
+
     this.props.action(formData).then(response => {
       this.props.history.push(`/videos/${response.payload.video.id}`);
     });
@@ -93,6 +110,14 @@ class UploadVideoForm extends React.Component {
     if (!this.props.currentUser) {
       this.props.history.replace("/login");
     }
+
+    // if (!!this.state.titleInput && !!this.state.descriptionInput) {
+    //   console.log("HERE IS THE TITLE HTML ELEMENT:  ", this.state.titleInput);
+    //   console.log(
+    //     "HERE IS THE DESCRIPTION HTML ELEMENT:  ",
+    //     this.state.descriptionInput
+    //   );
+    // }
 
     // if (this.state.uploadIconElement) {
     //   console.log(
@@ -133,6 +158,8 @@ class UploadVideoForm extends React.Component {
       </button>
     );
 
+    const disableFields = this.state.published ? "disabled" : "";
+
     return (
       <div className="upload-parent-container">
         <NavBarContainer url={this.props.url} />
@@ -152,6 +179,7 @@ class UploadVideoForm extends React.Component {
                       type="file"
                       accept="video/mp4,video/x-m4v,video/*"
                       onChange={this.handleVideoFile}
+                      id="upload-video"
                     />
                     {videoPreview}
                   </label>
@@ -163,6 +191,7 @@ class UploadVideoForm extends React.Component {
                       type="file"
                       accept="image/*"
                       onChange={this.handleThumbnailFile}
+                      id="upload-thumbnail"
                     />
                     <div className="upload-thumbnail-icon">
                       <FontAwesomeIcon icon={faCamera} />
@@ -177,12 +206,14 @@ class UploadVideoForm extends React.Component {
                     placeholder="Title"
                     value={this.state.title}
                     onChange={this.update("title")}
+                    id="upload-title"
                   />
 
                   <textarea
                     placeholder="Description"
                     value={this.state.description}
                     onChange={this.update("description")}
+                    id="upload-description"
                   />
                 </div>
 
