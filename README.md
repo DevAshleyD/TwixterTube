@@ -15,7 +15,7 @@ TwixterTube is a clone of the popular streaming site known as YouTube made with 
 
 <p>Once logged in, users can click on the video icon located within the header, sidebar modal or modal appeared after clicking bars on top left corner. Users can select a video file to add by clicking on the field containing the video icon. Similarly, users can select an image file to use as a thumbnail for their video. Finally, they will need to input a title and description to enable the video to be uploaded. At this time, they just need to click on the 'Publish' button, after which, they will be sent to the home page and be able to see their video be added to the master list of videos. They will be met by the following page:</p>
 
-![pulp_short_720p](https://user-images.githubusercontent.com/52110753/71927626-bc04e600-314a-11ea-9a5c-0a7bf9c127a4.gif)
+![pulp_main_demo](https://user-images.githubusercontent.com/52110753/72209207-afd99b00-3460-11ea-8ce9-199382c8a87a.gif)
 
 <p>Below shows a snippet of code from the upload form react component showing the functions that handle the video file and thumbnail file, as well as how the form is packaged into a promise object and that the url will dynamically change upon receiving a successful payload of video data from the Rails backend.</p>
 
