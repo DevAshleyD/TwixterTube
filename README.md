@@ -52,6 +52,15 @@ TwixterTube is a clone of the popular streaming site known as YouTube made with 
     formData.append("video[description]", this.state.description);
     formData.append("video[vid]", this.state.videoFile);
     formData.append("video[thumbnail]", this.state.thumbnailFile);
+    this.setState({ published: true });
+    // this.state.titleInput.setAttribute;
+    $("#upload-title").attr("disabled", true);
+    $("#upload-title").css("background-color", "#ebebeb");
+    $("#upload-description").attr("disabled", true);
+    $("#upload-description").css("background-color", "#ebebeb");
+    $("#upload-video").attr("disabled", true);
+    $("#upload-thumbnail").attr("disabled", true);
+
     this.props.action(formData).then(response => {
       this.props.history.push(`/videos/${response.payload.video.id}`);
     });
