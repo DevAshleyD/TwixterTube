@@ -13,7 +13,7 @@ TwixterTube is a clone of the popular streaming site known as YouTube made with 
 
 <h2>Video Upload</h2>
 
-<p>Once logged in, users can click on the video icon located within the header, sidebar modal or modal appeared after clicking bars on top left corner. Users can select a video file to add by clicking on the field containing the video icon. Similarly, users can select an image file to use as a thumbnail for their video. Finally, they will need to input a title and description to enable the video to be uploaded. At this time, they just need to click on the 'Publish' button, after which, they will be sent to the home page and be able to see their video be added to the master list of videos. They will be met by the following page:</p>
+<p>Once logged in, users can click on the video icon located within the header, sidebar modal or modal appeared after clicking bars on top left corner. Users can select a video file to add by clicking on the field containing the video icon. Similarly, users can select an image file to use as a thumbnail for their video. Finally, they will need to input a title and description to enable the video to be uploaded. At this time, they just need to click on the 'Publish' button, after which, they will redirected to the uploaded video for instant interaction and viewing. They will be met by the following page:</p>
 
 ![pulp_main_demo](https://user-images.githubusercontent.com/52110753/72209207-afd99b00-3460-11ea-8ce9-199382c8a87a.gif)
 
