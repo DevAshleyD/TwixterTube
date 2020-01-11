@@ -2,7 +2,12 @@ import React from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 import NavBarContainer from "../nav_bar/nav_bar_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVideo, faCamera, faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faVideo,
+  faCamera,
+  faCheck,
+  faSyncAlt
+} from "@fortawesome/free-solid-svg-icons";
 import SideBarContainer from "../sidebar/sidebar_container";
 import ModalSideBarContainer from "../sidebar/modal_sidebar_container";
 
@@ -18,13 +23,8 @@ class UploadVideoForm extends React.Component {
       videoUploaded: false,
       uploadIconElement: "",
       thumbnailElement: null,
-      thumbnailContainerElement: null
-
-      // loaded: false
-      // purpose of having this property in state is so that
-      // upload icon can be retrieved properly
-
-      // changeToTrue: false,
+      thumbnailContainerElement: null,
+      published: false
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +33,6 @@ class UploadVideoForm extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState({ loaded: true });
     window.scrollTo(0, 0);
 
     this.setState({
@@ -61,8 +60,8 @@ class UploadVideoForm extends React.Component {
     formData.append("video[description]", this.state.description);
     formData.append("video[vid]", this.state.videoFile);
     formData.append("video[thumbnail]", this.state.thumbnailFile);
+    this.setState({ published: true });
     this.props.action(formData).then(response => {
-      // debugger
       this.props.history.push(`/videos/${response.payload.video.id}`);
     });
   }
@@ -84,9 +83,6 @@ class UploadVideoForm extends React.Component {
     this.state.uploadIconElement[0].style.fontSize = 0;
     this.state.thumbnailContainerElement[0].style.background = "black";
     this.state.thumbnailElement.style.display = "inherit";
-
-    // fileReader.onload = e => {};
-    // this.state.uploadIconElement[0].style.background = this.state.thumbnailUrl;
 
     if (file) {
       fileReader.readAsDataURL(file);
@@ -127,6 +123,14 @@ class UploadVideoForm extends React.Component {
       <FontAwesomeIcon icon={faCheck} className="upload-video-icon-check" />
     ) : (
       <FontAwesomeIcon icon={faVideo} className="upload-video-icon" />
+    );
+
+    const publishButton = this.state.published ? (
+      <FontAwesomeIcon icon={faSyncAlt} spin className="publish-icon" />
+    ) : (
+      <button className="publish-button" onClick={this.handleSubmit}>
+        {this.props.formType}
+      </button>
     );
 
     return (
@@ -183,12 +187,14 @@ class UploadVideoForm extends React.Component {
                 </div>
 
                 <div className="edit-form-buttons">
-                  <button
+                  {publishButton}
+                  {/* <FontAwesomeIcon icon={faSyncAlt} spin /> */}
+                  {/* <button
                     className="publish-button"
                     onClick={this.handleSubmit}
                   >
                     {this.props.formType}
-                  </button>
+                  </button> */}
                 </div>
               </form>
             </div>
