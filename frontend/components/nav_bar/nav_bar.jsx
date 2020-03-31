@@ -201,6 +201,7 @@ class NavBar extends React.Component {
             icon={faVideo}
             className="nav-bar-upload-button"
             onClick={this.handleUploadPage}
+            id="sign-in-upload-button"
           />
           <div
             className="nav-bar-right-profile-btn"
@@ -321,7 +322,18 @@ class NavBar extends React.Component {
         </div>
 
         <div className="nav-bar-right">
+          <FontAwesomeIcon
+            icon={faVideo}
+            className="nav-bar-upload-button"
+            onClick={this.handleUploadPage}
+            id="sign-in-upload-button"
+          />
           <button onClick={this.handleLogin} className="sign-in-button">
+            <FontAwesomeIcon
+              icon={faUserCircle}
+              id="modal-button"
+              id="user-circle-sign-in"
+            />
             <p>SIGN IN</p>
           </button>
         </div>

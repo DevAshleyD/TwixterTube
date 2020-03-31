@@ -382,6 +382,7 @@ class VideoShow extends React.Component {
           <div className="video-show-page">
             <div className="video-show-page-wrapper">
               <div className="video-show-page-internal-wrapper">
+                <div className="video-show-left-box"> </div>
                 <div className="video-show-container">
                   <div className="video-show-container-internal">
                     <div className="video-container">

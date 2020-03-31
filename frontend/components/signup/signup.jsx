@@ -76,6 +76,11 @@ class Signup extends React.Component {
       <div className="session-form-container">
         <form onSubmit={this.handleSubmit} className="session-form">
           <div className="logo" onClick={this.handleHomePage}>
+            <img
+              src="https://twixtertube-dev.s3-us-west-1.amazonaws.com/new_twixter_logo.png"
+              alt="twixter logo"
+              id="login-logo"
+            />
             <h2>TwixterTube</h2>
           </div>
           <header className="session-form-header">

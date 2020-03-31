@@ -137,6 +137,7 @@ textarea {
 .logo {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .logo :hover {
@@ -147,6 +148,7 @@ textarea {
   font-size: 30px;
   font-weight: 1000;
   font-family: "Pathway Gothic One", sans-serif;
+  margin-left: -7px;
 }
 
 .session-form {
@@ -745,7 +747,7 @@ textarea {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 50%;
   padding-right: 20px;
   padding-left: 20px;
 }
@@ -774,7 +776,7 @@ textarea {
 
 .search-video-index-container {
   margin-top: 85px;
-  margin-left: 130px;
+  margin-left: 110px;
   margin-bottom: 80px;
   width: 80%;
 }
@@ -794,7 +796,7 @@ textarea {
   padding-bottom: 10px;
   font-size: 18px;
   font-family: "Roboto", Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .search-results-error {
@@ -822,34 +824,34 @@ textarea {
 
 .search-video-item-info {
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 15px;
-  color: rgb(96, 96, 96);
+  font-size: 13px;
+  color: #606060;
   padding-bottom: 10px;
 }
 
 .search-video-item-description {
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: rgb(96, 96, 96);
 }
 
 .search-bar {
-  width: 90%;
+  width: 84%;
 }
 
 .search-bar input {
   border-radius: 1px;
   width: 100%;
-  padding: 5px;
+  padding: 3.5px 5px;
   font-size: 16px;
   box-shadow: inset 0px -1px 5px rgba(0, 0, 0, 0.07);
-  border: 1px solid rgb(204, 204, 204);
+  border: 1px solid #cccccc;
 }
 
 .search-bar input:focus {
   border-radius: 3px;
   width: 100%;
-  padding: 5px;
+  padding: 3px 5px;
   font-size: 16px;
   box-shadow: inset 1px -1px 11px rgba(0, 0, 0, 0.07);
   border: 1px solid rgb(34, 100, 183);
@@ -859,12 +861,12 @@ textarea {
   border: 1px solid #d0d0d0;
   margin-left: 12px;
   cursor: pointer;
-  height: 34px;
+  height: 31px;
   width: 65px;
   background-color: #f8f8f8;
   padding-top: 6px;
   padding-bottom: 6px;
-  font-size: 15px;
+  font-size: 13px;
   color: #828282;
 }
 
@@ -1004,7 +1006,8 @@ textarea {
   height: 40px;
   cursor: pointer;
   font-size: 20px;
-  color: rgb(173, 181, 189);
+  color: #adb5bd;
+  margin-left: 25px;
 }
 
 .sign-in-button {
@@ -1013,13 +1016,22 @@ textarea {
   align-items: center;
   justify-content: space-around;
   background: white;
-  border: 1px solid rgb(0, 102, 206);
-  color: rgb(0, 102, 206);
-  height: 80%;
-  width: 80px;
-  padding: 11px 5px;
+  border: 1px solid #0066ce;
+  color: #0066ce;
+  /* height: 12%; */
+  width: 100px;
+  padding: 7px 5px;
   /* font-weight: bolder; */
   cursor: pointer;
+  margin-left: 30px;
+}
+
+#user-circle-sign-in {
+  font-size: 20px;
+}
+
+#sign-in-upload-button {
+  color: rgb(96, 96, 96);
 }
 
 .sign-in-button p {
@@ -1029,9 +1041,6 @@ textarea {
 
 .video-index-container {
   display: flex;
-  width: 86%;
-  margin: 0 auto;
-  // font-family: "Roboto", sans-serif;
   font-family: "Roboto", Arial, sans-serif;
 }
 
@@ -1106,11 +1115,9 @@ textarea {
 
 .video-index-recommended-header {
   display: flex;
-  width: 87%;
-  margin: 0 auto;
   margin-bottom: 20px;
-  padding-top: 75px;
-  padding-left: 10px;
+  padding-top: 90px;
+  // padding-left: 10px;
 }
 
 .video-index-container-main {
@@ -1118,14 +1125,11 @@ textarea {
 }
 
 .video-index-main-content {
-  width: 90%;
-  margin: auto;
+  margin-left: 110px;
   margin-bottom: 80px;
 }
 
 .video-index-main-recommended-inner {
-  width: 90%;
-  margin: auto;
   display: flex;
   flex-direction: column;
 }
@@ -1148,8 +1152,8 @@ textarea {
   // margin-bottom: 80px auto;
   // margin-left: 80px auto;
   // margin-right: 80px auto;
-  width: 86%;
-  margin: auto;
+  // width: 86%;
+  // margin: auto;
   // font-family: "Roboto", sans-serif;
   // font-family: "Roboto", Arial, sans-serif;
 
@@ -1159,25 +1163,25 @@ textarea {
 }
 
 .video-show-page-wrapper {
-  width: 90%;
-  margin: auto;
+  // width: 90%;
+  // margin: auto;
 }
 
 .video-show-page-internal-wrapper {
   width: 100%;
-  // font-family: "Roboto", sans-serif;
   font-family: "Roboto", Arial, sans-serif;
-
   display: flex;
   justify-content: center;
   padding-top: 75px;
+  flex-wrap: wrap;
 }
 
 .video-show-container {
-  padding-right: 24px;
+  padding-right: 20px;
   height: auto;
   max-width: 679px;
-  margin-left: 34px;
+  /* margin-left: -25px; */
+  padding-left: 20px;
 }
 
 .video-container {
@@ -1376,7 +1380,7 @@ textarea {
 .video-show-list-item {
   display: flex;
   flex-direction: row;
-  width: 300px;
+  width: 350px;
   height: 100px;
   cursor: pointer;
   margin-bottom: 20px;
@@ -1401,21 +1405,20 @@ textarea {
 }
 
 .video-show-list-item-details h1 {
-  font-size: 15px;
-  // font-family: "Roboto", sans-serif;
-  font-family: "Roboto", Arial, sans-serif;
-
-  font-weight: bolder;
-  padding-bottom: 13px;
-}
-
-.video-show-list-item-details p {
   font-size: 14px;
   // font-family: "Roboto", sans-serif;
   font-family: "Roboto", Arial, sans-serif;
 
   font-weight: bolder;
-  padding-bottom: 13px;
+  padding-bottom: 10px;
+}
+
+.video-show-list-item-details p {
+  font-size: 13px;
+  // font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
+
+  padding-bottom: 10px;
   color: rgb(96, 96, 96);
 }
 
@@ -1539,6 +1542,15 @@ textarea {
 }
 
 .inner-sidebar-modal-button-title {
+}
+
+#modal-button {
+  color: rgb(96, 96, 96);
+}
+
+#login-logo {
+  width: 100px;
+  object-fit: contain;
 }
 
 .sidebar-modal-content-item {

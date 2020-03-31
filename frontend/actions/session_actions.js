@@ -31,20 +31,16 @@ export const clearErrors = () => ({
 });
 
 export const createUser = formUser => dispatch =>
-  postUser(formUser)
-    .then(user => {
-      // debugger;
-      dispatch(receiveCurrentUser(user));
-    })
-    .fail(err => dispatch(receiveErrors(err.responseJSON)));
+  postUser(formUser).then(
+    user => dispatch(receiveCurrentUser(user)),
+    err => dispatch(receiveErrors(err.responseJSON))
+  );
 
 export const login = formUser => dispatch =>
-  postSession(formUser)
-    .then(user => {
-      // debugger;
-      dispatch(receiveCurrentUser(user));
-    })
-    .fail(err => dispatch(receiveErrors(err.responseJSON)));
+  postSession(formUser).then(
+    user => dispatch(receiveCurrentUser(user)),
+    err => dispatch(receiveErrors(err.responseJSON))
+  );
 
 export const logout = () => dispatch =>
   deleteSession().then(() => dispatch(logoutCurrentUser()));

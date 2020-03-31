@@ -26,6 +26,11 @@ class VideoIndexItem extends React.Component {
         ? this.props.video.title.slice(0, 60) + "..."
         : this.props.video.title;
 
+    let views =
+      this.props.video.views > 1000
+        ? Math.floor(this.props.video.views / 1000) + "k"
+        : this.props.video.views;
+
     return (
       <li className="video-item-container" onClick={this.handleVidClick}>
         {/* <video controls>
@@ -41,7 +46,7 @@ class VideoIndexItem extends React.Component {
           <h1>{title}</h1>
           <p id="vid-item-text">{author.username}</p>
           <p id="vid-item-text">
-            {this.props.video.views} Views · {this.props.video.publishedAgo} ago
+            {views} Views · {this.props.video.publishedAgo} ago
           </p>
           {/* <label>Description:
                         <p>{this.props.video.description}</p>
