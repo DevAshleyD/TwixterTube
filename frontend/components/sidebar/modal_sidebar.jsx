@@ -90,7 +90,12 @@ const ModalSideBar = props => {
               className="sidebar-modal-content-item"
               onClick={toggleModal}
             >
-              <FontAwesomeIcon icon={faVideo} className="sidebar-modal-icon" />
+              {/* <FontAwesomeIcon icon={faVideo} className="sidebar-modal-icon" /> */}
+              <img
+                src="https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png"
+                alt="upload-icon"
+                id="upload-modal-image-icon"
+              />
               <span className="sidebar-modal-item-title">Upload</span>
             </Link>
 

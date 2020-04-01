@@ -7,7 +7,8 @@ import {
   faUserCircle,
   faHome,
   faSignOutAlt,
-  faUser
+  faUser,
+  faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -196,12 +197,24 @@ class NavBar extends React.Component {
           </button>
         </div>
 
-        <div className="nav-bar-right">
-          <FontAwesomeIcon
+        <div className="fa-stack fa-2x nav-bar-right">
+          {/* <FontAwesomeIcon
             icon={faVideo}
             className="nav-bar-upload-button"
             onClick={this.handleUploadPage}
             id="sign-in-upload-button"
+          />
+
+          <FontAwesomeIcon
+            icon={faPlus}
+            className="nav-bar-plus-icon"
+            onClick={this.handleUploadPage}
+          /> */}
+          <img
+            src="https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png"
+            alt="upload-icon"
+            id="upload-navbar-image-icon"
+            onClick={this.handleUploadPage}
           />
           <div
             className="nav-bar-right-profile-btn"
@@ -247,9 +260,23 @@ class NavBar extends React.Component {
                 <h2>Home</h2>
               </div>
 
-              <div className="dropdown-item" onClick={this.handleUploadPage}>
+              <div
+                className="fa-stack fa-2x dropdown-item "
+                id="upload-icon-dropdown-container"
+                onClick={this.handleUploadPage}
+              >
                 <span>
-                  <FontAwesomeIcon icon={faVideo} />
+                  {/* <FontAwesomeIcon icon={faVideo} />
+                  <FontAwesomeIcon
+                    icon={faPlus}
+                    onClick={this.handleUploadPage}
+                    id="upload-dropdown-item"
+                  /> */}
+                  <img
+                    src="https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png"
+                    alt="upload-icon"
+                    id="upload-image-icon"
+                  />
                 </span>
                 <h2>Upload</h2>
               </div>
@@ -321,13 +348,25 @@ class NavBar extends React.Component {
           </button>
         </div>
 
-        <div className="nav-bar-right">
-          <FontAwesomeIcon
+        <div className="fa-stack fa-2x nav-bar-right">
+          {/* <FontAwesomeIcon
             icon={faVideo}
             className="nav-bar-upload-button"
             onClick={this.handleUploadPage}
             id="sign-in-upload-button"
           />
+          <FontAwesomeIcon
+            icon={faPlus}
+            className="nav-bar-plus-icon"
+            onClick={this.handleUploadPage}
+          /> */}
+          <img
+            src="https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png"
+            alt="upload-icon"
+            id="upload-navbar-image-icon"
+            onClick={this.handleUploadPage}
+          />
+
           <button onClick={this.handleLogin} className="sign-in-button">
             <FontAwesomeIcon
               icon={faUserCircle}

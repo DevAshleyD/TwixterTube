@@ -28,7 +28,12 @@ const SideBar = props => {
           <span className="sidebar-item-title">Home</span>
         </Link>
         <Link to={uploadSend} className="sidebar-content-item">
-          <FontAwesomeIcon icon={faVideo} className="sidebar-icon" />
+          {/* <FontAwesomeIcon icon={faVideo} className="sidebar-icon" /> */}
+          <img
+            src="https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png"
+            alt="upload-icon"
+            id="upload-image-icon"
+          />
           <span className="sidebar-item-title">Upload</span>
         </Link>
 
