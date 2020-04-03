@@ -1580,6 +1580,18 @@ textarea {
   padding-bottom: 5px;
 }
 
+.red {
+  color: rgb(252, 13, 27);
+}
+
+.background {
+  background-color: rgb(240, 240, 240);
+}
+
+.background-modal-toggle {
+  background-color: rgb(242, 242, 242);
+}
+
 .sidebar-modal-content-items {
   border-top: 1px solid rgb(229, 229, 229);
   margin-top: 10px;
@@ -1618,11 +1630,12 @@ textarea {
 }
 
 .sidebar-modal-icon {
-  font-size: 20px;
+  font-size: 17px;
   padding-right: 30px;
 }
 
 .sidebar-modal-item-title {
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 600;
 }

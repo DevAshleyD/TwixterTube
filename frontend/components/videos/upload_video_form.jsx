@@ -167,7 +167,7 @@ class UploadVideoForm extends React.Component {
 
         {/* <div className="upload-form-background"> */}
         <div className="upload-main-container">
-          <SideBarContainer />
+          <SideBarContainer path={this.props.match.path} />
           <div className="upload-form-parent-container">
             <div className="upload-form-container">
               <h2>{this.props.formTitle}</h2>

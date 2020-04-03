@@ -10,6 +10,10 @@ import {
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const SideBar = props => {
+  // useEffect(() => {
+  //   console.log("WHAT IS MATCH IN SIDEBAR HERE:  ", props.path === "/upload");
+  // }, []);
+
   let uploadSend;
   if (props.currentUser) {
     uploadSend = "/upload";
@@ -17,23 +21,31 @@ const SideBar = props => {
     uploadSend = "/login";
   }
 
+  let toggleRedHome =
+    props.path === "/"
+      ? "sidebar-content-item red background"
+      : "sidebar-content-item";
+
+  let toggleRedUpload =
+    props.path === "/upload"
+      ? "sidebar-content-item red background"
+      : "sidebar-content-item";
+
+  let uploadImage =
+    props.path === "/upload"
+      ? "https://twixtertube-dev.s3-us-west-1.amazonaws.com/upload_icon_logo_red.png"
+      : "https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png";
+
   return (
     <div className="sidebar-container">
       <div className="sidebar-main">
-        {/* <div className="sidebar-bars-button-container">
-          <FontAwesomeIcon icon={faBars} id="bars-icon-button" />
-        </div> */}
-        <Link to="/" className="sidebar-content-item">
+        <Link to="/" className={toggleRedHome}>
           <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
           <span className="sidebar-item-title">Home</span>
         </Link>
-        <Link to={uploadSend} className="sidebar-content-item">
+        <Link to={uploadSend} className={toggleRedUpload}>
           {/* <FontAwesomeIcon icon={faVideo} className="sidebar-icon" /> */}
-          <img
-            src="https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png"
-            alt="upload-icon"
-            id="upload-image-icon"
-          />
+          <img src={uploadImage} alt="upload-icon" id="upload-image-icon" />
           <span className="sidebar-item-title">Upload</span>
         </Link>
 

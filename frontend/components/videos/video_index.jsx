@@ -14,6 +14,10 @@ class VideosIndex extends React.Component {
     window.scrollTo(0, 0);
 
     this.props.fetchVideos();
+    console.log(
+      "WHAT DOES URL LOOK LIKE HERE IN INDEX COMPONENT:   ",
+      this.props.match
+    );
   }
 
   render() {
@@ -45,7 +49,7 @@ class VideosIndex extends React.Component {
         {/* <h1>React is Working</h1> */}
         <div className="video-index-container-background">
           <div className="video-index-container-main">
-            <SideBarContainer />
+            <SideBarContainer path={this.props.match.path} />
             <ModalSideBarContainer />
             <div className="video-index-main-content">
               <div className="video-index-main-recommended-inner">

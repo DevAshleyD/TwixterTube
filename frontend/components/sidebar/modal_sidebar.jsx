@@ -37,6 +37,7 @@ const ModalSideBar = props => {
         setModalHidden(true);
       }
     };
+    console.log("WHAT DOES PATH LOOK LIKE IN MODAL:   ", props);
   }, []);
 
   useEffect(() => {
@@ -56,6 +57,21 @@ const ModalSideBar = props => {
   } else {
     upload = "/login";
   }
+
+  let toggleHomeBackground =
+    props.match.path === "/"
+      ? "sidebar-modal-content-item background-modal-toggle"
+      : "sidebar-modal-content-item";
+
+  let toggleUploadBackground =
+    props.match.path === "/upload"
+      ? "sidebar-modal-content-item background-modal-toggle"
+      : "sidebar-modal-content-item";
+
+  let uploadImage =
+    props.match.path === "/upload"
+      ? "https://twixtertube-dev.s3-us-west-1.amazonaws.com/upload_icon_logo_red.png"
+      : "https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png";
 
   return (
     <div className="sidebar-modal-parent-container">
@@ -77,22 +93,25 @@ const ModalSideBar = props => {
             </div>
           </div>
           <div className="sidebar-modal-content-items">
-            <Link
-              to="/"
-              className="sidebar-modal-content-item"
-              onClick={toggleModal}
-            >
-              <FontAwesomeIcon icon={faHome} className="sidebar-modal-icon" />
+            <Link to="/" className={toggleHomeBackground} onClick={toggleModal}>
+              <FontAwesomeIcon
+                icon={faHome}
+                className={
+                  props.match.url === "/"
+                    ? "sidebar-modal-icon red"
+                    : "sidebar-modal-icon"
+                }
+              />
               <span className="sidebar-modal-item-title">Home</span>
             </Link>
             <Link
               to={upload}
-              className="sidebar-modal-content-item"
+              className={toggleUploadBackground}
               onClick={toggleModal}
             >
               {/* <FontAwesomeIcon icon={faVideo} className="sidebar-modal-icon" /> */}
               <img
-                src="https://cdn.discordapp.com/attachments/695012962036875485/695019729814814779/Untitled.png"
+                src={uploadImage}
                 alt="upload-icon"
                 id="upload-modal-image-icon"
               />

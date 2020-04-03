@@ -37,22 +37,11 @@ class VideoShow extends React.Component {
   componentDidMount() {
     // debugger;
     window.scrollTo(0, 0);
-    // this.props.fetchVideos().then(s => {
-    //   that.props.fetchVideo(that.props.match.params.videoId).then(
-    //     that.props
-    //       .updateViewCount({
-    //         id: that.props.match.params.videoId,
-    //         views: that.props.video.views + 1
-    //       })
-    //       .then(s =>
-    //         that.setState({
-    //           loaded: true,
-    //           views: that.props.video.views
-    //           // url: this.props.match.url
-    //         })
-    //       )
-    //   );
-    // });
+
+    console.log(
+      "WHAT DOES URL LOOK LIKE HERE IN INDEX COMPONENT:   ",
+      this.props.match.path === "/videos/:videoId"
+    );
 
     let that = this;
 
@@ -153,110 +142,6 @@ class VideoShow extends React.Component {
   handleEdit(e) {
     this.props.history.push(`/videos/${this.props.video.id}/edit`);
   }
-
-  // handleVideoLike() {
-  //   let that = this;
-  //   console.log(
-  //     "WHAT DOES THE LOOK like ON FUNCTION CALL:  ",
-  //     this.props.currentLike
-  //   );
-  //   if (!this.props.currentLike) {
-  //     addLike({
-  //       liked: true,
-  //       user_id: this.props.currentUser,
-  //       likeable_id: this.props.video.id,
-  //       likeable_type: "Video"
-  //     }).then(() => {
-  //       that.setState({
-  //         like: true,
-  //         dislike: false,
-  //         numberLikes: that.props.video.likes,
-  //         numberDislikes: that.props.video.dislikes
-  //       });
-  //     });
-  //   } else {
-  //     if (this.props.currentLike.liked) {
-  //       removeLike(this.props.currentLike.id).then(() => {
-  //         that.props.fetchVideo(that.props.match.params.videoId).then(() => {
-  //           that.setState({
-  //             like: false,
-  //             dislike: false,
-  //             numberLikes: that.props.video.likes,
-  //             numberDislikes: that.props.video.dislikes
-  //           });
-  //         });
-  //       });
-  //     } else {
-  //       changeLike({
-  //         liked: false,
-  //         likeable_id: this.props.video.id,
-  //         likeable_type: "Video",
-  //         id: this.props.currentLike.id
-  //       }).then(() => {
-  //         that.props.fetchVideo(that.props.match.params.videoId).then(() => {
-  //           that.setState({
-  //             like: false,
-  //             dislike: true,
-  //             numberLikes: that.props.video.likes,
-  //             numberDislikes: that.props.video.dislikes
-  //           });
-  //         });
-  //       });
-  //     }
-  //   }
-  // }
-
-  // handleVideoDislike() {
-  //   let that = this;
-  //   console.log(
-  //     "WHAT DOES THE  LOOK like ON FUNCTION CALL:  ",
-  //     this.props.currentLike
-  //   );
-  //   if (!this.props.currentLike) {
-  //     addLike({
-  //       liked: false,
-  //       user_id: this.props.currentUser,
-  //       likeable_id: this.props.video.id,
-  //       likeable_type: "Video"
-  //     }).then(() => {
-  //       that.setState({
-  //         like: false,
-  //         dislike: true,
-  //         numberLikes: that.props.video.likes,
-  //         numberDislikes: that.props.video.dislikes
-  //       });
-  //     });
-  //   } else {
-  //     if (!this.props.currentLike.liked) {
-  //       removeLike(this.props.currentLike.id).then(() => {
-  //         that.props.fetchVideo(that.props.match.params.videoId).then(() => {
-  //           that.setState({
-  //             like: false,
-  //             dislike: false,
-  //             numberLikes: that.props.video.likes,
-  //             numberDislikes: that.props.video.dislikes
-  //           });
-  //         });
-  //       });
-  //     } else {
-  //       changeLike({
-  //         liked: true,
-  //         likeable_id: this.props.video.id,
-  //         likeable_type: "Video",
-  //         id: this.props.currentLike.id
-  //       }).then(() => {
-  //         that.props.fetchVideo(that.props.match.params.videoId).then(() => {
-  //           that.setState({
-  //             like: true,
-  //             dislike: false,
-  //             numberLikes: that.props.video.likes,
-  //             numberDislikes: that.props.video.dislikes
-  //           });
-  //         });
-  //       });
-  //     }
-  //   }
-  // }
 
   handleVideoLike() {
     if (!this.props.currentUser) {
