@@ -34,6 +34,12 @@ class VideoShow extends React.Component {
   //     array.sort(() => Math.random() - 0.5);
   // }
 
+  numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+  }
+
   componentDidMount() {
     // debugger;
     window.scrollTo(0, 0);
@@ -283,7 +289,10 @@ class VideoShow extends React.Component {
                           {editButton}
                         </div>
                         <div className="video-show-details-top-bottom">
-                          <p>{this.state.views} Views</p>
+                          <p>
+                            {this.numberWithCommas(this.state.views)} Views ·{" "}
+                            {this.props.video.published}
+                          </p>
                           <div className="like-system-container">
                             <div className="like-thumbs-container">
                               <div
@@ -312,10 +321,17 @@ class VideoShow extends React.Component {
                         </div>
                         {/* <button onClick={this.handleEdit} className="edit-button">Edit</button> */}
                       </div>
-                      <div className="video-show-details-bottom">
-                        <h1>{this.props.uploader.username}</h1>
-                        <h2>Published on {this.props.video.published}</h2>
-                        <p>{this.props.video.description}</p>
+                      <div className="video-show-details-bottom-container">
+                        <p className="current-user-icon-detail">
+                          {this.props.uploader.username
+                            .slice(0, 1)
+                            .toUpperCase()}
+                        </p>
+                        <div className="video-show-details-bottom">
+                          <h1>{this.props.uploader.username}</h1>
+                          <h2>Published on {this.props.video.published}</h2>
+                          <p>{this.props.video.description}</p>
+                        </div>
                       </div>
                     </div>
                     {/* <div className="comments-container"></div> */}

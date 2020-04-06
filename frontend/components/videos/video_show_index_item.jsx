@@ -22,8 +22,8 @@ class VideoShowIndexItem extends React.Component {
   render() {
     // debugger
     let title =
-      this.props.video.title.length > 65
-        ? this.props.video.title.slice(0, 65) + "..."
+      this.props.video.title.length > 47
+        ? this.props.video.title.slice(0, 47) + "..."
         : this.props.video.title;
 
     let views =
