@@ -20,13 +20,19 @@ class VideoShow extends React.Component {
       dislike: false, // highlight for dislike
       like: false, // highlight for like
       numberDislikes: 0,
-      numberLikes: 0
+      numberLikes: 0,
+      height: "",
+      videoContainer: null,
+      videoShow: null,
       // url: this.props.match.url
     };
     this.handleEdit = this.handleEdit.bind(this);
     this.handleVideoLike = this.handleVideoLike.bind(this);
     this.handleVideoDislike = this.handleVideoDislike.bind(this);
+    this.videoContainer = React.createRef();
+    this.videoShow = React.createRef();
 
+    // this.getHeight = this.getHeight.bind(this);
     // this.shuffle = this.shuffle.bind(this);
   }
 
@@ -44,11 +50,6 @@ class VideoShow extends React.Component {
     // debugger;
     window.scrollTo(0, 0);
 
-    console.log(
-      "WHAT DOES URL LOOK LIKE HERE IN INDEX COMPONENT:   ",
-      this.props.match.path === "/videos/:videoId"
-    );
-
     let that = this;
 
     this.props.fetchVideos();
@@ -60,15 +61,15 @@ class VideoShow extends React.Component {
       that.props
         .updateViewCount({
           id: that.props.match.params.videoId,
-          views: that.props.video.views + 1
+          views: that.props.video.views + 1,
         })
-        .then(s => {
+        .then((s) => {
           if (!that.props.currentLike) {
             that.setState({
               loaded: true,
               views: that.props.video.views,
               numberLikes: that.props.video.likes,
-              numberDislikes: that.props.video.dislikes
+              numberDislikes: that.props.video.dislikes,
 
               // url: this.props.match.url
             });
@@ -79,7 +80,7 @@ class VideoShow extends React.Component {
                 views: that.props.video.views,
                 like: true,
                 numberLikes: that.props.video.likes,
-                numberDislikes: that.props.video.dislikes
+                numberDislikes: that.props.video.dislikes,
               });
             } else {
               that.setState({
@@ -87,18 +88,35 @@ class VideoShow extends React.Component {
                 views: that.props.video.views,
                 dislike: true,
                 numberLikes: that.props.video.likes,
-                numberDislikes: that.props.video.dislikes
+                numberDislikes: that.props.video.dislikes,
               });
             }
           }
         });
     });
 
-    // this.props.video;
-    // this.props.video[views]++;    need an action to update back end, optional for now
+    // this.setState({
+    //   videoShow: this.videoShow,
+    //   videoContainer: this.videoContainer,
+    // });
+
+    // window.addEventListener("resize", () => {
+    //   console.log("WHAT IS WINDOW availHeight:  ", window.screen.availHeight);
+    //   console.log("WHAT IS WINDOW height:  ", window.screen.height);
+    // });
   }
 
-  componentDidUpdate(prevProps) {
+  // componentWillUnmount() {
+  //   window.removeEventListener('resize', this.updateWidth);
+  // }
+
+  // getHeight() {
+  //   this.setState({
+  //     height: $("#video-wrapper").context.activeElement.clientHeight,
+  //   });
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
     let that = this;
     if (this.props.match.url !== prevProps.match.url) {
       this.props.fetchVideos();
@@ -106,16 +124,16 @@ class VideoShow extends React.Component {
         that.props
           .updateViewCount({
             id: that.props.match.params.videoId,
-            views: that.props.video.views + 1
+            views: that.props.video.views + 1,
           })
-          .then(s => {
+          .then((s) => {
             if (!that.props.currentLike) {
               that.setState({
                 views: that.props.video.views,
                 like: false,
                 dislike: false,
                 numberLikes: that.props.video.likes,
-                numberDislikes: that.props.video.dislikes
+                numberDislikes: that.props.video.dislikes,
               });
             } else {
               if (that.props.currentLike.liked) {
@@ -124,7 +142,7 @@ class VideoShow extends React.Component {
                   like: true,
                   dislike: false,
                   numberLikes: that.props.video.likes,
-                  numberDislikes: that.props.video.dislikes
+                  numberDislikes: that.props.video.dislikes,
                 });
               } else {
                 that.setState({
@@ -132,7 +150,7 @@ class VideoShow extends React.Component {
                   like: false,
                   dislike: true,
                   numberLikes: that.props.video.likes,
-                  numberDislikes: that.props.video.dislikes
+                  numberDislikes: that.props.video.dislikes,
                 });
               }
             }
@@ -159,7 +177,7 @@ class VideoShow extends React.Component {
             id: this.props.currentLike.id,
             liked: true,
             likeable_id: this.props.video.id,
-            likeable_type: "Video"
+            likeable_type: "Video",
           }).then(() =>
             this.props.fetchVideo(this.props.match.params.videoId).then(() => {
               this.setState({ dislike: false, like: true });
@@ -176,12 +194,12 @@ class VideoShow extends React.Component {
         addLike({
           liked: true,
           likeable_id: this.props.video.id,
-          likeable_type: "Video"
+          likeable_type: "Video",
         }).then(() =>
           this.props.fetchVideo(this.props.match.params.videoId).then(() => {
             this.setState({
               like: true,
-              dislike: false
+              dislike: false,
             });
           })
         );
@@ -199,7 +217,7 @@ class VideoShow extends React.Component {
             id: this.props.currentLike.id,
             liked: false,
             likeable_id: this.props.video.id,
-            likeable_type: "Video"
+            likeable_type: "Video",
           }).then(() =>
             this.props.fetchVideo(this.props.match.params.videoId).then(() => {
               this.setState({ dislike: true, like: false });
@@ -216,12 +234,12 @@ class VideoShow extends React.Component {
         addLike({
           liked: false,
           likeable_id: this.props.video.id,
-          likeable_type: "Video"
+          likeable_type: "Video",
         }).then(() =>
           this.props.fetchVideo(this.props.match.params.videoId).then(() => {
             this.setState({
               like: false,
-              dislike: true
+              dislike: true,
             });
           })
         );
@@ -237,10 +255,17 @@ class VideoShow extends React.Component {
       // console.log("DON'T LOAD VIDEO SHOW YET");
       return null;
     }
+
+    let maxHeight = window.screen.height * 0.5675 + "px";
+
+    // if (!!this.state.videoContainer.current) {
+    //   maxHeight = this.state.videoContainer.current.offsetHeight * 0.38 + "px";
+    //   console.log("WHAT IS WINDOW:   ", window);
+    // }
     // console.log("SHOWING VIDEO SHOW NOW");
     let url = this.props.video.videoUrl;
     let videos = [];
-    this.props.videos.slice(0, 10).forEach(video => {
+    this.props.videos.slice(0, 10).forEach((video) => {
       if (this.props.video.id === video.id) {
         return null;
       }
@@ -271,13 +296,23 @@ class VideoShow extends React.Component {
         <div className="video-show-wrapper">
           <span> </span>
           <div className="video-show-page">
-            <div className="video-show-page-wrapper">
+            <div
+              className="video-show-page-wrapper"
+              id="video-wrapper"
+              ref={this.videoContainer}
+            >
               <div className="video-show-page-internal-wrapper">
                 <div className="video-show-left-box"> </div>
                 <div className="video-show-container">
                   <div className="video-show-container-internal">
                     <div className="video-container">
-                      <video controls key={url}>
+                      <video
+                        controls
+                        key={url}
+                        id="video-section"
+                        ref={this.videoShow}
+                        style={{ maxHeight: maxHeight }}
+                      >
                         <source src={url} />
                       </video>
                     </div>

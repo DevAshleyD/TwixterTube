@@ -712,7 +712,7 @@ textarea {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  background: rgba(255, 255, 255, 0.975);
   position: fixed;
   z-index: 10;
 }
@@ -1291,7 +1291,7 @@ textarea {
 .video-container video {
   object-fit: contain;
   width: 100%;
-  height: 100%;
+  // height: 100%;
 }
 
 .video-show-container video {
