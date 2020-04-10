@@ -10,52 +10,77 @@ class VideosIndex extends React.Component {
     super(props);
     this.state = {
       loaded: false,
+      usedFunctionWithLoad: false,
       // windowListener: false,
     };
     this.windowListener = false;
     // this.firstVidRef = React.createRef();
     this.videoListRef = React.createRef();
     this.handleLoad = this.handleLoad.bind(this);
-    this.load = false;
-    this.usedFunctionWithLoad = false;
+    // this.usedFunctionWithLoad = false;
+    // this.videos = false;
     this.windowResiszeListener = this.windowResiszeListener.bind(this);
   }
 
   componentDidMount() {
+    debugger;
+
     window.scrollTo(0, 0);
 
     this.props.fetchVideos();
+    window.addEventListener("resize", this.handleLoad);
+    this.props.attachListener();
 
     // this.setState({
     //   loaded: true,
     // });
   }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize");
-  // }
+  componentWillUnmount() {
+    debugger;
+
+    window.removeEventListener("resize", this.handleLoad);
+    this.props.removeAllVideos();
+    this.props.removeListener();
+    // window.alert("I have a big....");
+    // debugger;
+  }
 
   componentDidUpdate() {
-    if (this.load === true && this.usedFunctionWithLoad === false) {
+    debugger;
+
+    if (
+      this.props.windowListener === true &&
+      this.state.usedFunctionWithLoad === false &&
+      this.props.videos.length !== 0
+    ) {
+      debugger;
       this.handleLoad();
-      this.usedFunctionWithLoad = true;
+      this.setState({
+        usedFunctionWithLoad: true,
+      });
     }
   }
 
   handleLoad() {
-    let width = this.videoListRef.current.children[0].offsetWidth;
-    // calculated height of width of element
-    let calculatedHeight = width * 0.5625 + "px";
+    debugger;
+    if (this.props.windowListener) {
+      let width = this.videoListRef.current.children[0].offsetWidth;
+      // calculated height of width of element
+      let calculatedHeight = width * 0.5625 + "px";
 
-    let children = Object.values(this.videoListRef.current.children);
+      let children = Object.values(this.videoListRef.current.children);
 
-    for (let i = 0; i < children.length; i++) {
-      let child = children[i];
-      child.children[0].style.height = calculatedHeight;
+      for (let i = 0; i < children.length; i++) {
+        let child = children[i];
+        child.children[0].style.height = calculatedHeight;
+      }
     }
   }
 
   windowResiszeListener() {
+    debugger;
+
     window.addEventListener("resize", this.handleLoad);
 
     // this.videoListRef.current.addEventListener("load", () => {
@@ -78,6 +103,8 @@ class VideosIndex extends React.Component {
   }
 
   render() {
+    debugger;
+
     let videos = this.props.videos.map((video, idx) => {
       // if (idx === 0 && !!video) {
       //   return (
@@ -98,12 +125,15 @@ class VideosIndex extends React.Component {
       );
     });
 
-    if (videos.length !== 0 && this.windowListener === false) {
-      this.windowResiszeListener();
-      this.load = true;
-    }
+    // if (videos.length !== 0 && this.props.windowListener === false) {
+    //   debugger;
+
+    //   this.windowResiszeListener();
+    //   this.props.attachListener();
+    // }
 
     videos.sort(() => Math.random() - 0.5);
+    debugger;
 
     return (
       <div>

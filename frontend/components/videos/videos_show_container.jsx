@@ -31,7 +31,7 @@ const msp = (state, ownProps) => {
     uploader: uploader,
     currentUser: currentUser,
     url: url,
-    currentLike
+    currentLike,
 
     // currentLike
     // fetchVideoUtil: VideoUtil.fetchVideo,
@@ -42,16 +42,17 @@ const msp = (state, ownProps) => {
   };
 };
 
-const mdp = dispatch => {
+const mdp = (dispatch) => {
   return {
     fetchVideos: () => dispatch(VideoActions.fetchVideos()),
 
-    fetchVideo: id => dispatch(VideoActions.fetchVideo(id)),
+    fetchVideo: (id) => dispatch(VideoActions.fetchVideo(id)),
 
-    updateViewCount: videoPayload =>
+    updateViewCount: (videoPayload) =>
       dispatch(VideoActions.updateViewCount(videoPayload)),
 
-    removeAllVideos: () => dispatch(VideoActions.removeAllVideos())
+    removeAllVideos: () => dispatch(VideoActions.removeAllVideos()),
+    removeVideoShow: () => dispatch(VideoActions.removeVideoShow()),
   };
 };
 

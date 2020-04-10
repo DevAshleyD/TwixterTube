@@ -106,9 +106,10 @@ class VideoShow extends React.Component {
     // });
   }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.updateWidth);
-  // }
+  componentWillUnmount() {
+    this.props.removeAllVideos();
+    this.props.removeVideoShow();
+  }
 
   // getHeight() {
   //   this.setState({
