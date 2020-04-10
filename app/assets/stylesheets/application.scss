@@ -861,7 +861,9 @@ textarea {
 }
 
 .search-bar {
-  width: 84%;
+  width: 100%;
+  min-width: 120px;
+  max-width: 562px;
 }
 
 #upload-image-icon {
@@ -1090,8 +1092,8 @@ textarea {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
-  margin-right: 10px;
+  // align-items: center;
+  // margin-right: 10px;
 }
 
 .video-item-container {
@@ -1099,33 +1101,88 @@ textarea {
   flex-direction: column;
   font-family: "Roboto", Arial, sans-serif;
   cursor: pointer;
-  margin-right: 4px;
-  margin-top: 10px;
-  padding-right: 4px;
-  height: 100vh;
-  min-height: 250px;
-  max-height: 276px;
-  width: 100vw;
-  min-width: 240px;
-  max-width: 320px;
-  flex: 1;
+  margin: 0 8px 40px 8px;
+
+  /* 
+    width: 23%;
+    width is going to be assigned a 
+    percentage at the breakpoints,
+
+    then height of video container image will be 
+    calculated at react ref function in video index and
+    assigned upon render and clled upon resizing of browser
+  */
+
+  // margin-right: 4px;
+  // margin-top: 10px;
+  // padding-right: 4px;
+  // height: 100vh;
+  // min-height: 250px;
+  // max-height: 276px;
+  // width: 100vw;
+  // min-width: 240px;
+  // max-width: 320px;
+  // flex: 1;
   //
 }
 
-// .video-item-container img {
-//   width: 209px;
-//   height: 128px;
-// }
+@media (min-width: 496px) {
+  .video-item-container {
+    width: 46%;
+  }
+}
+
+@media (min-width: 872px) {
+  .video-item-container {
+    width: 31%;
+  }
+}
+
+@media (min-width: 1128px) {
+  .video-item-container {
+    width: 23.3%;
+  }
+}
+
+@media (min-width: 1784px) {
+  .video-item-container {
+    width: 18.9%;
+  }
+}
 
 .video-item-container-image {
-  // width: 100%;
-  // height: 155px;
   width: 100%;
-  height: 60%;
-  overflow: hidden;
   background-color: black;
-  display: flex;
+
+  /* 
+    height: 155px;
+    height is going to be calculated from offsetWidth of li
+    and multiplied by 0.5625
+  */
+
+  // width: 100%;
+  // height: 60%;
+  // overflow: hidden;
+  // display: flex;
   /* max-height: 180px; */
+}
+
+.video-item-container-image img {
+  // background-color: black;
+  // object-fit: contain;
+  // max-width: 100%;
+  // max-height: 100%;
+  // margin: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-details {
+  display: flex;
+  flex-direction: column;
+  // width: 210px;
+  // height: 82px;
 }
 
 #upload-navbar-image-icon {
@@ -1133,21 +1190,6 @@ textarea {
   margin-left: 15px;
   padding: 10px;
   cursor: pointer;
-}
-
-.video-item-container-image img {
-  background-color: black;
-  object-fit: contain;
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto;
-}
-
-.video-details {
-  display: flex;
-  flex-direction: column;
-  width: 210px;
-  height: 82px;
 }
 
 .video-details h1 {
@@ -1186,7 +1228,7 @@ textarea {
 }
 
 .video-index-main-content {
-  margin-left: 98px;
+  margin-left: 90px;
   margin-bottom: 80px;
 }
 
@@ -1217,6 +1259,7 @@ textarea {
 .video-index-recommended-header h1 {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 20px;
+  margin-left: 7px;
 }
 
 .video-show-wrapper {

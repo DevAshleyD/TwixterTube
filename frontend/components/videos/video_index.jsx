@@ -26,10 +26,14 @@ class VideosIndex extends React.Component {
 
     this.props.fetchVideos();
 
-    this.setState({
-      loaded: true,
-    });
+    // this.setState({
+    //   loaded: true,
+    // });
   }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize");
+  // }
 
   componentDidUpdate() {
     if (this.load === true && this.usedFunctionWithLoad === false) {
@@ -40,42 +44,19 @@ class VideosIndex extends React.Component {
 
   handleLoad() {
     let width = this.videoListRef.current.children[0].offsetWidth;
-    let height = this.videoListRef.current.children[0].offsetHeight;
+    // calculated height of width of element
+    let calculatedHeight = width * 0.5625 + "px";
 
     let children = Object.values(this.videoListRef.current.children);
 
-    for (let i = 1; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       let child = children[i];
-      if (child.offsetWidth !== width || child.offsetHeight !== height) {
-        child.style.maxWidth = width + "px";
-        child.style.maxHeight = height + "px";
-      }
+      child.children[0].style.height = calculatedHeight;
     }
   }
 
   windowResiszeListener() {
-    window.addEventListener("resize", () => {
-      // console.log("HERE IS THE FIRST VIDEO:    ", this.firstVidRef);
-      // console.log("HERE IS THE VIDEO LIST REF:    ", this.videoListRef);
-      // console.log(
-      //   "HERE IS CHILDREN CHILD:    ",
-      //   this.videoListRef.current.children[8]
-      // );
-      // console.log(
-      //   "WHAT IS THE TYPE OF THE CHILDREN:    ",
-      //   typeof Object.values(this.videoListRef.current.children)
-      // );
-
-      this.handleLoad();
-
-      // this.videoListRef.current.children[8].style.maxWidth = width + "px";
-      // this.videoListRef.current.children[8].style.maxHeight = height + "px";
-
-      // let style = {
-      //   width: width + "px",
-      //   height: height + "px",
-      // };
-    });
+    window.addEventListener("resize", this.handleLoad);
 
     // this.videoListRef.current.addEventListener("load", () => {
     //   let width = this.videoListRef.current.children[0].offsetWidth;
