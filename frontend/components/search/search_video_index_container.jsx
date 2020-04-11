@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchVideos } from "../../actions/videos_actions";
+import { fetchVideos, removeAllVideos } from "../../actions/videos_actions";
 import SearchVideoIndex from "./search_video_index";
 
 const msp = (state, ownProps) => {
@@ -12,13 +12,14 @@ const msp = (state, ownProps) => {
     videos,
     query,
     url,
-    users
+    users,
   };
 };
 
-const mdp = dispatch => {
+const mdp = (dispatch) => {
   return {
-    fetchVideos: query => dispatch(fetchVideos(query))
+    fetchVideos: (query) => dispatch(fetchVideos(query)),
+    removeAllVideos: () => dispatch(removeAllVideos()),
   };
 };
 

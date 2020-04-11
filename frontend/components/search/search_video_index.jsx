@@ -5,10 +5,14 @@ import SearchVideoIndexItem from "./search_video_index_item";
 import ModalSideBarContainer from "../sidebar/modal_sidebar_container";
 import SideBarContainer from "../sidebar/sidebar_container";
 
-const SearchVideoIndex = props => {
+const SearchVideoIndex = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     props.fetchVideos(props.match.params.query);
+
+    return () => {
+      props.removeAllVideos();
+    };
   }, []);
 
   useEffect(() => {

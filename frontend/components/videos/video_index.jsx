@@ -23,8 +23,6 @@ class VideosIndex extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
-
     window.scrollTo(0, 0);
 
     this.props.fetchVideos();
@@ -37,24 +35,19 @@ class VideosIndex extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger;
-
     window.removeEventListener("resize", this.handleLoad);
     this.props.removeAllVideos();
     this.props.removeListener();
     // window.alert("I have a big....");
-    // debugger;
+    //
   }
 
   componentDidUpdate() {
-    debugger;
-
     if (
       this.props.windowListener === true &&
       this.state.usedFunctionWithLoad === false &&
       this.props.videos.length !== 0
     ) {
-      debugger;
       this.handleLoad();
       this.setState({
         usedFunctionWithLoad: true,
@@ -63,7 +56,6 @@ class VideosIndex extends React.Component {
   }
 
   handleLoad() {
-    debugger;
     if (this.props.windowListener) {
       let width = this.videoListRef.current.children[0].offsetWidth;
       // calculated height of width of element
@@ -79,8 +71,6 @@ class VideosIndex extends React.Component {
   }
 
   windowResiszeListener() {
-    debugger;
-
     window.addEventListener("resize", this.handleLoad);
 
     // this.videoListRef.current.addEventListener("load", () => {
@@ -103,8 +93,6 @@ class VideosIndex extends React.Component {
   }
 
   render() {
-    debugger;
-
     let videos = this.props.videos.map((video, idx) => {
       // if (idx === 0 && !!video) {
       //   return (
@@ -126,14 +114,13 @@ class VideosIndex extends React.Component {
     });
 
     // if (videos.length !== 0 && this.props.windowListener === false) {
-    //   debugger;
+    //
 
     //   this.windowResiszeListener();
     //   this.props.attachListener();
     // }
 
-    videos.sort(() => Math.random() - 0.5);
-    debugger;
+    // videos.sort(() => Math.random() - 0.5);
 
     return (
       <div>
