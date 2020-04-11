@@ -1,44 +1,47 @@
-export const fetchVideos = query =>
+export const fetchVideos = (query) =>
   $.ajax({
     url: `/api/videos`,
     method: `GET`,
-    data: { query }
+    data: { query },
   });
 
-export const fetchVideo = id => {
+export const fetchVideo = (id) => {
+  debugger;
   return $.ajax({
     url: `/api/videos/${id}`,
-    method: `GET`
+    method: `GET`,
   });
 };
 
-export const postVideo = formData =>
+export const postVideo = (formData) =>
   $.ajax({
     url: `/api/videos`,
     method: `POST`,
     data: formData,
     contentType: false,
-    processData: false
+    processData: false,
   });
 
-export const editVideo = video => {
+export const editVideo = (video) => {
   // debugger
   return $.ajax({
     url: `/api/videos/${video.id}`,
     method: `PATCH`,
-    data: { video }
+    data: { video },
   });
 };
 
-export const deleteVideo = id =>
+export const deleteVideo = (id) =>
   $.ajax({
     url: `/api/videos/${id}`,
-    method: `DELETE`
+    method: `DELETE`,
   });
 
-export const updateVideoViewCount = video =>
-  $.ajax({
+export const updateVideoViewCount = (video) => {
+  debugger;
+  return $.ajax({
     url: `/api/videos/${video.id}/views`,
     method: "PATCH",
-    data: { video }
+    data: { video },
   });
+};

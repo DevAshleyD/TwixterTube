@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import VideoShow from "./video_show";
 import * as VideoActions from "../../actions/videos_actions";
 import * as VideoUtil from "../../util/videos_util";
+import { removeAllComments } from "../../actions/comments_actions";
 
 const msp = (state, ownProps) => {
   let currentUser = state.session.currentUser;
@@ -53,6 +54,7 @@ const mdp = (dispatch) => {
 
     removeAllVideos: () => dispatch(VideoActions.removeAllVideos()),
     removeVideoShow: () => dispatch(VideoActions.removeVideoShow()),
+    removeAllComments: () => dispatch(removeAllComments()),
   };
 };
 

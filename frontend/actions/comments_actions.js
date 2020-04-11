@@ -6,28 +6,33 @@ import * as CommentUtil from "../util/comments_util";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 // ^^ upon receiving an updated comment or creating one, reassign comments slice
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const REMOVE_ALL_COMMENTS = "REMOVE_ALL_COMMENTS";
 
-const receiveComment = comment => ({
+const receiveComment = (comment) => ({
   type: RECEIVE_COMMENT,
-  comment
+  comment,
 });
 
-const removeComment = comment => ({
+const removeComment = (comment) => ({
   type: REMOVE_COMMENT,
-  commentId: comment.id
+  commentId: comment.id,
 });
 
-export const addComment = commentData => dispatch =>
-  CommentUtil.addComment(commentData).then(comment =>
+export const removeAllComments = () => ({
+  type: REMOVE_ALL_COMMENTS,
+});
+
+export const addComment = (commentData) => (dispatch) =>
+  CommentUtil.addComment(commentData).then((comment) =>
     dispatch(receiveComment(comment))
   );
 
-export const deleteComment = commentId => dispatch =>
-  CommentUtil.deleteComment(commentId).then(comment =>
+export const deleteComment = (commentId) => (dispatch) =>
+  CommentUtil.deleteComment(commentId).then((comment) =>
     dispatch(removeComment(comment))
   );
 
-export const editComment = commentData => dispatch =>
-  CommentUtil.editComment(commentData).then(comment =>
+export const editComment = (commentData) => (dispatch) =>
+  CommentUtil.editComment(commentData).then((comment) =>
     dispatch(receiveComment(comment))
   );

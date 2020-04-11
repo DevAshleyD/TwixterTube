@@ -1,4 +1,8 @@
-import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comments_actions";
+import {
+  RECEIVE_COMMENT,
+  REMOVE_COMMENT,
+  REMOVE_ALL_COMMENTS,
+} from "../actions/comments_actions";
 
 import { RECEIVE_VIDEO } from "../actions/videos_actions";
 
@@ -13,9 +17,12 @@ export default (state = {}, action) => {
         return action.payload.comments;
       }
 
+    case REMOVE_ALL_COMMENTS:
+      return {};
+
     case RECEIVE_COMMENT:
       newState = Object.assign({}, state, {
-        [action.comment.id]: action.comment
+        [action.comment.id]: action.comment,
       });
       return newState;
 
