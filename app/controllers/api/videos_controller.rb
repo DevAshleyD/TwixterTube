@@ -32,7 +32,6 @@ class Api::VideosController < ApplicationController
     end
 
     def update
-        # debugger
         @video = current_user.videos.find(params[:id])
         if @video.update(video_params_edit)
             render :show
@@ -42,7 +41,6 @@ class Api::VideosController < ApplicationController
     end
 
     def view_update
-        # debugger
         @video = Video.find(params[:id])
         if @video.update(video_params_edit_views)
 
@@ -65,7 +63,7 @@ class Api::VideosController < ApplicationController
     end
 
     def video_params_edit
-        params.require(:video).permit(:title, :description)
+        params.require(:video).permit(:title, :description, :thumbnail)
     end
 
     def video_params_edit_views

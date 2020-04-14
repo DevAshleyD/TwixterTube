@@ -13,7 +13,6 @@ json.user do
 end
 
 if current_user
-    # debugger
     likes = @video.likes.select { |like| like.user_id == current_user.id }
     current_like = likes[0]
 

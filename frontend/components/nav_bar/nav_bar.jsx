@@ -8,7 +8,7 @@ import {
   faHome,
   faSignOutAlt,
   faUser,
-  faPlus
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -20,7 +20,7 @@ class NavBar extends React.Component {
       modalButton: null,
       modalDisplay: false,
       modal: null,
-      search: ""
+      search: "",
     }; // may need refactoring b/c update is returning a pojo
     this.handleLogout = this.handleLogout.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
@@ -37,7 +37,7 @@ class NavBar extends React.Component {
   componentDidMount() {
     this.setState({
       modalButton: document.getElementsByClassName("nav-bar-right-profile-btn"),
-      modal: document.getElementsByClassName("profile-button-modal")
+      modal: document.getElementsByClassName("profile-button-modal"),
     });
 
     let that = this;
@@ -45,7 +45,7 @@ class NavBar extends React.Component {
     //   that.toggleModal();
     //   // alert("you are clicking on the parent stop it");
     // };
-    document.onclick = function(e) {
+    document.onclick = function (e) {
       let parentId = e.target.parentNode ? e.target.parentNode.id : null;
       if (e.target.id === "modal-button" || parentId === "modal-button") {
         that.toggleModal();
@@ -80,7 +80,6 @@ class NavBar extends React.Component {
   handleSearch(e) {}
 
   toggleModal() {
-    // debugger;
     if (!this.state.modalDisplay) {
       this.setState({ modalDisplay: true });
     } else {
@@ -170,7 +169,6 @@ class NavBar extends React.Component {
       }
     }
 
-    // debugger
     const display = this.props.currentUser ? (
       <div className="nav-bar-container">
         <div className="nav-bar-left" onClick={this.handleHomePage}>

@@ -15,12 +15,10 @@ class VideoShowIndexItem extends React.Component {
   }
 
   handleClick(e) {
-    // debugger
     this.props.history.replace(`/videos/${this.props.video.id}`);
   }
 
   render() {
-    // debugger
     let title =
       this.props.video.title.length > 47
         ? this.props.video.title.slice(0, 47) + "..."

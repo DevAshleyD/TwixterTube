@@ -11,17 +11,20 @@ class EditVideoForm extends React.Component {
       loaded: false,
       title: "",
       description: "",
-      id: ""
+      id: "",
+      thumbnailFile: null,
+      thumbnailUrl: null,
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteVideo = this.handleDeleteVideo.bind(this);
+    this.handleThumbnailUpload = this.handleThumbnailUpload.bind(this);
   }
 
   update(field) {
-    return e =>
+    return (e) =>
       this.setState({
-        [field]: e.target.value
+        [field]: e.target.value,
       });
   }
 
@@ -30,11 +33,22 @@ class EditVideoForm extends React.Component {
     let videoEditPayload = {
       title: this.state.title,
       description: this.state.description,
-      id: this.props.match.params.videoId
+      id: this.props.match.params.videoId,
     };
     this.props
       .action(videoEditPayload)
       .then(() => this.props.history.push(`/videos/${this.props.video.id}`));
+  }
+
+  handleThumbnailUpload(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ thumbnailFile: file, thumbnailUrl: fileReader.result });
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   handleDeleteVideo(e) {
@@ -44,20 +58,25 @@ class EditVideoForm extends React.Component {
       .then(() => this.props.history.push("/"));
   }
 
+  handleThumbnailClick() {
+    document.getElementById("video-form-thumbnail-upload").click();
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.props.fetchVideo(this.props.match.params.videoId).then(response => {
+    this.props.fetchVideo(this.props.match.params.videoId).then((response) => {
       this.setState({
         loaded: true,
         id: this.props.match.params.videoId,
         title: this.props.video.title,
-        description: this.props.video.description
+        description: this.props.video.description,
+        thumbnailUrl: this.props.video.thumbnailUrl,
       });
     });
-    // debugger
   }
 
   render() {
+    console.log("HERE IS EDIT FORM STATE:  ", this.state);
     if (!this.state.loaded) {
       return null;
     }
@@ -84,6 +103,27 @@ class EditVideoForm extends React.Component {
                   <h2>{this.props.formTitle}</h2>
                   <form onSubmit={this.handleSubmit} className="edit-form">
                     <div className="edit-form-bottom">
+                      <input
+                        id="video-form-thumbnail-upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={this.handleThumbnailUpload}
+                      />
+                      <label className="video-thumbnail-edit-container">
+                        <button
+                          type="button"
+                          className="edit-form-thumbnail-button"
+                          onClick={this.handleThumbnailClick.bind(this)}
+                        >
+                          Change Thumbnail
+                        </button>
+                        <img
+                          src={this.state.thumbnailUrl}
+                          alt={this.props.video.title + " thumbnail"}
+                          className="edit-thumbnail"
+                        />
+                      </label>
+
                       <input
                         type="text"
                         placeholder="Title"

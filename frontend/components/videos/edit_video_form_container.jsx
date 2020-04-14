@@ -4,7 +4,7 @@ import EditVideoForm from "./edit_video_form";
 import {
   editVideo,
   fetchVideo,
-  deleteVideo
+  deleteVideo,
 } from "../../actions/videos_actions";
 
 const msp = (state, ownProps) => {
@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
   // ? state.entities.videoShow.video
   // : { id: "", title: "", description: "" };
   let video = state.entities.videoShow ? state.entities.videoShow.video : null;
-
+  console.log("IN THE VIDEO EDIT CONTAINER, HERE'S VIDEO:   ", video);
   let url = ownProps.match.url;
 
   return {
@@ -20,15 +20,15 @@ const msp = (state, ownProps) => {
     formType: "Edit Video",
     formTitle: "Update your Video details",
     currentUser: state.entities.users[state.session.currentUser],
-    url: url
+    url: url,
   };
 };
 
-const mdp = dispatch => {
+const mdp = (dispatch) => {
   return {
-    fetchVideo: id => dispatch(fetchVideo(id)),
-    deleteVideo: id => dispatch(deleteVideo(id)),
-    action: videoForm => dispatch(editVideo(videoForm))
+    fetchVideo: (id) => dispatch(fetchVideo(id)),
+    deleteVideo: (id) => dispatch(deleteVideo(id)),
+    action: (videoForm) => dispatch(editVideo(videoForm)),
   };
 };
 

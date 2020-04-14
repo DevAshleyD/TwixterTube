@@ -21,7 +21,6 @@ const receiveAllVideos = (payload) => ({
 });
 
 export const receiveVideo = (payload) => {
-  debugger;
   return { type: RECEIVE_VIDEO, payload };
 };
 
@@ -41,7 +40,6 @@ const receiveUploader = (payload) => ({
 });
 
 export const updateViews = (payload) => {
-  debugger;
   return {
     type: UPDATE_VIEW_COUNT,
     payload,
@@ -63,7 +61,6 @@ export const fetchVideos = (query) => (dispatch) =>
 
 export const fetchVideo = (id) => (dispatch) => {
   return VideoUtil.fetchVideo(id).then((payload) => {
-    debugger;
     dispatch(receiveVideo(payload));
   });
 };
@@ -88,6 +85,5 @@ export const deleteVideo = (id) => (dispatch) =>
 
 export const updateViewCount = (videoPayload) => (dispatch) =>
   VideoUtil.updateVideoViewCount(videoPayload).then((payload) => {
-    debugger;
     dispatch(updateViews(payload));
   });

@@ -213,14 +213,16 @@ textarea {
 }
 
 .video-form-parent-container {
-  width: 55%;
+  width: 70%;
+  max-width: 600px;
   margin: auto;
+  margin-bottom: 40px;
 }
 
 .video-form-container {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  // width: 500px;
   margin: 0 auto;
   border: 2px solid #e6e6e6;
   align-items: center;
@@ -862,7 +864,7 @@ textarea {
 
 .search-bar {
   width: 100%;
-  min-width: 120px;
+  min-width: 15px;
   max-width: 562px;
 }
 
@@ -936,7 +938,7 @@ textarea {
   cursor: pointer;
   font-size: 35px;
   color: rgb(173, 181, 189);
-  margin-right: 25px;
+  // margin-right: 25px;
 }
 
 .profile-button-modal {
@@ -1066,7 +1068,7 @@ textarea {
   padding: 7px 5px;
   /* font-weight: bolder; */
   cursor: pointer;
-  margin-left: 30px;
+  // margin-left: 30px;
 }
 
 #user-circle-sign-in {
@@ -1139,8 +1141,14 @@ textarea {
   .video-index-container-items {
     justify-content: center;
   }
-  .nav-bar-search {
+  #upload-navbar-image-icon {
     display: none;
+  }
+  .sign-in-button {
+    margin-left: 5px;
+  }
+  .nav-bar-right-profile-btn {
+    margin-left: 25px;
   }
 }
 
@@ -1150,6 +1158,25 @@ textarea {
   }
   .video-index-container-items {
     justify-content: flex-start;
+  }
+  // #upload-navbar-image-icon {
+  //   margin-left: 15px;
+  // }
+  .sign-in-button {
+    margin-left: 10px;
+  }
+  .nav-bar-right-profile-btn {
+    margin-right: 25px;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 560px) {
+  #upload-navbar-image-icon {
+    margin-left: 15px;
+  }
+  .sign-in-button {
+    margin-left: 30px;
   }
 }
 
@@ -1185,6 +1212,59 @@ textarea {
     width: 18.9%;
   }
 }
+
+// .video-thumbnail-edit-container {
+//   display: flex;
+//   justify-content: center;
+//   margin-bottom: 20px;
+// }
+
+.video-thumbnail-edit-container {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
+  img {
+    width: 70%;
+    // transform: scale() ;
+    margin-bottom: 20px;
+    transition-duration: 0.5s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  button {
+    color: white;
+    font-size: 16px;
+    border: none;
+    background-color: rgb(20, 125, 223);
+    padding: 10px 20px;
+    border-radius: 5px;
+    &:hover + img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// .video-thumbnail-edit-container img:hover {
+// transform: scale(1.1);
+
+// }
+
+#video-form-thumbnail-upload {
+  display: none;
+}
+
+// .edit-form-thumbnail-button {
+// }
+
+// // going to have img node expand on hover button
+// .edit-form-thumbnail-button:hover .edit-thumbnail {
+//   transform: scale(1.1);
+// }
 
 .video-item-container-image {
   width: 100%;
@@ -1223,7 +1303,6 @@ textarea {
 
 #upload-navbar-image-icon {
   width: 19px;
-  margin-left: 15px;
   padding: 10px;
   cursor: pointer;
 }

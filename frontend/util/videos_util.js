@@ -6,7 +6,6 @@ export const fetchVideos = (query) =>
   });
 
 export const fetchVideo = (id) => {
-  debugger;
   return $.ajax({
     url: `/api/videos/${id}`,
     method: `GET`,
@@ -23,11 +22,17 @@ export const postVideo = (formData) =>
   });
 
 export const editVideo = (video) => {
-  // debugger
+  console.log(
+    "HERE IN THE VIDEO UTIL, WHAT DOES VIDEO FORM LOOK LIKE:   ",
+    video
+  );
+  debugger;
   return $.ajax({
     url: `/api/videos/${video.id}`,
     method: `PATCH`,
     data: { video },
+    contentType: false,
+    processData: false,
   });
 };
 
@@ -38,7 +43,6 @@ export const deleteVideo = (id) =>
   });
 
 export const updateVideoViewCount = (video) => {
-  debugger;
   return $.ajax({
     url: `/api/videos/${video.id}/views`,
     method: "PATCH",

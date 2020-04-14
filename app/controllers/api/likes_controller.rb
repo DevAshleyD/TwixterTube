@@ -6,7 +6,6 @@ class Api::LikesController < ApplicationController
 
     def create
         @like = Like.new(create_like_params)
-        # debugger
         @like.user_id = current_user.id
         if @like.save
             render :show

@@ -51,7 +51,6 @@ class VideoShow extends React.Component {
 
     let that = this;
     let id = this.props.match.params.videoId;
-    // debugger;
 
     this.props.fetchVideos();
     this.props.fetchVideo(id).then(() => {
@@ -108,7 +107,6 @@ class VideoShow extends React.Component {
   }
 
   componentWillUnmount() {
-    // debugger;
     this.props.removeAllVideos();
     this.props.removeAllComments();
     this.props.removeVideoShow();
@@ -123,23 +121,18 @@ class VideoShow extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     let that = this;
     let id = this.props.match.params.videoId;
-    // debugger;
 
     if (this.props.match.url !== prevProps.match.url) {
-      // debugger;
-
       this.props.removeAllComments();
       this.props.fetchVideos();
-      // debugger;
+
       this.props.fetchVideo(id).then(() => {
-        // debugger;
         that.props
           .updateViewCount({
             id: id,
             views: that.props.video.views + 1,
           })
           .then((s) => {
-            // debugger;
             if (!that.props.currentLike) {
               that.setState({
                 views: that.props.video.views,
@@ -260,9 +253,8 @@ class VideoShow extends React.Component {
     // if (!this.state.video) {
     //   return null;
     // }
-    // debugger;
+
     if (!this.state.loaded) {
-      // debugger;
       // console.log("DON'T LOAD VIDEO SHOW YET");
       return null;
     }
@@ -299,7 +291,7 @@ class VideoShow extends React.Component {
 
     let like = this.state.like ? "thumbs-up-selected" : "thumbs-up";
     let dislike = this.state.dislike ? "thumbs-up-selected" : "thumbs-down";
-    // debugger;
+
     return (
       <div>
         <NavBarContainer url={this.props.url} />
