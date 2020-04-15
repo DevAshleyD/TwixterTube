@@ -3,6 +3,8 @@ import { Link, withRouter, Redirect } from "react-router-dom";
 import NavBarContainer from "../nav_bar/nav_bar_container";
 import SideBarContainer from "../sidebar/sidebar_container";
 import ModalSideBarContainer from "../sidebar/modal_sidebar_container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 
 class EditVideoForm extends React.Component {
   constructor(props) {
@@ -14,7 +16,12 @@ class EditVideoForm extends React.Component {
       id: "",
       thumbnailFile: null,
       thumbnailUrl: null,
+      processed: false,
     };
+    // processed portion of state will dictate if edit and delete
+    // buttons will disappear and show fontawesome icon
+    // spinning instead to avoid user making additional
+    // ajax calls which would lead to additional http requests
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteVideo = this.handleDeleteVideo.bind(this);
@@ -42,6 +49,14 @@ class EditVideoForm extends React.Component {
       formData,
       videoId: this.props.video.id,
     };
+    this.setState({
+      processed: true,
+    });
+    $("#edit-form-input-title").attr("disabled", true);
+    $("#edit-form-input-title").css("background-color", "#ebebeb");
+    $("#edit-form-input-description").attr("disabled", true);
+    $("#edit-form-input-description").css("background-color", "#ebebeb");
+    $("#video-form-thumbnail-upload").attr("disabled", true);
 
     debugger;
 
@@ -68,6 +83,12 @@ class EditVideoForm extends React.Component {
 
   handleDeleteVideo(e) {
     e.preventDefault();
+    this.setState({ processed: true });
+    $("#edit-form-input-title").attr("disabled", true);
+    $("#edit-form-input-title").css("background-color", "#ebebeb");
+    $("#edit-form-input-description").attr("disabled", true);
+    $("#edit-form-input-description").css("background-color", "#ebebeb");
+    $("#video-form-thumbnail-upload").attr("disabled", true);
     this.props
       .deleteVideo(this.state.id)
       .then(() => this.props.history.push("/"));
@@ -102,6 +123,21 @@ class EditVideoForm extends React.Component {
     // if (!this.props.currentUser) {
     //     this.props.history.replace('/login');
     // }
+
+    // if processed is true, render spin icon, otherwise
+    // render default set of tools
+    const editTools = this.state.processed ? (
+      <FontAwesomeIcon icon={faSyncAlt} spin className="edit-spin-icon" />
+    ) : (
+      <div className="edit-form-buttons">
+        <button className="next-button" onClick={this.handleSubmit}>
+          {this.props.formType}
+        </button>
+        <button className="delete-button" onClick={this.handleDeleteVideo}>
+          Delete Video
+        </button>
+      </div>
+    );
 
     return (
       <div className="edit-parent-container">
@@ -140,6 +176,7 @@ class EditVideoForm extends React.Component {
                       </label>
 
                       <input
+                        id="edit-form-input-title"
                         type="text"
                         placeholder="Title"
                         value={this.state.title}
@@ -147,25 +184,12 @@ class EditVideoForm extends React.Component {
                       />
 
                       <textarea
+                        id="edit-form-input-description"
                         placeholder="Description"
                         value={this.state.description}
                         onChange={this.update("description")}
                       />
-
-                      <div className="edit-form-buttons">
-                        <button
-                          className="next-button"
-                          onClick={this.handleSubmit}
-                        >
-                          {this.props.formType}
-                        </button>
-                        <button
-                          className="delete-button"
-                          onClick={this.handleDeleteVideo}
-                        >
-                          Delete Video
-                        </button>
-                      </div>
+                      {editTools}
                     </div>
                   </form>
                 </div>

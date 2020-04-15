@@ -672,6 +672,14 @@ textarea {
   color: rgb(35, 118, 229);
 }
 
+.edit-spin-icon {
+  margin-bottom: 15px;
+  font-size: 35px;
+  color: rgb(35, 118, 229);
+  align-self: center;
+  margin-top: 20px;
+}
+
 .session-form-buttons-Links {
   text-decoration: none;
   color: #1a73e8;
@@ -1231,6 +1239,8 @@ textarea {
     // transform: scale() ;
     margin-bottom: 20px;
     transition-duration: 0.5s;
+    max-height: 300px;
+    object-fit: contain;
     &:hover {
       transform: scale(1.1);
     }
