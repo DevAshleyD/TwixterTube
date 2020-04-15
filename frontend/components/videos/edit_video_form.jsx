@@ -31,16 +31,18 @@ class EditVideoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("video[id]", this.props.video.id);
+    // formData.append("id", this.props.video.id);
+    // formData.append("video[id]", this.props.video.id);
     formData.append("video[title]", this.state.title);
     formData.append("video[description]", this.state.description);
     if (!!this.state.thumbnailFile) {
       formData.append("video[thumbnail]", this.state.thumbnailFile);
     }
-    console.log(
-      "SUBMITTING EDIT VIDEO FORM, WHAT DOES FORMDATA LOOK LIKE:   ",
-      formData
-    );
+    let payload = {
+      formData,
+      videoId: this.props.video.id,
+    };
+
     debugger;
 
     // let videoEditPayload = {
@@ -49,7 +51,7 @@ class EditVideoForm extends React.Component {
     //   id: this.props.match.params.videoId,
     // };
     this.props
-      .action(formData)
+      .action(payload)
       .then(() => this.props.history.push(`/videos/${this.props.video.id}`));
   }
 

@@ -21,16 +21,19 @@ export const postVideo = (formData) =>
     processData: false,
   });
 
-export const editVideo = (video) => {
+export const editVideo = (payload) => {
   console.log(
     "HERE IN THE VIDEO UTIL, WHAT DOES VIDEO FORM LOOK LIKE:   ",
-    video
+    payload
   );
+  let formData = payload.formData;
+  let videoId = payload.videoId;
+  console.log("HERE IS THE VIDEO ID:  ", videoId);
   debugger;
   return $.ajax({
-    url: `/api/videos/${video.id}`,
+    url: `/api/videos/${videoId}`,
     method: `PATCH`,
-    data: { video },
+    data: formData,
     contentType: false,
     processData: false,
   });
