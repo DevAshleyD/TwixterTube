@@ -22,6 +22,36 @@ input {
   outline: none;
 }
 
+.child-comment-list {
+  display: flex;
+  flex-direction: column;
+}
+
+// #caret-icon {
+//   font-size: 14px;
+//   padding-top: 1px;
+// }
+
+.show-replies-text-container {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  background-color: rgb(249, 249, 249);
+  color: #065fd4;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  #caret-icon {
+    font-size: 14px;
+    padding-top: 1px;
+  }
+  p {
+    font-size: 14px;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    margin-left: 15px;
+  }
+}
+
 video {
   outline: none;
 }
@@ -181,19 +211,20 @@ textarea {
 }
 
 .upload-form-parent-container {
-  width: 55%;
+  width: 70%;
   margin: auto;
 }
 
 .upload-form-container {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  /* width: 500px; */
   margin: 0 auto;
   border: 2px solid #e6e6e6;
   align-items: center;
   background-color: white;
   margin-top: 75px;
+  max-width: 600px;
 }
 
 .upload-form-container h2 {

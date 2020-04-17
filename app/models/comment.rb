@@ -10,8 +10,17 @@ class Comment < ApplicationRecord
         foreign_key: :video_id,
         class_name: :Video
 
+    belongs_to :parent,
+        foreign_key: :parent_id,
+        class_name: :Comment
+
+    has_many :comments,
+        foreign_key: :parent_id,
+        class_name: :Comment,
+        dependent: :destroy
+
     has_many :likes, as: :likeable,
-    dependent: :destroy
+        dependent: :destroy
 
     def num_likes 
         likes = self.likes.select do |like| 

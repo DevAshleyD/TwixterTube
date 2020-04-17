@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserCircle,
   faUser,
-  faThumbsDown
+  faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { withRouter } from "react-router-dom";
 import CommentIndexItem from "./comment_index_item";
 
-const CommentIndex2 = props => {
+const CommentIndex2 = (props) => {
   const [body, setBody] = useState("");
   const [buttonHide, setButtonHide] = useState(true);
   const [submitActive, setSubmitActive] = useState(false);
@@ -35,7 +35,7 @@ const CommentIndex2 = props => {
     props
       .addComment({
         body: body,
-        video_id: props.videoId
+        video_id: props.videoId,
       })
       .then(() => {
         setBody("");
@@ -146,6 +146,7 @@ const CommentIndex2 = props => {
             currentUser={props.currentUser}
             key={`comment-${idx}`}
             fetchVideo={props.fetchVideo}
+            deleteChildComment={props.deleteChildComment}
           />
         ))}
       </ul>

@@ -2,6 +2,7 @@ import {
   RECEIVE_COMMENT,
   REMOVE_COMMENT,
   REMOVE_ALL_COMMENTS,
+  REMOVE_CHILD_COMMENT,
 } from "../actions/comments_actions";
 
 import { RECEIVE_VIDEO } from "../actions/videos_actions";
@@ -21,14 +22,29 @@ export default (state = {}, action) => {
       return {};
 
     case RECEIVE_COMMENT:
-      newState = Object.assign({}, state, {
-        [action.comment.id]: action.comment,
-      });
+      debugger;
+      if (!!action.comment.parent_id) {
+        newState = Object.assign({}, state);
+        newState[action.comment.parent_id].comments[action.comment.id] =
+          action.comment;
+      } else {
+        newState = Object.assign({}, state, {
+          [action.comment.id]: action.comment,
+        });
+      }
+
       return newState;
 
     case REMOVE_COMMENT:
+      debugger;
       newState = Object.assign({}, state);
       delete newState[action.commentId];
+      return newState;
+
+    case REMOVE_CHILD_COMMENT:
+      debugger;
+      newState = Object.assign({}, state);
+      delete newState[action.parentId].comments[action.commentId];
       return newState;
 
     default:

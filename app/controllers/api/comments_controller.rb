@@ -29,9 +29,9 @@ class Api::CommentsController < ApplicationController
     end
     
     private
-
+    
     def comment_params
-        params.require(:comment).permit(:video_id, :body)
+        params.require(:comment).permit(:video_id, :body, :parent_id)
     end
 
     def comment_edit_params

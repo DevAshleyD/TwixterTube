@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
     preLoadedState = {
       entities: {
         users: {
-          [window.currentUser.id]: window.currentUser
-        }
+          [window.currentUser.id]: window.currentUser,
+        },
       },
       session: {
-        currentUser: window.currentUser.id
-      }
+        currentUser: window.currentUser.id,
+      },
     };
     store = configureStore(preLoadedState);
     delete window.currentUser;
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // for development only
 
-  // window.getState = store.getState;
+  window.getState = store.getState;
   // window.dispatch = store.dispatch;
   // window.logout = Action.logout;
 

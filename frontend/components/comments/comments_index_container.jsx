@@ -9,17 +9,20 @@ const msp = (state, ownProps) => {
   // console.log("HERE ARE THE COMMENTS IN ARRAY FORM:   ", comments);
   return {
     comments,
-    currentUser
+    currentUser,
   };
 };
 
-const mdp = dispatch => {
+const mdp = (dispatch) => {
   return {
-    addComment: commentData => dispatch(CommentActions.addComment(commentData)),
-    editComment: commentData =>
+    addComment: (commentData) =>
+      dispatch(CommentActions.addComment(commentData)),
+    editComment: (commentData) =>
       dispatch(CommentActions.editComment(commentData)),
-    deleteComment: commentId =>
-      dispatch(CommentActions.deleteComment(commentId))
+    deleteComment: (commentId) =>
+      dispatch(CommentActions.deleteComment(commentId)),
+    deleteChildComment: (commentId) =>
+      dispatch(CommentActions.deleteChildComment(commentId)),
   };
 };
 

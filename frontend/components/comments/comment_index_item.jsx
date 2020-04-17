@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faThumbsUp,
+  faThumbsDown,
+  faCaretDown,
+  faCaretUp,
+} from "@fortawesome/free-solid-svg-icons";
 import { addLike, changeLike, removeLike } from "../../util/likes_util";
+import ChildComment from "./child_comment";
 
 // import { withRouter } from "react-router-dom";
 
-const CommentIndexItem = props => {
+const CommentIndexItem = (props) => {
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
+  const [showReplies, setShowReplies] = useState(false);
   const [numberLikes, setNumberLikes] = useState(props.comment.likes);
   const [numberDislikes, setNumberDislikes] = useState(props.comment.dislikes);
   const [likeId, setLikeId] = useState(props.comment.like_id);
@@ -28,22 +35,6 @@ const CommentIndexItem = props => {
     setNumberDislikes(props.comment.dislikes);
   }, []);
 
-  //   let commenterIcon;
-  //   if (props) {
-  //     commenterIcon = this.props.comment.commenter.slice(0, 1).toUpperCase();
-  //   } else {
-  //     commenterIcon = null;
-  //   }
-
-  // useEffect(() => {
-  //   console.log(
-  //     "HERE ARE THE PROPS:   ",
-  //     props.comment,
-  //     props.currentUser,
-  //     props.comment.id
-  //   );
-  // });
-
   function handleCommentLike() {
     // console.log("HERE IS likeID WHEN CLICKING HANDLE LIKE FUCNTION:  ", likeId);
     if (!props.currentUser) {
@@ -55,7 +46,7 @@ const CommentIndexItem = props => {
             id: likeId,
             liked: true,
             likeable_id: props.comment.id,
-            likeable_type: "Comment"
+            likeable_type: "Comment",
           })
             // .then(() => props.fetchVideo(props.comment.video_id))
             .then(() => {
@@ -78,10 +69,10 @@ const CommentIndexItem = props => {
         addLike({
           liked: true,
           likeable_id: props.comment.id,
-          likeable_type: "Comment"
+          likeable_type: "Comment",
         })
           // .then(() => props.fetchVideo(props.comment.video_id))
-          .then(likeData => {
+          .then((likeData) => {
             setLike(true);
             setDislike(false);
             setNumberLikes(numberLikes + 1);
@@ -102,7 +93,7 @@ const CommentIndexItem = props => {
             id: likeId,
             liked: false,
             likeable_id: props.comment.id,
-            likeable_type: "Comment"
+            likeable_type: "Comment",
           })
             // .then(() => props.fetchVideo(props.comment.video_id))
             .then(() => {
@@ -123,8 +114,8 @@ const CommentIndexItem = props => {
         addLike({
           liked: false,
           likeable_id: props.comment.id,
-          likeable_type: "Comment"
-        }).then(likeData => {
+          likeable_type: "Comment",
+        }).then((likeData) => {
           setLike(false);
           setDislike(true);
           setNumberDislikes(numberDislikes + 1);
@@ -136,6 +127,10 @@ const CommentIndexItem = props => {
 
   function handleDelete() {
     props.deleteComment(props.comment.id);
+  }
+
+  function handleViewReplies() {
+    showReplies ? setShowReplies(false) : setShowReplies(true);
   }
 
   useEffect(() => {
@@ -164,6 +159,51 @@ const CommentIndexItem = props => {
       thumbDislikeColor = "thumb-colored";
     }
   }
+
+  let childCommentsArray = props.comment.child_comments
+    ? Object.values(props.comment.child_comments)
+    : [];
+
+  let showRepliesText = showReplies
+    ? "Hide " + childCommentsArray.length + " replies"
+    : "View " + childCommentsArray.length + " replies";
+
+  let showRepliesRendererButton =
+    childCommentsArray.length > 0 ? (
+      showReplies ? (
+        <button
+          className="show-replies-text-container"
+          onClick={handleViewReplies}
+        >
+          <FontAwesomeIcon icon={faCaretUp} id="caret-icon" />
+          <p>{showRepliesText}</p>
+        </button>
+      ) : (
+        <button
+          className="show-replies-text-container"
+          onClick={handleViewReplies}
+        >
+          <FontAwesomeIcon icon={faCaretDown} id="caret-icon" />
+          <p>{showRepliesText}</p>
+        </button>
+      )
+    ) : null; // should be button with different text
+
+  let childCommentsVisibilityCSS = showReplies
+    ? "child-comment-list"
+    : "child-comment-list hidden";
+
+  let childComments = childCommentsArray.map((childComment, idx) => {
+    return (
+      <ChildComment
+        comment={childComment}
+        currentUser={props.currentUser}
+        key={`comment-${idx}`}
+        fetchVideo={props.fetchVideo}
+        deleteChildComment={props.deleteChildComment}
+      />
+    );
+  });
 
   return (
     <li className="comment-container-item">
@@ -198,6 +238,12 @@ const CommentIndexItem = props => {
               <strong>{numberDislikes}</strong>
             </div>
           </div>
+          {/* HERE IS WHERE A SHOW REPLIES KIND OF SECTION SHOULD GO */}
+          {showRepliesRendererButton}
+          {/* SHOULD HAVE SHOW REPLIES ATTRIBUTE IN STATE TO TOGGLE */}
+          {/* DISPLAY PROPERTIES OF SHOWING UL UNDERNEATH COMMENT DETAILS */}
+          {/* THIS IS WHERE THE UL LIST SHOULD GO */}
+          <ul className={childCommentsVisibilityCSS}>{childComments}</ul>
         </div>
       </div>
       <div>

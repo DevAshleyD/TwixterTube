@@ -47,14 +47,24 @@ end
 
 @video.comments.each do |comment| 
 
+    if !!comment.parent_id
+        next
+    end
 
-    
-
+    # child_comments = []
+    # comment.comments.each do |child_comment| 
+    #     child_comments.push(child_comment)
+    # end
+            
     json.comments do
+
+
         if current_user && !!comment.likes.find_by(user_id: current_user.id)
             like = comment.likes.find_by(user_id: current_user.id)
             if like.liked # if boolean true, person liked comment
+
                 json.set! comment.id do
+
                     json.id comment.id
                     json.user_id comment.user_id
                     json.body comment.body
@@ -64,7 +74,27 @@ end
                     json.video_id @video.id
                     json.likes comment.num_likes
                     json.dislikes comment.num_dislikes
+
+                    json.child_comments do 
+                        comment.comments.each do |child_comment|
+                            json.set! child_comment.id do 
+                                json.id child_comment.id
+                                json.user_id child_comment.user_id
+                                json.body child_comment.body
+                                json.author child_comment.author
+                                json.liked true
+                                json.like_id like.id
+                                json.video_id @video.id
+                                json.likes child_comment.num_likes
+                                json.dislikes child_comment.num_dislikes
+                                json.parent_id child_comment.parent_id
+                            end
+                        end
+                    end
+
                 end
+
+
             else           # if false, person disliked comment
                 json.set! comment.id do
                     json.id comment.id
@@ -76,6 +106,26 @@ end
                     json.video_id @video.id
                     json.likes comment.num_likes
                     json.dislikes comment.num_dislikes
+
+                    json.child_comments do 
+                        comment.comments.each do |child_comment|
+                            json.set! child_comment.id do 
+                                json.id child_comment.id
+                                json.user_id child_comment.user_id
+                                json.body child_comment.body
+                                json.author child_comment.author
+                                json.liked false
+                                json.like_id like.id
+                                json.video_id @video.id
+                                json.likes child_comment.num_likes
+                                json.dislikes child_comment.num_dislikes
+                                json.parent_id child_comment.parent_id
+
+                            end
+                        end
+                    end
+
+
                 end
             end
         else
@@ -87,6 +137,25 @@ end
                 json.video_id @video.id
                 json.likes comment.num_likes
                 json.dislikes comment.num_dislikes
+
+                
+                json.child_comments do 
+                        comment.comments.each do |child_comment|
+                            json.set! child_comment.id do 
+                                json.id child_comment.id
+                                json.user_id child_comment.user_id
+                                json.body child_comment.body
+                                json.author child_comment.author
+                                json.video_id @video.id
+                                json.likes child_comment.num_likes
+                                json.dislikes child_comment.num_dislikes
+                                json.parent_id child_comment.parent_id
+
+                            end
+                        end
+                end
+                
+
             end
         end
     end
