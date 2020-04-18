@@ -25,7 +25,7 @@ export default (state = {}, action) => {
       debugger;
       if (!!action.comment.parent_id) {
         newState = Object.assign({}, state);
-        newState[action.comment.parent_id].comments[action.comment.id] =
+        newState[action.comment.parent_id].child_comments[action.comment.id] =
           action.comment;
       } else {
         newState = Object.assign({}, state, {
@@ -44,7 +44,7 @@ export default (state = {}, action) => {
     case REMOVE_CHILD_COMMENT:
       debugger;
       newState = Object.assign({}, state);
-      delete newState[action.parentId].comments[action.commentId];
+      delete newState[action.parentId].child_comments[action.commentId];
       return newState;
 
     default:
