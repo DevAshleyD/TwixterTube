@@ -5,11 +5,16 @@ import * as CommentActions from "../../actions/comments_actions";
 const msp = (state, ownProps) => {
   let comments = Object.values(state.entities.comments);
   let currentUser = state.entities.users[state.session.currentUser];
-  //   console.log("NOW IN THE COMMENTS CONTAINER");
+  console.log(
+    "NOW IN THE COMMENTS CONTAINER, WHAT DOES STATE LOOK LIKE:  ",
+    state
+  );
+  let videoId = state.entities.videoShow.video.id;
   // console.log("HERE ARE THE COMMENTS IN ARRAY FORM:   ", comments);
   return {
     comments,
     currentUser,
+    videoId,
   };
 };
 

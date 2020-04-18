@@ -5,6 +5,28 @@ import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { addLike, changeLike, removeLike } from "../../util/likes_util";
 
 const ChildComment = (props) => {
+  //   const [like, setLike] = useState(false);
+  //   const [dislike, setDislike] = useState(false);
+  //   const [showReplies, setShowReplies] = useState(false);
+  //   const [numberLikes, setNumberLikes] = useState(props.comment.likes);
+  //   const [numberDislikes, setNumberDislikes] = useState(props.comment.dislikes);
+  //   const [likeId, setLikeId] = useState(props.comment.like_id);
+
+  //   useEffect(() => {
+  //     // like_id is only present for users who are logged in and if the comment has a like
+  //     // associated with the currentUser
+  //     if (!!likeId) {
+  //       if (props.comment.liked === true) {
+  //         setLike(true);
+  //       } else if (props.comment.liked === false) {
+  //         setDislike(true);
+  //       }
+  //     }
+
+  //     setNumberLikes(props.comment.likes);
+  //     setNumberDislikes(props.comment.dislikes);
+  //   }, []);
+
   return (
     <li className="comment-container-item">
       <div className="comment-styling-container">
@@ -47,4 +69,4 @@ const ChildComment = (props) => {
   );
 };
 
-export default ChildComment;
+export default withRouter(ChildComment);

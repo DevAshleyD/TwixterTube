@@ -32,6 +32,8 @@ const CommentIndex2 = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log("HERE IS COMMENT FORM WHAT ARE BODY AND :", props);
+    debugger;
     props
       .addComment({
         body: body,
