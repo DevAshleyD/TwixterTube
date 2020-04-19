@@ -14,6 +14,7 @@ import ChildComment from "./child_comment";
 // import { withRouter } from "react-router-dom";
 
 const CommentIndexItem = (props) => {
+  // like attributes
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
   const [showReplies, setShowReplies] = useState(false);
@@ -24,6 +25,9 @@ const CommentIndexItem = (props) => {
   const [body, setBody] = useState("");
   const [buttonHide, setButtonHide] = useState(true);
   const [submitActive, setSubmitActive] = useState(false);
+
+  // like system handling functions and logical based
+  // rendtition of likes
 
   useEffect(() => {
     // like_id is only present for users who are logged in and if the comment has a like
@@ -134,10 +138,6 @@ const CommentIndexItem = (props) => {
     props.deleteComment(props.comment.id);
   }
 
-  function handleViewReplies() {
-    showReplies ? setShowReplies(false) : setShowReplies(true);
-  }
-
   useEffect(() => {
     props.fetchVideo(props.comment.video_id);
   }, [like, dislike, likeId]);
@@ -163,6 +163,12 @@ const CommentIndexItem = (props) => {
       thumbLikeColor = "";
       thumbDislikeColor = "thumb-colored";
     }
+  }
+
+  // child comments ul and rendering section
+
+  function handleViewReplies() {
+    showReplies ? setShowReplies(false) : setShowReplies(true);
   }
 
   let childCommentsArray = props.comment.child_comments
