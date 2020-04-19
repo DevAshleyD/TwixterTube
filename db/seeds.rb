@@ -9,6 +9,8 @@ require "open-uri"
 
 User.destroy_all
 Video.destroy_all
+Comment.destroy_all
+Like.destroy_all
 
 user_1 = User.create!(username: 'd116', email: 'd116@mail.com', password: 123456)
 user_2 = User.create!(username: 'silentWraith', email: 'silentWraith@mail.com', password: 123456)
@@ -74,3 +76,6 @@ video10 = Video.create(title: "Royale with Cheese", description: "They don't Hav
    video10.vid.attach(io: vfile10, filename: "royale_with_cheese_pulp_fiction_212_movie_clip_1994_hd_6Pkq_eBHXJ4_720p.mp4")
    pfile10 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/ROYALEWITHCHEESE.png")
    video10.thumbnail.attach(io: pfile10, filename: "ROYALEWITHCHEESE.png")
+
+comment1 = Comment.create(user_id: user_1.id, author: "d116", video_id: video1.id, body: "LOL, Love The Trolling")
+comment2 = Comment.create(user_id: user_2.id, author: "silentWraith", video_id: video1.id, body: "Agreed bro, lololol", parent_id: comment1.id)
