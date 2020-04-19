@@ -6,7 +6,7 @@ import {
   faVideo,
   faCamera,
   faCheck,
-  faSyncAlt
+  faSyncAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import SideBarContainer from "../sidebar/sidebar_container";
 import ModalSideBarContainer from "../sidebar/modal_sidebar_container";
@@ -26,7 +26,7 @@ class UploadVideoForm extends React.Component {
       thumbnailContainerElement: null,
       published: false,
       titleInput: null,
-      descriptionInput: null
+      descriptionInput: null,
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,11 +36,11 @@ class UploadVideoForm extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    console.log("HERE IS THE TITLE HTML ELEMENT:  ", $("#upload-title"));
-    console.log(
-      "HERE IS THE DESCRIPTION HTML ELEMENT:  ",
-      $("#upload-description")
-    );
+    // console.log("HERE IS THE TITLE HTML ELEMENT:  ", $("#upload-title"));
+    // console.log(
+    //   "HERE IS THE DESCRIPTION HTML ELEMENT:  ",
+    //   $("#upload-description")
+    // );
 
     this.setState({
       uploadIconElement: document.getElementsByClassName(
@@ -49,16 +49,16 @@ class UploadVideoForm extends React.Component {
       thumbnailElement: document.getElementById("thumbnail"),
       thumbnailContainerElement: document.getElementsByClassName(
         "custom-file-thumbnail"
-      )
+      ),
       // titleInput: document.getElementById("upload-title"),
       // descriptionInput: document.getElementById("upload-description")
     });
   }
 
   update(field) {
-    return e =>
+    return (e) =>
       this.setState({
-        [field]: e.target.value
+        [field]: e.target.value,
       });
   }
 
@@ -78,7 +78,7 @@ class UploadVideoForm extends React.Component {
     $("#upload-video").attr("disabled", true);
     $("#upload-thumbnail").attr("disabled", true);
 
-    this.props.action(formData).then(response => {
+    this.props.action(formData).then((response) => {
       this.props.history.push(`/videos/${response.payload.video.id}`);
     });
   }
@@ -90,10 +90,10 @@ class UploadVideoForm extends React.Component {
   handleThumbnailFile(e) {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
-    fileReader.onloadend = e => {
+    fileReader.onloadend = (e) => {
       this.setState({ thumbnailFile: file, thumbnailUrl: fileReader.result });
     };
-    fileReader.onload = e => {
+    fileReader.onload = (e) => {
       $("#thumbnail").attr("src", e.target.result);
     };
 

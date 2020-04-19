@@ -5,11 +5,11 @@ import {
   faHome,
   faVideo,
   faUser,
-  faBars
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-const ModalSideBar = props => {
+const ModalSideBar = (props) => {
   const [modalHidden, setModalHidden] = useState(true);
   const [modal, setModal] = useState(null);
 
@@ -32,12 +32,11 @@ const ModalSideBar = props => {
 
   useEffect(() => {
     // setModalHidden(document.getElementsByClassName());
-    window.onclick = e => {
+    window.onclick = (e) => {
       if (e.target.className == "sidebar-modal") {
         setModalHidden(true);
       }
     };
-    console.log("WHAT DOES PATH LOOK LIKE IN MODAL:   ", props);
   }, []);
 
   useEffect(() => {

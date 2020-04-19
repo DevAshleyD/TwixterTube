@@ -36,7 +36,6 @@ const ChildComment = (props) => {
   }, []);
 
   function handleCommentLike() {
-    // console.log("HERE IS likeID WHEN CLICKING HANDLE LIKE FUCNTION:  ", likeId);
     if (!props.currentUser) {
       props.history.push("/login");
     } else {
@@ -83,7 +82,6 @@ const ChildComment = (props) => {
   }
 
   function handleCommentDislike() {
-    // console.log("HERE IS likeID WHEN CLICKING HANDLE LIKE FUCNTION:  ", likeId);
     if (!props.currentUser) {
       props.history.push("/login");
     } else {

@@ -22,14 +22,14 @@ export const postVideo = (formData) =>
   });
 
 export const editVideo = (payload) => {
-  console.log(
-    "HERE IN THE VIDEO UTIL, WHAT DOES VIDEO FORM LOOK LIKE:   ",
-    payload
-  );
+  // console.log(
+  //   "HERE IN THE VIDEO UTIL, WHAT DOES VIDEO FORM LOOK LIKE:   ",
+  //   payload
+  // );
   let formData = payload.formData;
   let videoId = payload.videoId;
-  console.log("HERE IS THE VIDEO ID:  ", videoId);
-  debugger;
+  // console.log("HERE IS THE VIDEO ID:  ", videoId);
+  // debugger;
   return $.ajax({
     url: `/api/videos/${videoId}`,
     method: `PATCH`,

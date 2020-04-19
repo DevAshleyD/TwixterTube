@@ -22,7 +22,7 @@ export default (state = {}, action) => {
       return {};
 
     case RECEIVE_COMMENT:
-      debugger;
+      // debugger;
 
       if (!!action.comment.parent_id) {
         newState = Object.assign({}, state);
@@ -40,13 +40,13 @@ export default (state = {}, action) => {
       return newState;
 
     case REMOVE_COMMENT:
-      debugger;
+      // debugger;
       newState = Object.assign({}, state);
       delete newState[action.commentId];
       return newState;
 
     case REMOVE_CHILD_COMMENT:
-      debugger;
+      // debugger;
       newState = Object.assign({}, state);
       delete newState[action.parentId].child_comments[action.commentId];
       return newState;

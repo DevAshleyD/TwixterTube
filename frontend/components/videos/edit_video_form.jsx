@@ -58,8 +58,6 @@ class EditVideoForm extends React.Component {
     $("#edit-form-input-description").css("background-color", "#ebebeb");
     $("#video-form-thumbnail-upload").attr("disabled", true);
 
-    debugger;
-
     // let videoEditPayload = {
     //   title: this.state.title,
     //   description: this.state.description,
@@ -112,7 +110,6 @@ class EditVideoForm extends React.Component {
   }
 
   render() {
-    console.log("HERE IS EDIT FORM STATE:  ", this.state);
     if (!this.state.loaded) {
       return null;
     }

@@ -7,12 +7,7 @@ class VideoShowIndexItem extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    console.log(
-      "WHAT DOES VIDEO LOOK LIKE IN VIDEO SHOW INDEX ITEM:   ",
-      this.props.video
-    );
-  }
+  componentDidMount() {}
 
   handleClick(e) {
     this.props.history.replace(`/videos/${this.props.video.id}`);

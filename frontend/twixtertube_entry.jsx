@@ -32,15 +32,18 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  // for development only
+  // FOR DEVELOPMENT ONLY!!!!
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
 
-  window.deleteChildComment = deleteChildComment;
-  window.addComment = addComment;
-  window.deleteComment = deleteComment;
+  // window.deleteChildComment = deleteChildComment;
+  // window.addComment = addComment;
+  // window.deleteComment = deleteComment;
+
   // window.logout = Action.logout;
+
+  // FOR DEVELOPMENT ONLY!!!!
 
   ReactDOM.render(<Root store={store} />, root);
 });

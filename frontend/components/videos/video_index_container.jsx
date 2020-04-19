@@ -10,15 +10,14 @@ const msp = (state, ownProps) => {
     let user = state.entities.users[video.uploader_id];
     return user;
   });
-  console.log("WHAT DOES INDEX STATE LOOK LIKE:   ", state);
   let url = ownProps.match.url;
   // console.log("WHAT DOES PROPS.MATCH.URL LOOK LIKE:   ", url, url === "/");
   let windowListener = state.ui.windowListener;
 
-  console.log(
-    "INSIDE VIDEO INDEX CONTAINER, WHAT DOES windowListener LOOK LIKE:    ",
-    windowListener
-  );
+  // console.log(
+  //   "INSIDE VIDEO INDEX CONTAINER, WHAT DOES windowListener LOOK LIKE:    ",
+  //   windowListener
+  // );
   return {
     videos: videos,
     uploaders: uploaders,

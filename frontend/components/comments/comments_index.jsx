@@ -4,7 +4,7 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { withRouter } from "react-router-dom";
 import CommentIndexItem from "./comment_index_item";
 
-const CommentsIndex = props => {
+const CommentsIndex = (props) => {
   const [body, setBody] = useState("");
   const [buttonHide, setButtonHide] = useState(true);
   const [submitActive, setSubmitActive] = useState(false);
@@ -13,7 +13,6 @@ const CommentsIndex = props => {
   //   const [submitActive, setSubmitActive] = useState(false);
 
   useEffect(() => {
-    // console.log("WHERE ARE THE COMMENTS?  : ", props.comments);
     // $("textarea").autoResize();
   }, []);
 
@@ -32,20 +31,20 @@ const CommentsIndex = props => {
     }
   };
 
-  const handleCreateComment = e => {
+  const handleCreateComment = (e) => {
     e.preventDefault();
 
     if (body.length != 0) {
       props.addComment({
         video_id: props.videoId,
-        body: body
+        body: body,
       });
       setBody("");
       setButtonHide(true);
     }
   };
 
-  const handleEditComment = commentData => {
+  const handleEditComment = (commentData) => {
     props.editComment(commentData);
   };
 

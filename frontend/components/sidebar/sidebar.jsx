@@ -5,15 +5,11 @@ import {
   faHome,
   faVideo,
   faUser,
-  faBars
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-const SideBar = props => {
-  // useEffect(() => {
-  //   console.log("WHAT IS MATCH IN SIDEBAR HERE:  ", props.path === "/upload");
-  // }, []);
-
+const SideBar = (props) => {
   let uploadSend;
   if (props.currentUser) {
     uploadSend = "/upload";

@@ -12,7 +12,6 @@ const msp = (state, ownProps) => {
   // ? state.entities.videoShow.video
   // : { id: "", title: "", description: "" };
   let video = state.entities.videoShow ? state.entities.videoShow.video : null;
-  console.log("IN THE VIDEO EDIT CONTAINER, HERE'S VIDEO:   ", video);
   let url = ownProps.match.url;
 
   return {

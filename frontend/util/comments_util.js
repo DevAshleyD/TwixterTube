@@ -1,5 +1,5 @@
 export const addComment = (comment) => {
-  debugger;
+  // debugger;
   return $.ajax({
     url: `/api/comments`,
     method: `POST`,
