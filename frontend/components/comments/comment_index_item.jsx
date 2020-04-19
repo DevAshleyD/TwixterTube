@@ -6,6 +6,7 @@ import {
   faThumbsDown,
   faCaretDown,
   faCaretUp,
+  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { addLike, changeLike, removeLike } from "../../util/likes_util";
 import ChildComment from "./child_comment";
@@ -19,6 +20,10 @@ const CommentIndexItem = (props) => {
   const [numberLikes, setNumberLikes] = useState(props.comment.likes);
   const [numberDislikes, setNumberDislikes] = useState(props.comment.dislikes);
   const [likeId, setLikeId] = useState(props.comment.like_id);
+  // form attributes
+  const [body, setBody] = useState("");
+  const [buttonHide, setButtonHide] = useState(true);
+  const [submitActive, setSubmitActive] = useState(false);
 
   useEffect(() => {
     // like_id is only present for users who are logged in and if the comment has a like
@@ -205,6 +210,106 @@ const CommentIndexItem = (props) => {
     );
   });
 
+  // form section
+
+  function toggleBtns() {
+    if (buttonHide) {
+      //   this.setState({ buttonHide: !this.state.buttonHide });
+      setButtonHide(!buttonHide);
+    }
+  }
+
+  function handleInput(e) {
+    // this.setState({ body: e.currentTarget.value, submitActive: true });
+    setBody(e.target.value);
+    setSubmitActive(true);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("HERE IS COMMENT FORM WHAT ARE BODY AND :", props);
+    debugger;
+    props
+      .addComment({
+        body: body,
+        video_id: props.comment.video_id,
+        parent_id: props.comment.id,
+      })
+      .then(() => {
+        setBody("");
+        setButtonHide(true);
+      });
+    // setState({ body: "", buttonHide: true });
+  }
+
+  function handleCancel() {
+    // this.setState({ body: "", buttonHide: true });
+    setBody("");
+    setButtonHide(true);
+  }
+
+  let currentUserIcon;
+  let commentFormInput;
+  if (props.currentUser) {
+    currentUserIcon = (
+      <p className="current-user-icon">
+        {props.currentUser.username.slice(0, 1).toUpperCase()}
+      </p>
+    );
+    commentFormInput = (
+      <input
+        type="text"
+        value={body}
+        placeholder="Add a public reply..."
+        onChange={handleInput}
+        onFocus={toggleBtns}
+        onBlur={toggleBtns}
+        className="signed-in"
+      />
+    );
+  } else {
+    currentUserIcon = (
+      <FontAwesomeIcon icon={faUserCircle} className="comment-user-circle" />
+    );
+    commentFormInput = (
+      <input
+        type="text"
+        value={body}
+        placeholder="Please sign in to post a public comment"
+        onChange={handleInput}
+        onFocus={toggleBtns}
+        onBlur={toggleBtns}
+        // onClick={loggedOutUserClick}
+        className="signed-out"
+        disabled
+      />
+    );
+  }
+
+  let buttonClass;
+  if (buttonHide) {
+    buttonClass = "hidden";
+  } else {
+    buttonClass = "";
+  }
+
+  let active;
+  if (submitActive && body !== "") {
+    active = "comment-submit-btn-active";
+    setTimeout(() => {
+      document.getElementById("parent-comment-disable").disabled = false;
+    }, 1);
+  } else {
+    active = "comment-submit-btn";
+    setTimeout(() => {
+      document.getElementById("parent-comment-disable").disabled = true;
+    }, 1);
+  }
+
+  let formActive = buttonHide
+    ? "comments-form-styling-container hidden"
+    : "comments-form-styling-container";
+
   return (
     <li className="comment-container-item">
       <div className="comment-styling-container">
@@ -237,7 +342,36 @@ const CommentIndexItem = (props) => {
               />
               <strong>{numberDislikes}</strong>
             </div>
+            <button className="reply-button" onClick={toggleBtns}>
+              REPLY
+            </button>
+            {/* HERE IS WHERE BUTTON TO RENDER FORM GOES */}
+
+            {/* HERE IS ACTUAL FORM */}
           </div>
+          <div className={formActive}>
+            <div className="video-show-comments-form">
+              <form onSubmit={handleSubmit}>
+                <span className="comment-form-input-container">
+                  {commentFormInput}
+                </span>
+              </form>
+
+              <div className={`comment-form-buttons ${buttonClass}`}>
+                <button className="comment-cancel-btn" onClick={handleCancel}>
+                  CANCEL
+                </button>
+                <button
+                  id="parent-comment-disable"
+                  className={active}
+                  onClick={handleSubmit}
+                >
+                  COMMENT
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* HERE IS WHERE A SHOW REPLIES KIND OF SECTION SHOULD GO */}
           {showRepliesRendererButton}
           {/* SHOULD HAVE SHOW REPLIES ATTRIBUTE IN STATE TO TOGGLE */}
@@ -254,3 +388,20 @@ const CommentIndexItem = (props) => {
 };
 
 export default withRouter(CommentIndexItem);
+
+/*
+css styling
+
+.reply-button:active {
+  background-color: rgb(220, 220, 220);
+}
+
+.reply-button {
+  border: none;
+  background-color: rgb(249, 249, 249);
+  font-size: 13px;
+  color: #606060;
+  font-weight: bolder;
+  padding: 6px 16px 10px;
+}
+*/

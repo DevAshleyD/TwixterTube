@@ -23,8 +23,12 @@ export default (state = {}, action) => {
 
     case RECEIVE_COMMENT:
       debugger;
+
       if (!!action.comment.parent_id) {
         newState = Object.assign({}, state);
+        if (!newState[action.comment.parent_id].child_comments) {
+          newState[action.comment.parent_id].child_comments = {};
+        }
         newState[action.comment.parent_id].child_comments[action.comment.id] =
           action.comment;
       } else {

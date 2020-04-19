@@ -556,6 +556,20 @@ textarea {
 
 .comment-styling-container {
   display: flex;
+  flex: 1;
+}
+
+.reply-button {
+  border: none;
+  background-color: rgb(249, 249, 249);
+  font-size: 13px;
+  color: #606060;
+  font-weight: bolder;
+  padding: 6px 16px 10px;
+}
+
+.reply-button:active {
+  background-color: rgb(220, 220, 220);
 }
 
 .comment-user-icon {
@@ -573,6 +587,7 @@ textarea {
 .comment-details-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .comment-user-icon-container {

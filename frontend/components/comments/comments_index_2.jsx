@@ -148,6 +148,7 @@ const CommentIndex2 = (props) => {
             currentUser={props.currentUser}
             key={`comment-${idx}`}
             fetchVideo={props.fetchVideo}
+            addComment={props.addComment}
             deleteChildComment={props.deleteChildComment}
           />
         ))}
