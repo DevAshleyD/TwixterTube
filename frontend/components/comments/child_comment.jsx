@@ -23,8 +23,16 @@ const ChildComment = (props) => {
       }
     }
 
-    setNumberLikes(props.comment.likes);
-    setNumberDislikes(props.comment.dislikes);
+    // based on testing, only new comments made on same
+    // component, numbers are for some reason always
+    // undefined
+    if (numberLikes === undefined) {
+      setNumberLikes(0);
+      setNumberDislikes(0);
+    } else {
+      setNumberLikes(props.comment.likes);
+      setNumberDislikes(props.comment.dislikes);
+    }
   }, []);
 
   function handleCommentLike() {

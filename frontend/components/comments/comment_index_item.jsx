@@ -29,6 +29,13 @@ const CommentIndexItem = (props) => {
   // like system handling functions and logical based
   // rendtition of likes
 
+  // console.log("HERE'S A NEW COMMENT, THIS THE COMMENT:  ", props.comment);
+  // console.log(
+  //   "HERES THE NUMBER COMMENT COMPONENT LIKE AND DISLIKE:  ",
+  //   numberLikes,
+  //   numberDislikes
+  // );
+
   useEffect(() => {
     // like_id is only present for users who are logged in and if the comment has a like
     // associated with the currentUser
@@ -40,8 +47,23 @@ const CommentIndexItem = (props) => {
       }
     }
 
-    setNumberLikes(props.comment.likes);
-    setNumberDislikes(props.comment.dislikes);
+    // based on testing, only new comments made on same
+    // component, numbers are for some reason always
+    // undefined
+    if (numberLikes === undefined) {
+      setNumberLikes(0);
+      setNumberDislikes(0);
+    } else {
+      setNumberLikes(props.comment.likes);
+      setNumberDislikes(props.comment.dislikes);
+    }
+
+    // console.log(
+    //   "HERES THE NUMBER COMMENT COMPONENT LIKE AND DISLIKE INSIDE useEffect:  ",
+    //   props.comment,
+    //   numberLikes,
+    //   numberDislikes
+    // );
   }, []);
 
   function handleCommentLike() {
