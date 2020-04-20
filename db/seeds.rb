@@ -17,13 +17,13 @@ user_2 = User.create!(username: 'silentWraith', email: 'silentWraith@mail.com', 
 
 # Video.create!(title: 'Eric Andre - Wall Street', uploader_id: 1, views: 0, description: 'Eric displaying business acuity')
 
-video1 = Video.create(title: "Battlefield 3 Team Killing, Fails and Angry Reactions", description: "Playing the game the way it's meant to be played", views: 19500, uploader_id: user_1.id)
+video1 = Video.create(title: "Battlefield 3 Team Killing, Fails and Angry Reactions", description: "Playing the game the way it's meant to be played", views: 0, uploader_id: user_1.id)
    vfile1 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/Battlefield+3+Team+Killing%2C+Fails+and+Angry+Reactions.mp4")
    video1.vid.attach(io: vfile1, filename: "Battlefield 3 Team Killing, Fails and Angry Reactions.mp4")
    pfile1 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/BATTLEFIELD_3_TEAMKILLING.png")
    video1.thumbnail.attach(io: pfile1, filename: "BATTLEFIELD_3_TEAMKILLING.png")
 
-video2 = Video.create(title: "Eric_Andre-Wall_Street", description: "Eric Andre Displaying Business Acuity", views: 3000, uploader_id: user_1.id)
+video2 = Video.create(title: "Eric_Andre-Wall_Street", description: "Eric Andre Displaying Business Acuity", views: 0, uploader_id: user_1.id)
    vfile2 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/Eric_Andre-Wall_Street.mp4")
    video2.vid.attach(io: vfile2, filename: "Eric_Andre-Wall_Street.mp4")
    pfile2 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/Eric_Andre_WallStreet_Screenshot.png")
@@ -41,7 +41,7 @@ video4 = Video.create(title: "RendeZook (Only in Battlefield 3 Edit)", descripti
    pfile4 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/Bazooka_BF3_JET.png")
    video4.thumbnail.attach(io: pfile4, filename: "Bazooka_BF3_JET.png")
 
-video5 = Video.create(title: "family_guy_cool_whip", description: "Gotta have cooh whip.", views: 5000, uploader_id: user_2.id)
+video5 = Video.create(title: "family_guy_cool_whip", description: "Gotta have cooh whip.", views: 0, uploader_id: user_2.id)
    vfile5 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/family_guy_cool_whip_7ZmqJQ-nc_s_360p.mp4")
    video5.vid.attach(io: vfile5, filename: "family_guy_cool_whip_7ZmqJQ-nc_s_360p.mp4")
    pfile5 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/Cool_whip_Family_Guy.png")
@@ -53,7 +53,7 @@ video6 = Video.create(title: "Ofdream_Thelema", description: "Ofdream Ambient tr
    pfile6 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/THELEMA_TRAP_LIFE.png")
    video6.thumbnail.attach(io: pfile6, filename: "THELEMA_TRAP_LIFE.png")
 
-video7 = Video.create(title: "Nirvana smells like teen spirit official music video", description: "Nirvana", views: 1000, uploader_id: user_1.id)
+video7 = Video.create(title: "Nirvana smells like teen spirit official music video", description: "Nirvana", views: 0, uploader_id: user_1.id)
    vfile7 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/nirvana_smells_like_teen_spirit_official_music_video_hTWKbfoikeg_1080p.mp4")
    video7.vid.attach(io: vfile7, filename: "nirvana_smells_like_teen_spirit_official_music_video_hTWKbfoikeg_1080p.mp4")
    pfile7 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/Teen_Spirit_Nirvana.png")
@@ -65,13 +65,13 @@ video8 = Video.create(title: "Hack Reactor vs App Academy", description: "Spitti
    pfile8 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/Why_Hack_Is_better_than_a%3AA.png")
    video8.thumbnail.attach(io: pfile8, filename: "Why_Hack_Is_better_than_a:A.png")
 
-video9 = Video.create(title: "Doggo Twix", description: "My boy", views: 3000, uploader_id: user_2.id)
+video9 = Video.create(title: "Doggo Twix", description: "My boy", views: 0, uploader_id: user_2.id)
    vfile9 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/TWIXY!.mp4")
    video9.vid.attach(io: vfile9, filename: "TWIXY!.mp4")
    pfile9 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/TWIXY.png")
    video9.thumbnail.attach(io: pfile9, filename: "TWIXY.png")
 
-video10 = Video.create(title: "Royale with Cheese", description: "They don't Have the metric system!", views: 22000, uploader_id: user_2.id)
+video10 = Video.create(title: "Royale with Cheese", description: "They don't Have the metric system!", views: 0, uploader_id: user_2.id)
    vfile10 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/royale_with_cheese_pulp_fiction_212_movie_clip_1994_hd_6Pkq_eBHXJ4_720p.mp4")
    video10.vid.attach(io: vfile10, filename: "royale_with_cheese_pulp_fiction_212_movie_clip_1994_hd_6Pkq_eBHXJ4_720p.mp4")
    pfile10 = open("https://twixtertube-seed.s3-us-west-1.amazonaws.com/thumbnails/ROYALEWITHCHEESE.png")
