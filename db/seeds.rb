@@ -14,6 +14,11 @@ Like.destroy_all
 
 user_1 = User.create!(username: 'd116', email: 'd116@mail.com', password: 123456)
 user_2 = User.create!(username: 'silentWraith', email: 'silentWraith@mail.com', password: 123456)
+user_3 = User.create!(username: 'max', email: 'max@mail.com', password: 123456)
+user_4 = User.create!(username: 'jacob', email: 'jacob@mail.com', password: 123456)
+user_5 = User.create!(username: 'dexter', email: 'dexter@mail.com', password: 123456)
+user_6 = User.create!(username: 'snorlax', email: 'snorlax@mail.com', password: 123456)
+
 
 # Video.create!(title: 'Eric Andre - Wall Street', uploader_id: 1, views: 0, description: 'Eric displaying business acuity')
 

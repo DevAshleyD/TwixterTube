@@ -8,15 +8,44 @@ class User < ApplicationRecord
 
     has_many :videos,
         foreign_key: :uploader_id,
-        class_name: :Video
+        class_name: :Video,
+        dependent: :destroy
 
-    has_many :likes, dependent: :destroy,
+    has_many :likes, 
+        dependent: :destroy,
         foreign_key: :user_id,
         class_name: :Like
 
     has_many :comments,
         foreign_key: :user_id,
-        class_name: :Comment
+        class_name: :Comment,
+        dependent: :destroy
+
+    has_many :playlists,
+        dependent: :destroy,
+        foreign_key: :user_id
+
+    # has_one_attached :channel_banner
+    
+    # ˇˇˇˇ Subscription based associations ˇˇˇˇ
+
+    has_many :subscriber_subscriptions,
+        foreign_key: :content_creator_id,
+        class_name: :Subscription
+
+    has_many :subscribers,
+        through: :subscriber_subscriptions,
+        source: :subscriber
+
+    has_many :creator_subscriptions,
+        foreign_key: :subscriber_id,
+        class_name: :Subscription
+
+    has_many :subscriptions,
+        through: :creator_subscriptions,
+        source: :content_creator
+
+    # ^^^^ Subscription based associations ^^^^
 
     attr_reader :password
 
@@ -25,6 +54,10 @@ class User < ApplicationRecord
         return nil unless user
         user.is_password?(password) ? user : nil
     end
+
+    # def number_of_subscribers
+    #     self.subscribers
+    # end
 
     def password=(password)
         @password = password

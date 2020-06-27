@@ -6,6 +6,8 @@ class Video < ApplicationRecord
         foreign_key: :uploader_id,
         class_name: :User
 
+    belongs_to :playlist
+
     has_one_attached :vid
     
     has_one_attached :thumbnail
