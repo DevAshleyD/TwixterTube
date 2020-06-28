@@ -11,6 +11,8 @@ User.destroy_all
 Video.destroy_all
 Comment.destroy_all
 Like.destroy_all
+Playlist.destroy_all
+Subscription.destroy_all
 
 user_1 = User.create!(username: 'd116', email: 'd116@mail.com', password: 123456)
 user_2 = User.create!(username: 'silentWraith', email: 'silentWraith@mail.com', password: 123456)
@@ -18,6 +20,17 @@ user_3 = User.create!(username: 'max', email: 'max@mail.com', password: 123456)
 user_4 = User.create!(username: 'jacob', email: 'jacob@mail.com', password: 123456)
 user_5 = User.create!(username: 'dexter', email: 'dexter@mail.com', password: 123456)
 user_6 = User.create!(username: 'snorlax', email: 'snorlax@mail.com', password: 123456)
+
+# sub_1 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# sub_2 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# sub_3 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# sub_4 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# sub_5 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# sub_6 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# sub_7 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# sub_8 = Subscription.create!(content_creator_id: user_1.id, subscriber_id: user_2.id)
+# Subscription.create!(content_creator_id: , subscriber_id: )
+
 
 
 # Video.create!(title: 'Eric Andre - Wall Street', uploader_id: 1, views: 0, description: 'Eric displaying business acuity')

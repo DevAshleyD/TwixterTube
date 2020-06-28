@@ -10,6 +10,7 @@ import {
   addComment,
   deleteComment,
 } from "./actions/comments_actions";
+import {fetchSubscriptions, getSubscription, createSubscription, destroySubscription} from './util/subscription_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -36,6 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // window.getState = store.getState;
   // window.dispatch = store.dispatch;
+
+  window.fetchSubscriptions = fetchSubscriptions;
+  window.createSubscription = createSubscription;
+  window.getSubscription = getSubscription;
+  window.destroySubscription = destroySubscription;
 
   // window.deleteChildComment = deleteChildComment;
   // window.addComment = addComment;

@@ -10,9 +10,13 @@ Rails.application.routes.draw do
     resources :videos, except: [:new, :edit]
     patch '/videos/:id/views', to: 'videos#view_update'
 
-    # channel related and playlist related http requests
-    
+    # subscription routes
+    resources :subscriptions, only: [:create, :index]
+    post '/subscriptions/delete', to: 'subscriptions#destroy'
+    post '/subscription/show', to: 'subscriptions#show'
 
+    # playlist routes
+    resources :playlists, only: [:index, :show, :create, :update, :destroy]
 
     resources :likes, only: [:create, :update, :destroy]
     resources :comments,  only: [:create, :update, :destroy]

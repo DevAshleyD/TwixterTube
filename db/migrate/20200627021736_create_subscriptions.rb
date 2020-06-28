@@ -6,5 +6,6 @@ class CreateSubscriptions < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :subscriptions, [:content_creator_id, :subscriber_id], unique: true
   end
 end

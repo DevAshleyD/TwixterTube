@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_021736) do
     t.integer "subscriber_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["content_creator_id", "subscriber_id"], name: "index_subscriptions_on_content_creator_id_and_subscriber_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
