@@ -20,7 +20,7 @@ export const getSubscription = (subscription) =>
 
 export const destroySubscription = (subscription) =>
     $.ajax({
-        url: `/api/subscriptions/`,
+        url: `/api/subscriptions/delete`,
         method: 'POST',
         data: {subscription}
     })

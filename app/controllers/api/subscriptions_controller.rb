@@ -19,8 +19,6 @@ class Api::SubscriptionsController < ApplicationController
             return render json: { error: 'Subscriber Does not Exist'}, status: 404
         end
 
-        debugger
-
         @subscription = Subscription.new(subcription_params)
         
         if @subscription.save
@@ -52,7 +50,7 @@ class Api::SubscriptionsController < ApplicationController
         
         if @subscription
             @subscription.destroy
-            render :show
+            render json: { success: "Subscription Destroyed" }
         else
             render json: { error: "Subscription Not Found" }, status: 422
         end

@@ -10,7 +10,13 @@ import {
   addComment,
   deleteComment,
 } from "./actions/comments_actions";
-import {fetchSubscriptions, getSubscription, createSubscription, destroySubscription} from './util/subscription_util'
+import { fetchSubscriptions } from './util/subscription_util'
+import {
+  removeSubscriptionData,
+  getSubscription,
+  createSubscription,
+  destroySubscription
+} from './actions/subscription_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -35,10 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // FOR DEVELOPMENT ONLY!!!!
 
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
 
   window.fetchSubscriptions = fetchSubscriptions;
+
+  // sub actions
+  
+  window.removeSubscriptionData = removeSubscriptionData;
   window.createSubscription = createSubscription;
   window.getSubscription = getSubscription;
   window.destroySubscription = destroySubscription;
