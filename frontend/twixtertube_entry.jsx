@@ -18,6 +18,8 @@ import {
   destroySubscription
 } from './actions/subscription_actions';
 
+import {fetchContentCreatorVids} from './actions/videos_actions';
+
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   let store;
@@ -52,6 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.createSubscription = createSubscription;
   window.getSubscription = getSubscription;
   window.destroySubscription = destroySubscription;
+
+  // content creator actions videos
+
+  window.fetchContentCreatorVids = fetchContentCreatorVids;
 
   // window.deleteChildComment = deleteChildComment;
   // window.addComment = addComment;

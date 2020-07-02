@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     # resources :videos, only: [:create, :update, :destroy, :index, :show]
     resources :videos, except: [:new, :edit]
     patch '/videos/:id/views', to: 'videos#view_update'
+    get '/videos/content_creator/:author_id', to: 'videos#content_creator_vids'
 
     # subscription routes
     resources :subscriptions, only: [:create, :index]

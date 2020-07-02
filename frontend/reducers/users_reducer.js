@@ -6,6 +6,10 @@ import {
     RECEIVE_ALL_VIDEOS, RECEIVE_VIDEO
 } from '../actions/videos_actions';
 
+import {
+    RECEIVE_CONTENT_CREATOR
+} from '../actions/user_actions'
+
 export default ( state = {}, action ) => {
     Object.freeze(state);
     let newState = {};
@@ -18,7 +22,11 @@ export default ( state = {}, action ) => {
         case RECEIVE_VIDEO:
             newState = Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
             return newState;
+
+        case RECEIVE_CONTENT_CREATOR:
+            return Object.assign({}, state, { [action.user.id]: action.user })
+        
         default:
             return state;
-    }
+    };
 }

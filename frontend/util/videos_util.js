@@ -52,3 +52,10 @@ export const updateVideoViewCount = (video) => {
     data: { video },
   });
 };
+
+export const fetchContentCreatorVids = (authorId) => {
+  return $.ajax({
+    url: `/api/videos/content_creator/${authorId}`,
+    method: "GET"
+  })
+}

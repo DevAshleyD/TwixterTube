@@ -56,6 +56,12 @@ class Api::VideosController < ApplicationController
         render :show
     end
 
+    def content_creator_vids
+        @videos = Video.where("uploader_id = ?", params[:author_id]).sort_by(&:created_at).reverse
+
+        render json: { "videos" => @videos }, status: 200
+    end
+
     private
 
     def video_params

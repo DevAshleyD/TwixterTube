@@ -14,11 +14,19 @@ export const REMOVE_ALL_VIDEOS = "REMOVE_ALL_VIDEOS";
 export const RECEIVE_UPLOADERS = "RECEIVE_UPLOADERS";
 export const UPDATE_VIEW_COUNT = "UPDATE_VIEW_COUNT";
 export const REMOVE_VIDEO_SHOW = "REMOVE_VIDEO_SHOW";
+export const RECEIVE_ALL_VIDEOS_FROM_AUTHOR = "RECEIVE_ALL_VIDEOS_FROM_AUTHOR"
 
 const receiveAllVideos = (payload) => ({
   type: RECEIVE_ALL_VIDEOS,
   payload,
 });
+
+// videos below are in array format
+
+const receiveAllVideosFromAuthor = (videos) => ({
+  type: RECEIVE_ALL_VIDEOS_FROM_AUTHOR,
+  videos
+})
 
 export const receiveVideo = (payload) => {
   return { type: RECEIVE_VIDEO, payload };
@@ -87,3 +95,8 @@ export const updateViewCount = (videoPayload) => (dispatch) =>
   VideoUtil.updateVideoViewCount(videoPayload).then((payload) => {
     dispatch(updateViews(payload));
   });
+
+export const fetchContentCreatorVids = (contentCreatorId) => dispatch =>
+  VideoUtil.fetchContentCreatorVids(contentCreatorId).then((videos) => {
+    dispatch(receiveAllVideosFromAuthor(videos))
+  })
