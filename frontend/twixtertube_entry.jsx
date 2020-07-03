@@ -18,7 +18,8 @@ import {
   destroySubscription
 } from './actions/subscription_actions';
 
-import {fetchContentCreatorVids} from './actions/videos_actions';
+// import {fetchContentCreatorVids} from './actions/videos_actions';
+import { fetchContentCreatorVids } from './util/videos_util';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");

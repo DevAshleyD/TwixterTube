@@ -4,7 +4,11 @@ import {
     DESTROY_SUBSCRIPTION,
     REMOVE_SUB_DATA,
     ADD_SUB_ERROR
-} from '../actions/subscription_actions'
+} from '../actions/subscription_actions';
+
+import {
+    RECEIVE_CONTENT_CREATOR
+} from '../actions/user_actions';
 
 export default ( state = {}, action ) => {
     Object.freeze(state)
@@ -12,11 +16,11 @@ export default ( state = {}, action ) => {
 
     switch(action.type) {
         case CREATE_SUBSCRIPTION:
-            newState = { subscription: true };
+            newState = Object.assign({}, state, { subscription: true });
             return newState;
 
         case GET_SUBSCRIPTION:
-            newState = { subscription: true };
+            newState = Object.assign({}, state, { subscription: true });
             return newState;
 
         case DESTROY_SUBSCRIPTION:
@@ -27,6 +31,9 @@ export default ( state = {}, action ) => {
 
         case ADD_SUB_ERROR:
             return { error: true };
+
+        case RECEIVE_CONTENT_CREATOR:
+            newState = Object.assign({}, state, { authorId: action.user.id });
 
         default: 
             return state

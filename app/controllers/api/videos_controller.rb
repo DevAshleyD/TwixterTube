@@ -58,8 +58,14 @@ class Api::VideosController < ApplicationController
 
     def content_creator_vids
         @videos = Video.where("uploader_id = ?", params[:author_id]).sort_by(&:created_at).reverse
-
-        render json: { "videos" => @videos }, status: 200
+        # desired fields from Author User model
+        # keys = ["id", "username", "email"]
+        @author_model = User.find(params[:author_id]).attributes.slice('id', 'username', 'email')
+        
+        render json: { 
+            "videos" => @videos,
+            "author" => @author_model
+        }, status: 200
     end
 
     private

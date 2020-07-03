@@ -50,7 +50,8 @@ export default (state = {}, action) => {
       return {};
 
     case RECEIVE_ALL_VIDEOS_FROM_AUTHOR:
-      newState = action.videos;
+      // let author = action.payload.author;
+      newState = action.payload.videos;
       debugger
       return newState;
 

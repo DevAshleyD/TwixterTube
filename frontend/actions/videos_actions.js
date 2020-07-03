@@ -23,9 +23,9 @@ const receiveAllVideos = (payload) => ({
 
 // videos below are in array format
 
-const receiveAllVideosFromAuthor = (videos) => ({
+const receiveAllVideosFromAuthor = (payload) => ({
   type: RECEIVE_ALL_VIDEOS_FROM_AUTHOR,
-  videos
+  payload
 })
 
 export const receiveVideo = (payload) => {
@@ -97,6 +97,6 @@ export const updateViewCount = (videoPayload) => (dispatch) =>
   });
 
 export const fetchContentCreatorVids = (contentCreatorId) => dispatch =>
-  VideoUtil.fetchContentCreatorVids(contentCreatorId).then((videos) => {
-    dispatch(receiveAllVideosFromAuthor(videos))
+  VideoUtil.fetchContentCreatorVids(contentCreatorId).then((payload) => {
+    dispatch(receiveAllVideosFromAuthor(payload))
   })

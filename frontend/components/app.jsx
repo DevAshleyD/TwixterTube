@@ -7,6 +7,7 @@ import VideoShowContainer from "./videos/videos_show_container";
 import EditVideoContainer from "./videos/edit_video_form_container";
 import UploadFormContainer from "./videos/upload_video_form_container";
 import SearchVideoIndexContainer from "./search/search_video_index_container";
+import ChannelContainer from './channels/channel_container';
 import { Route, Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
@@ -58,11 +59,16 @@ export default ({ location, match }) => {
           component={UploadFormContainer}
           // component={() => <UploadFormContainer twixLogo={twixLogo} />}
         />
+        <Route 
+          path="/user/:authorId"
+          component={ChannelContainer}
+        />
         <Route
           path="/"
           component={VideoIndexContainer}
           // component={() => <VideoIndexContainer twixLogo={twixLogo} />}
         />
+        
       </Switch>
     </div>
   );

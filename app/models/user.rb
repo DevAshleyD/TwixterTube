@@ -25,7 +25,7 @@ class User < ApplicationRecord
         dependent: :destroy,
         foreign_key: :user_id
 
-    # has_one_attached :channel_banner
+    has_one_attached :channel_banner
     
     # ˇˇˇˇ Subscription based associations ˇˇˇˇ
 
@@ -55,9 +55,13 @@ class User < ApplicationRecord
         user.is_password?(password) ? user : nil
     end
 
-    # def number_of_subscribers
-    #     self.subscribers
-    # end
+    def number_of_subscribers
+        return self.subscribers.length
+    end
+
+    def number_of_subscriptions
+        return self.subscriptions.length
+    end
 
     def password=(password)
         @password = password
