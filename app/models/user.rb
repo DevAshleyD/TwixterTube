@@ -26,6 +26,8 @@ class User < ApplicationRecord
         foreign_key: :user_id
 
     has_one_attached :channel_banner
+
+    has_one_attached :profile_pic
     
     # ˇˇˇˇ Subscription based associations ˇˇˇˇ
 

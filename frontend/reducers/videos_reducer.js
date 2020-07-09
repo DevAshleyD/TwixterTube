@@ -52,7 +52,6 @@ export default (state = {}, action) => {
     case RECEIVE_ALL_VIDEOS_FROM_AUTHOR:
       // let author = action.payload.author;
       newState = action.payload.videos;
-      debugger
       return newState;
 
     default:

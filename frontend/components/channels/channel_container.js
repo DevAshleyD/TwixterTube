@@ -6,14 +6,23 @@ import {
     createSubscription,
     destroySubscription
 } from '../../actions/subscription_actions';
+
+import {
+    fetchContentCreator
+} from '../../actions/user_actions'
     
 import {
     fetchContentCreatorVids
 } from '../../actions/videos_actions';
     
 const msp = (state, ownProps) => {
+    // console.log("CHANNEL CONTAINER PROPS MATCH:  ", ownProps.match.params.authorId)
+    let authorId = ownProps.match.params.authorId;
+    
     let currentUser = state.session.currentUser ? state.entities.users[state.session.currentUser] : null;
-    let author = state.subscription.authorId ? state.entities.users[state.subscription.authorId] : null;
+    let author = state.entities.users[authorId] ? state.entities.users[authorId] : null;
+
+    console.log("CHANNEL CONTENT CREATOR:  ", author)
 
     let subscription = state.subscription.subscription ? true : false;
 
@@ -31,7 +40,7 @@ const msp = (state, ownProps) => {
         videos
     }
     
-}   
+}
     
 const mdp = (dispatch) => {
     
@@ -40,7 +49,8 @@ const mdp = (dispatch) => {
         destroySubscription: () => dispatch(destroySubscription()),
         getSubscription: (subscriptionData) => dispatch(getSubscription(subscriptionData)),
         createSubscription: (subscriptionData) => dispatch(createSubscription(subscriptionData)),
-        fetchContentCreatorVids: (authorId) => dispatch(fetchContentCreatorVids(authorId))
+        fetchContentCreatorVids: (authorId) => dispatch(fetchContentCreatorVids(authorId)),
+        fetchContentCreator: (authorId) => dispatch(fetchContentCreator(authorId))
     }
     
 }   

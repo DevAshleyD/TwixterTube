@@ -1,4 +1,5 @@
-import { RECEIVE_CURRENT_USER,
+import { 
+    RECEIVE_CURRENT_USER,
     RECEIVE_ALL_USERS
 } from '../actions/session_actions';
 
@@ -29,8 +30,8 @@ export default ( state = {}, action ) => {
         case RECEIVE_CONTENT_CREATOR:
             return Object.assign({}, state, { [action.user.id]: action.user })
 
-        case RECEIVE_ALL_VIDEOS_FROM_AUTHOR:
-            return Object.assign({}, state, { [action.payload.author.id]: action.payload.author })
+        // case RECEIVE_ALL_VIDEOS_FROM_AUTHOR:
+        //     return Object.assign({}, state, { [action.payload.author.id]: action.payload.author })
         
         default:
             return state;

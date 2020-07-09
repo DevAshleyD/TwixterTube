@@ -1,0 +1,1 @@
+json.bannerUrl url_for(@user.channel_banner)

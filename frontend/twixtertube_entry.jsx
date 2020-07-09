@@ -19,7 +19,14 @@ import {
 } from './actions/subscription_actions';
 
 // import {fetchContentCreatorVids} from './actions/videos_actions';
-import { fetchContentCreatorVids } from './util/videos_util';
+import { 
+  fetchContentCreatorVids,
+  fetchVideo
+} from './util/videos_util';
+import {
+  fetchBanner,
+  fetchAuthor
+} from './util/user_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -41,14 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-
+  
   // FOR DEVELOPMENT ONLY!!!!
-
+  
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-
+  
   window.fetchSubscriptions = fetchSubscriptions;
 
+  window.fetchAuthor = fetchAuthor;
+  
   // sub actions
   
   window.removeSubscriptionData = removeSubscriptionData;
@@ -59,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // content creator actions videos
 
   window.fetchContentCreatorVids = fetchContentCreatorVids;
+  window.fetchVideo = fetchVideo;
+
+  window.fetchBanner = fetchBanner;
 
   // window.deleteChildComment = deleteChildComment;
   // window.addComment = addComment;

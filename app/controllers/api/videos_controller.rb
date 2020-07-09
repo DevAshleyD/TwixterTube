@@ -43,7 +43,6 @@ class Api::VideosController < ApplicationController
     def view_update
         @video = Video.find(params[:id])
         if @video.update(video_params_edit_views)
-
             render :show
         else
             render json: @video.errors.full_messages, status: 422

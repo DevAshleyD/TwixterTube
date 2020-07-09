@@ -103,8 +103,48 @@ input[type="file"] {
 // channel styling
 
 .channel-main-container {
-  padding-top: 100px;
-  padding-left: 100px;
+  padding-top: 56px;
+  padding-left: 72px;
+  width: 100%;
+}
+
+.banner-main-container {
+  background-color: cyan;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-image {
+  object-fit: contain;
+}
+
+.channel-pannel-main-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(249, 249, 249);
+}
+
+.logo-subscribe-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.logo-profile-name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.subscribe-button-container {
+
+}
+
+.channel-button-pannel-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
 }
 
 .custom-file-thumbnail {
