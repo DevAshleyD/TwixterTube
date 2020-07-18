@@ -50,3 +50,12 @@ export const fetchBanner = (userId) => {
         })
     )
 }
+
+export const fetchAuthorAbout = (authorId) => {
+    return (
+        $.ajax({
+            url: `/api/user/author/${authorId}/about`,
+            method: 'GET'
+        })
+    )
+}

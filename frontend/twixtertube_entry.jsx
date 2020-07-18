@@ -18,14 +18,21 @@ import {
   destroySubscription
 } from './actions/subscription_actions';
 
+import {
+  fetchMostViewedVideo
+} from './actions/videos_actions';
+
 // import {fetchContentCreatorVids} from './actions/videos_actions';
 import { 
   fetchContentCreatorVids,
-  fetchVideo
+  fetchVideo,
+  // fetchMostViewedVideo
 } from './util/videos_util';
+
 import {
   fetchBanner,
-  fetchAuthor
+  fetchAuthor,
+  fetchAuthorAbout
 } from './util/user_util'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -57,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchSubscriptions = fetchSubscriptions;
 
   window.fetchAuthor = fetchAuthor;
+
+  window.fetchAuthorAbout = fetchAuthorAbout;
   
   // sub actions
   
@@ -69,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.fetchContentCreatorVids = fetchContentCreatorVids;
   window.fetchVideo = fetchVideo;
+
+  window.fetchMostViewedVideo = fetchMostViewedVideo;
 
   window.fetchBanner = fetchBanner;
 

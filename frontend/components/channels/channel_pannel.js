@@ -44,7 +44,7 @@ const ChannelPannel = (props) => {
                     <button>VIDEOS</button>
                 </Link>
                 <Link to={`${matchUrl}/about`}>
-                    <about>ABOUT</about>
+                    <button>ABOUT</button>
                 </Link>
             </div>
         )

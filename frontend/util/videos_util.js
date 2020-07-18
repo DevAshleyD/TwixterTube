@@ -59,3 +59,10 @@ export const fetchContentCreatorVids = (authorId) => {
     method: "GET"
   })
 }
+
+export const fetchMostViewedVideo = (authorId) => {
+  return $.ajax({
+    url: `/api/videos/content_creator/${authorId}/most_viewed`,
+    method: 'GET'
+  })
+}

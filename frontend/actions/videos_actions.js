@@ -15,6 +15,8 @@ export const RECEIVE_UPLOADERS = "RECEIVE_UPLOADERS";
 export const UPDATE_VIEW_COUNT = "UPDATE_VIEW_COUNT";
 export const REMOVE_VIDEO_SHOW = "REMOVE_VIDEO_SHOW";
 export const RECEIVE_ALL_VIDEOS_FROM_AUTHOR = "RECEIVE_ALL_VIDEOS_FROM_AUTHOR"
+export const RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR = "RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR";
+export const REMOVE_VIDEOS_FROM_CHANNEL = "REMOVE_VIDEOS_FROM_CHANNEL";
 
 const receiveAllVideos = (payload) => ({
   type: RECEIVE_ALL_VIDEOS,
@@ -26,6 +28,11 @@ const receiveAllVideos = (payload) => ({
 const receiveAllVideosFromAuthor = (payload) => ({
   type: RECEIVE_ALL_VIDEOS_FROM_AUTHOR,
   payload
+})
+
+const receiveMostViewedVideoFromAuthor = (video) => ({
+  type: RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR,
+  video
 })
 
 export const receiveVideo = (payload) => {
@@ -46,6 +53,12 @@ const receiveUploader = (payload) => ({
   type: RECEIVE_VIDEO,
   payload,
 });
+
+export const removeVideosFromChannel = () => {
+  return {
+    type: REMOVE_VIDEOS_FROM_CHANNEL 
+  }
+}
 
 export const updateViews = (payload) => {
   return {
@@ -87,6 +100,11 @@ export const deleteVideo = (id) => (dispatch) =>
   VideoUtil.deleteVideo(id).then((payload) => {
     dispatch(removeVideo(payload));
   });
+
+export const fetchMostViewedVideo = (authorId) => (dispatch) => 
+  VideoUtil.fetchMostViewedVideo(authorId).then( video => {
+    dispatch( receiveMostViewedVideoFromAuthor(video.videos) )
+  })
 
 // video payload just has id and updated view count attributes that rails
 // will only accept into the params

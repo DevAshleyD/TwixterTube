@@ -9,7 +9,8 @@ import {
 } from '../actions/videos_actions';
 
 import {
-    RECEIVE_CONTENT_CREATOR
+    RECEIVE_CONTENT_CREATOR,
+    RECEIVE_CONTENT_CREATOR_ABOUT
 } from '../actions/user_actions'
 
 export default ( state = {}, action ) => {
@@ -28,6 +29,9 @@ export default ( state = {}, action ) => {
             return newState;
 
         case RECEIVE_CONTENT_CREATOR:
+            return Object.assign({}, state, { [action.user.id]: action.user })
+
+        case RECEIVE_CONTENT_CREATOR_ABOUT:
             return Object.assign({}, state, { [action.user.id]: action.user })
 
         // case RECEIVE_ALL_VIDEOS_FROM_AUTHOR:

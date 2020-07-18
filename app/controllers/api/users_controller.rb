@@ -63,10 +63,19 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    # def update
+        
+    # end
+
+    def fetch_about_data # return user model with about text information
+        @user = User.find(params[:author_id])
+        render :fetch_about_data
+    end
+
     private
 
     def user_params
-        params.require(:user).permit(:username, :password, :email) 
+        params.require(:user).permit(:username, :password, :email, :about) 
         # I believe I should require email here? check with PA
     end     
 

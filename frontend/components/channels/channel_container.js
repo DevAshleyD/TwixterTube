@@ -8,11 +8,14 @@ import {
 } from '../../actions/subscription_actions';
 
 import {
-    fetchContentCreator
+    fetchContentCreator,
+    fetchContentCreatorAbout
 } from '../../actions/user_actions'
     
 import {
-    fetchContentCreatorVids
+    fetchContentCreatorVids,
+    fetchMostViewedVideo,
+    removeVideosFromChannel
 } from '../../actions/videos_actions';
     
 const msp = (state, ownProps) => {
@@ -50,7 +53,10 @@ const mdp = (dispatch) => {
         getSubscription: (subscriptionData) => dispatch(getSubscription(subscriptionData)),
         createSubscription: (subscriptionData) => dispatch(createSubscription(subscriptionData)),
         fetchContentCreatorVids: (authorId) => dispatch(fetchContentCreatorVids(authorId)),
-        fetchContentCreator: (authorId) => dispatch(fetchContentCreator(authorId))
+        fetchContentCreator: (authorId) => dispatch(fetchContentCreator(authorId)),
+        fetchMostViewedVideo: (authorId) => dispatch(fetchMostViewedVideo(authorId)),
+        removeVideosFromChannel: () => dispatch(removeVideosFromChannel()),
+        fetchContentCreatorAbout: (authorId) => dispatch(fetchContentCreatorAbout(authorId))
     }
     
 }   

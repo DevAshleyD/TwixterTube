@@ -4,8 +4,16 @@ import {
   REMOVE_VIDEO,
   UPDATE_VIEW_COUNT,
   REMOVE_ALL_VIDEOS,
-  RECEIVE_ALL_VIDEOS_FROM_AUTHOR
+  RECEIVE_ALL_VIDEOS_FROM_AUTHOR,
+  RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR,
+  REMOVE_VIDEOS_FROM_CHANNEL
 } from "../actions/videos_actions";
+
+import {
+  RECEIVE_CONTENT_CREATOR_ABOUT
+} from '../actions/user_actions'
+
+// RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR
 
 export default (state = {}, action) => {
   Object.freeze(state);
@@ -51,9 +59,30 @@ export default (state = {}, action) => {
 
     case RECEIVE_ALL_VIDEOS_FROM_AUTHOR:
       // let author = action.payload.author;
+      debugger
       newState = action.payload.videos;
+      debugger
       return newState;
 
+    case RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR:
+      let video = action.video;
+      debugger
+      if (video.id === null) {
+        debugger
+        return [];
+      } else {
+        debugger
+        return [video];
+      }
+
+    case REMOVE_VIDEOS_FROM_CHANNEL:
+      debugger
+      return [];
+
+    case RECEIVE_CONTENT_CREATOR_ABOUT:
+      debugger
+      return [];
+    
     default:
       return state;
   }

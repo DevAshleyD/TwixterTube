@@ -67,6 +67,11 @@ class Api::VideosController < ApplicationController
         }, status: 200
     end
 
+    def most_viewed_video
+        @video = User.find(params[:author_id]).videos.order("views desc").first
+        render :most_viewed_video
+    end
+
     private
 
     def video_params

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/user/banner/:user_id', to: 'users#banner'
     put '/user/banner/upload/:user_id', to: 'users#upload_banner'
     get '/user/author/:author_id', to: 'users#show_author'
+    get '/user/author/:author_id/about', to: 'users#fetch_about_data'
     
     resource :session, only: [:create, :destroy]
     
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     resources :videos, except: [:new, :edit]
     patch '/videos/:id/views', to: 'videos#view_update'
     get '/videos/content_creator/:author_id', to: 'videos#content_creator_vids'
+    get '/videos/content_creator/:author_id/most_viewed', to: 'videos#most_viewed_video'
     
     # subscription routes
     resources :subscriptions, only: [:create, :index]
