@@ -10,6 +10,7 @@ import SideBarContainer from '../sidebar/sidebar_container';
 import ModalSidebarContainer from '../sidebar/modal_sidebar_container';
 import Banner from './banner';
 import ChannelPannel from './channel_pannel';
+import About from './about_page';
 
 const Channel = (props) => {
     // const [state, setState] = useState({
@@ -78,7 +79,7 @@ const Channel = (props) => {
     }
 
     console.log("HERE IS THE URL TERMINATION VARIABLE:  ", location)
-    console.log("HERE IS THE URL STRING:  ", urlString)
+    console.log("WHAT DOES MATCH LOOK LIKE:  ", match)
     
     useEffect( () => {
         console.log("INSTANTIATING USE-EFFECT!")
@@ -147,9 +148,9 @@ const Channel = (props) => {
             return loadingScreen();
     }
 
-    console.log("LOADED, HERE IZ THE PROPPSSSSSS!!:  ", props)
+    console.log("LOADED, HERE IZ THE PROPPSSSSSS!!:  ", props);
 
-    let subscribedStying = props.currentUser && props.subscription ? 
+    let subscribedStying = props.currentUser && props.subscription ?
         "subscribed-styling-button" : "non-subscribed-styling-button"
 
     return (
@@ -163,14 +164,22 @@ const Channel = (props) => {
                 <ChannelPannel
                     subscribedStying={subscribedStying}
                     author={props.author}
+                    location={location}
                 />
                 
-                {/* <Switch>
-                    <Route  />
-                    <Route  />
-                    <Route  />
+                <Switch>
+                    {/* <Route  />
+                    <Route  /> */}
+                    <Route exact path={`${match.path}/about`} 
+                        render={(props) => <About {...props} author={author} />}
+                    />
 
-                </Switch> */}
+                    {/* 
+                        Refactor Routes prop threading to Link prop threading to channel_pannel for next push
+                        and give props there
+                    */}
+
+                </Switch>
             </div>
         </div>
     )

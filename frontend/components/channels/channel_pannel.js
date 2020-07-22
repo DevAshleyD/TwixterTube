@@ -10,41 +10,53 @@ const ChannelPannel = (props) => {
     const matchUrl = useRouteMatch().url;
 
     useEffect(() => {
-        console.log("ChannelPannel author, child component", props.author)
-    }, [])
+        console.log("PANNEL, PROPS", props.location)
+
+    }, [props.location])
 
     const logoSubscribeContainer = () => {
         return (
         <div className="logo-subscribe-container">
             <div className="logo-profile-name-container">
                 <span>{props.author.username[0].toUpperCase()}</span>
+            </div>
+            <div className="subscribe-button-container">
                 <div style={{
-                    display: "flex", 
-                    flexDirection: "column",
-                    marginLeft: "20px"
-                }}>
+                        display: "flex", 
+                        flexDirection: "column",
+                        marginLeft: "20px"
+                    }}
+                    className="author-name-subscriber-count-container"    
+                >
                     <h3>{props.author.username}</h3>
                     <span>{props.author.subscriber_count} subscribers</span>
                 </div>
-            </div>
-            <div className="subscribe-button-container">
-                <button>Subscribe</button>
+                <button className="subscribe-button">Subscribe</button>
             </div>
         </div>
         )
     }
 
+    /*
+    props.location !== "videos" 
+                        &&
+                        props.location !== "about" ? "channel-tab-selected" : ""
+    
+    */
+
     const buttonPannel = () => {
         return (
             <div className="channel-button-pannel-container">
                 <Link to={`${matchUrl}`}>
-                    <button>HOME</button>
+                    <button style={{borderBottom: props.location !== "videos" 
+                        &&
+                        props.location !== "about" ? "3px solid black" : ""}}>HOME</button>
                 </Link>
                 <Link to={`${matchUrl}/videos`}>
-                    <button>VIDEOS</button>
+                    <button style={{borderBottom: props.location === "videos" ? "3px solid black" : ""}}>VIDEOS</button>
                 </Link>
                 <Link to={`${matchUrl}/about`}>
-                    <button>ABOUT</button>
+                    <button style={{borderBottom: props.location === "about" ? "3px solid black" : ""}}>ABOUT</button>
                 </Link>
             </div>
         )
