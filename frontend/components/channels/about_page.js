@@ -7,6 +7,9 @@ const About = (props) => {
         console.log("IN THE ABOUT PAGE, HERE ARE PROPS:  ", props)
     }, [])
 
+    let emailButtonStyling = viewEmail ? "hidden" : "view-email-address-button";
+    let emailStyling = viewEmail ? "email-p-style" : "hidden";
+
     const descriptionDetailsContainer = () => (
         <div className="description-details-container">
             <div className="description-container">
@@ -14,7 +17,7 @@ const About = (props) => {
                 {/* <p>{props.author.about ? props.author.about : 
                 "User has no description."
                 }</p> */}
-                <p>Author's Details</p>
+                <p>{props.author.about}</p>
             </div>
 
             <div className="details-container">
@@ -22,7 +25,11 @@ const About = (props) => {
 
                 <div className="details-section-container">
                     <span>For business inquiries:</span>
-                    <button>VIEW EMAIL ADDRESS</button>
+                    <button className={emailButtonStyling}
+                            onClick={() => {
+                                setViewEmail(true)
+                            }}>VIEW EMAIL ADDRESS</button>
+                    <span className={emailStyling}>{props.author.email}</span>
                 </div>
 
                 {/* <div>
@@ -34,8 +41,9 @@ const About = (props) => {
     )
 
     const statsContainer = () => (
-        <div >
-
+        <div className="stats-about-main-container">
+            <h3>Stats</h3>
+            <p>Joined {props.author.joined}</p>
         </div>
     )
     

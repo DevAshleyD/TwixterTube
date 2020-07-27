@@ -170,9 +170,7 @@ const Channel = (props) => {
                 <Switch>
                     {/* <Route  />
                     <Route  /> */}
-                    <Route exact path={`${match.path}/about`} 
-                        render={(props) => <About {...props} author={author} />}
-                    />
+                    <Route exact path={`${match.path}/about`} component={() => <About author={props.author} />} />
 
                     {/* 
                         Refactor Routes prop threading to Link prop threading to channel_pannel for next push
