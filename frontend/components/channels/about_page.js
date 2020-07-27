@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {numberWithCommas} from '../../util/videos_util'
 
 const About = (props) => {
     const [viewEmail, setViewEmail] = useState(false);
@@ -44,12 +45,14 @@ const About = (props) => {
         <div className="stats-about-main-container">
             <h3>Stats</h3>
             <p>Joined {props.author.joined}</p>
+            <p>{ props.author.views ? numberWithCommas(props.author.views) : 0} views</p>
         </div>
     )
     
     return (
         <div className="about-content-main-container">
             {descriptionDetailsContainer()}
+            {statsContainer()}
         </div>
     )
 
