@@ -61,10 +61,12 @@ class Api::VideosController < ApplicationController
         # keys = ["id", "username", "email"]
         @author_model = User.find(params[:author_id]).attributes.slice('id', 'username', 'email')
         
-        render json: { 
-            "videos" => @videos,
-            "author" => @author_model
-        }, status: 200
+        render :content_creator_vids
+
+        # render json: { 
+        #     "videos" => @videos,
+        #     "author" => @author_model
+        # }, status: 200
     end
 
     def most_viewed_video

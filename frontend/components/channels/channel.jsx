@@ -11,6 +11,8 @@ import ModalSidebarContainer from '../sidebar/modal_sidebar_container';
 import Banner from './banner';
 import ChannelPannel from './channel_pannel';
 import About from './about_page';
+import Videos from './videos';
+import Home from './home';
 
 const Channel = (props) => {
     // const [state, setState] = useState({
@@ -170,7 +172,9 @@ const Channel = (props) => {
                 <Switch>
                     {/* <Route  />
                     <Route  /> */}
+                    <Route exact path={`${match.path}/videos`} component={() => <Videos videos={props.videos} author={props.author}/>} />
                     <Route exact path={`${match.path}/about`} component={() => <About author={props.author} />} />
+                    <Route exact path={`${match.path}`} component={() => <Home />} />
 
                     {/* 
                         Refactor Routes prop threading to Link prop threading to channel_pannel for next push
