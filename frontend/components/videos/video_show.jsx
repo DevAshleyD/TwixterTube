@@ -49,6 +49,8 @@ class VideoShow extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
 
+    console.log("VIDEO SHOW WHAT IS UPLOADER:  ", this.props.uploader)
+
     let that = this;
     let id = this.props.match.params.videoId;
 
@@ -121,6 +123,7 @@ class VideoShow extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     let that = this;
     let id = this.props.match.params.videoId;
+    console.log("COMPONENT-DID-UPDATE UPLOADER:  ", this.props.uploader)
 
     if (this.props.match.url !== prevProps.match.url) {
       this.props.removeAllComments();
@@ -360,13 +363,17 @@ class VideoShow extends React.Component {
                         {/* <button onClick={this.handleEdit} className="edit-button">Edit</button> */}
                       </div>
                       <div className="video-show-details-bottom-container">
-                        <p className="current-user-icon-detail">
-                          {this.props.uploader.username
-                            .slice(0, 1)
-                            .toUpperCase()}
-                        </p>
+                          <Link to={this.props.uploader ? `/user/${this.props.uploader.id}` : `/`} style={{ textDecoration: "none", color: "white" }}>
+                            <p className="current-user-icon-detail">
+                              {this.props.uploader.username
+                                .slice(0, 1)
+                                .toUpperCase()}
+                            </p>
+                          </Link>
                         <div className="video-show-details-bottom">
-                          <h1>{this.props.uploader.username}</h1>
+                          <Link to={this.props.uploader ? `/user/${this.props.uploader.id}` : `/`} style={{ textDecoration: "none", color: "black" }}>
+                            <h1>{this.props.uploader.username}</h1>
+                          </Link>
                           <h2>Published on {this.props.video.published}</h2>
                           <p>{this.props.video.description}</p>
                         </div>

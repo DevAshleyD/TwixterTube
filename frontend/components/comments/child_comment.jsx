@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
@@ -158,12 +159,16 @@ const ChildComment = (props) => {
     <li className="comment-container-item">
       <div className="comment-styling-container">
         <div className="comment-user-icon-container">
+        <Link to={props.comment.user_id ? `/user/${props.comment.user_id}` : `/`} style={{ textDecoration: "none", color: "white" }}>
           <p className="comment-user-icon">
             {props.comment.author.slice(0, 1).toUpperCase()}
           </p>
+        </Link>
         </div>
         <div className="comment-details-container">
+        <Link to={props.comment.user_id ? `/user/${props.comment.user_id}` : `/`} style={{ textDecoration: "none", color: "black" }}>
           <p className="comment-username">{props.comment.author}</p>
+        </Link>
           <p className="comment-body">{props.comment.body}</p>
           <div className="comment-like-system-container">
             <div

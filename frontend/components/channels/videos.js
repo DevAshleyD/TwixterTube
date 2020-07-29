@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { Link } from 'react-router-dom'
 
 const Videos = (props) => {
 
@@ -7,12 +8,8 @@ const Videos = (props) => {
         console.log('IN VIDEO COMPONENT, VIDEOS:  ', props.videos)
     }, [])
 
-    const handleClick = () => {
-        
-    }
-
     const parseViews = (views) => {
-
+        return views > 1000 ? Math.floor(views / 1000) + "k" : views;
     }
 
     const parseTitle = (title) => {
@@ -22,20 +19,23 @@ const Videos = (props) => {
     const videoList = () => (
         <ul className="channel-video-list">
             {props.videos.map( (video, id) => (
-                <li key={`video-channel+${video.id}`} className="channel-video-list-item">
-                    <img src={video.thumbnailUrl}/>
-                    <div className="channel-video-item-details-container">
-                        <h4>{video.title}</h4>
-                        <p>{}</p>
-                    </div>
-                </li>
+                <Link to={`/videos/${video.id}`} style={{ textDecoration: "none", height: "186.8px" }}>
+                    <li key={`video-channel+${video.id}`} className="channel-video-list-item">
+                        <img src={video.thumbnailUrl}/>
+                        <div className="channel-video-item-details-container">
+                            <h4>{parseTitle(video.title)}</h4>
+                            <p>{parseViews(video.views)} views · {video.publishedAgo} ago</p>
+                        </div>
+                    </li>
+                </Link>
             ))}
         </ul>
     )
 
     return (
         <div className="channel-videos-main-container">
-            {JSON.stringify(props.videos)}
+            {/* {JSON.stringify(props.videos)} */}
+            {videoList()}
         </div>
     )
 }
