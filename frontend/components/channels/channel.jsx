@@ -174,7 +174,7 @@ const Channel = (props) => {
                     <Route  /> */}
                     <Route exact path={`${match.path}/videos`} component={() => <Videos videos={props.videos} author={props.author}/>} />
                     <Route exact path={`${match.path}/about`} component={() => <About author={props.author} />} />
-                    <Route exact path={`${match.path}`} component={() => <Home />} />
+                    <Route exact path={`${match.path}`} component={() => <Home video={props.videos}/>} />
 
                     {/* 
                         Refactor Routes prop threading to Link prop threading to channel_pannel for next push

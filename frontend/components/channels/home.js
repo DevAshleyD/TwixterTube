@@ -1,10 +1,55 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../../util/videos_util';
 
-const Home = () => {
+const Home = (props) => {
+
+    
+
+    const vid = props.video[0];
+
+    useEffect(() => {
+        console.log("IN HOME COMPONENT, WHAT IS PROPS:  ", props)
+    }, [])
+
+
+
+    const description = () => (
+        <div className="channel-home-description-container">
+            <Link to={`/videos/${vid.id}`} style={{ textDecoration: "none", color: "black" }}>
+                <h3>
+                    {vid.title}
+                </h3>
+            </Link>
+            <p>
+                {numberWithCommas(vid.views)} views · {vid.publishedAgo} ago
+            </p>
+
+            <p>
+                {vid.description ? vid.description : "Video has no description."}
+            </p>
+        </div>
+    )
+    const mainSection = () => (
+        <div className="channel-home-main-section">
+            <video
+                controls
+                key={vid.videoUrl}
+                style={{
+                    width: "500px",
+                    height: "281px",
+                    paddingRight: "50px"
+                }}
+            >
+                <source src={vid.videoUrl}/>
+            </video>
+            {description()}
+        </div>
+    )
 
     return (
         <div className="channel-home-main-container">
-            
+            {mainSection()}
         </div>
     )
 }

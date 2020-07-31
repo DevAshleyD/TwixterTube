@@ -319,15 +319,60 @@ input[type="file"] {
 }
 
 .channel-home-main-container {
-  background-color: #f1f1a1;
+  background-color: #f1f1f1;
   display: flex;
   flex-direction: row;
   height: 100vh;
+  padding: 40px 130px 30px 90px;
+}
+
+.channel-home-main-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.channel-home-description-container {
+  
+  h3 {
+    font-size: 15px;
+    margin-bottom: 16px;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+  }
+
+  p:first-of-type {
+    font-family: "Roboto", Arial, sans-serif;
+    color: #606060;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  p:nth-of-type(2) {
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
 }
 
 .channel-video-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.channel-video-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uploads-sort-by-icon {
+
+}
+
+.channel-sort-by-button {
+  
 }
 
 .channel-video-list-item {

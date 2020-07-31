@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignal } from "@fortawesome/free-solid-svg-icons";
 
 const Videos = (props) => {
 
@@ -30,6 +32,29 @@ const Videos = (props) => {
                 </Link>
             ))}
         </ul>
+    )
+
+    /*
+        Video List Header, you need to make backend api/redux state changing actions 
+
+        to change order of videos based on three criteria
+
+        1) Most Popular
+        2) Date Added (oldest)
+        3) Date Added (newest)
+
+        and make the query selection come from a modal that pops up from clicking 
+            "channel-sort-by-button"
+    */ 
+
+    const videoListHeader = () => (
+        <div className="channel-video-list-header">
+            <h3>Uploads</h3>
+            <button className="channel-sort-by-button">
+                <FontAwesomeIcon icon={faSignal} className="uploads-sort-by-icon" />
+                <h3>SORT BY</h3>
+            </button>
+        </div>
     )
 
     return (
