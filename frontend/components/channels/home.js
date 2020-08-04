@@ -4,15 +4,11 @@ import { numberWithCommas } from '../../util/videos_util';
 
 const Home = (props) => {
 
-    
-
     const vid = props.video[0];
 
     useEffect(() => {
         console.log("IN HOME COMPONENT, WHAT IS PROPS:  ", props)
     }, [])
-
-
 
     const description = () => (
         <div className="channel-home-description-container">
@@ -30,6 +26,7 @@ const Home = (props) => {
             </p>
         </div>
     )
+
     const mainSection = () => (
         <div className="channel-home-main-section">
             <video
@@ -38,7 +35,8 @@ const Home = (props) => {
                 style={{
                     width: "500px",
                     height: "281px",
-                    paddingRight: "50px"
+                    marginRight: "50px",
+                    background: "black"
                 }}
             >
                 <source src={vid.videoUrl}/>
@@ -47,9 +45,15 @@ const Home = (props) => {
         </div>
     )
 
+    const noContentDisplay = () => (
+        <div className="no-content">
+            This channel doesn't have any content
+        </div>
+    )
+
     return (
         <div className="channel-home-main-container">
-            {mainSection()}
+            {vid ? mainSection() : noContentDisplay()}
         </div>
     )
 }

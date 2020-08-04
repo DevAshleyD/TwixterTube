@@ -36,7 +36,7 @@ class Api::SubscriptionsController < ApplicationController
 
     def show
         @subscription = find_subscription
-
+        
         if @subscription
             render json: { success: "Subscription Valid" }, status: 200
         else 
@@ -49,9 +49,11 @@ class Api::SubscriptionsController < ApplicationController
         @subscription = find_subscription
         
         if @subscription
+
             @subscription.destroy
             render json: { success: "Subscription Destroyed" }
         else
+
             render json: { error: "Subscription Not Found" }, status: 422
         end
         

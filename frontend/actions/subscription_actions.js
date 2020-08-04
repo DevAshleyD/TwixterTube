@@ -43,6 +43,7 @@ export const getSubscription = (subscription) => dispatch => {
 }
 
 export const createSubscription = (subscription) => dispatch => {
+    debugger
     return SubUtil.createSubscription(subscription).then( 
         () => dispatch(subscribe()),
         err => dispatch(addSubError())

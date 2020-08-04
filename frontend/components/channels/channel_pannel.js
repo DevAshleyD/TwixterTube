@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useRouteMatch} from 'react-router-dom'
+import {Link, useRouteMatch, Redirect, withRouter, useHistory} from 'react-router-dom';
 /*
     ^^^ ajax utility function to call profile pic once resources are made available
     in backend to fetch profile pic
@@ -8,11 +8,43 @@ import {Link, useRouteMatch} from 'react-router-dom'
 const ChannelPannel = (props) => {
 
     const matchUrl = useRouteMatch().url;
+    const history = useHistory();
+
+    const subscribe = () => {
+        if (props.currentUser === null) {
+            debugger
+            return history.push("/login");
+        } else {
+
+            const subscriptionData = { ["content_creator_id"]: props.author.id, ["subscriber_id"]: props.currentUser.id };
+
+            if (props.subscription === false) {
+                debugger
+                props.createSubscription(subscriptionData);
+            } else {
+                debugger
+                props.destroySubscription(subscriptionData);
+            }
+
+        }
+    }
 
     useEffect(() => {
-        console.log("PANNEL, PROPS", props.location)
+        console.log("CHANNEL PANNEL PROPS:  ", props)
+        console.log("CHANNEL PANNEL WHAT IS HISTORY:  ", history)
+    }, [props])
 
-    }, [props.location])
+    const subscribeButton = () => (
+        !props.currentUser ? (
+            <button className="subscribe-button" onClick={subscribe}>SUBSCRIBE</button>
+        ) : (
+            props.subscription === true ? (
+                <button className="un-subscribe-button" onClick={subscribe}>UNSUBSCRIBE</button>
+            ) : (
+                <button className="subscribe-button" onClick={subscribe}>SUBSCRIBE</button>
+            )
+        )
+    )
 
     const logoSubscribeContainer = () => {
         return (
@@ -26,22 +58,22 @@ const ChannelPannel = (props) => {
                         flexDirection: "column",
                         marginLeft: "20px"
                     }}
-                    className="author-name-subscriber-count-container"    
+                    className="author-name-subscriber-count-container"
                 >
                     <h3>{props.author.username}</h3>
                     <span>{props.author.subscriber_count} subscribers</span>
                 </div>
-                <button className="subscribe-button">Subscribe</button>
+                {/* <button className="subscribe-button">SUBSCRIBE</button> */}
+                {subscribeButton()}
             </div>
         </div>
         )
     }
 
     /*
-    props.location !== "videos" 
-                        &&
-                        props.location !== "about" ? "channel-tab-selected" : ""
-    
+        props.location !== "videos" 
+                            &&
+                            props.location !== "about" ? "channel-tab-selected" : ""
     */
 
     const buttonPannel = () => {

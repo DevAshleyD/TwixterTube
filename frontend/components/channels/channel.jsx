@@ -54,7 +54,7 @@ const Channel = (props) => {
 
     const loadHome = () => {
         props.fetchMostViewedVideo(authorId).then( () => {
-            debugger
+            // debugger
             setLoaded(true);
             setSkip(0);
         })
@@ -62,7 +62,7 @@ const Channel = (props) => {
 
     const loadVideos = () => {
         props.fetchContentCreatorVids(authorId).then( () => {
-            debugger
+            // debugger
             setLoaded(true);
             setSkip(0);
         })
@@ -74,17 +74,24 @@ const Channel = (props) => {
         */
 
         props.fetchContentCreatorAbout(authorId).then( () => {
-            debugger
+            // debugger
             setLoaded(true);
             setSkip(0);
         })
     }
-
+    
     console.log("HERE IS THE URL TERMINATION VARIABLE:  ", location)
     console.log("WHAT DOES MATCH LOOK LIKE:  ", match)
     
+    useEffect(() => {
+        return function cleanUp() {
+            // debugger
+            props.removeSubscriptionData();
+            props.removeVideosFromChannel();
+        }
+    }, [])
+    
     useEffect( () => {
-        console.log("INSTANTIATING USE-EFFECT!")
         
         if (props.currentUser) {
             console.log('IN CURRENTUSER CONDITIONAL:  ');
@@ -119,6 +126,8 @@ const Channel = (props) => {
         } else {
             loadHome();
         }
+
+        // return props.removeSubscriptionData();
         
     }, [location, urlString])
 
@@ -164,9 +173,13 @@ const Channel = (props) => {
             <div className="channel-main-container">
                 <Banner userId={props.match.params.authorId} />
                 <ChannelPannel
+                    currentUser={props.currentUser}
+                    subscription={props.subscription}
                     subscribedStying={subscribedStying}
                     author={props.author}
                     location={location}
+                    createSubscription={props.createSubscription}
+                    destroySubscription={props.destroySubscription}
                 />
                 
                 <Switch>

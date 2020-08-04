@@ -4,12 +4,17 @@ export const fetchSubscriptions = () =>
         method: 'GET'
     })
 
-export const createSubscription = (subscription) => 
-    $.ajax({
+export const createSubscription = (subscription) => {
+
+    debugger
+
+    return $.ajax({
         url: '/api/subscriptions',
         method: "POST",
         data: {subscription}
     })
+
+}
 
 export const getSubscription = (subscription) =>
     $.ajax({
@@ -18,9 +23,14 @@ export const getSubscription = (subscription) =>
         data: {subscription}
     })
 
-export const destroySubscription = (subscription) =>
-    $.ajax({
+export const destroySubscription = (subscription) => {
+
+    debugger
+
+    return $.ajax({
         url: `/api/subscriptions/delete`,
         method: 'POST',
         data: {subscription}
     })
+
+}

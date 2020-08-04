@@ -57,10 +57,16 @@ const Videos = (props) => {
         </div>
     )
 
+    const noVideos = () => (
+        <div className="no-content">
+            This channel has no videos.
+        </div>
+    )
+
     return (
         <div className="channel-videos-main-container">
             {/* {JSON.stringify(props.videos)} */}
-            {videoList()}
+            {props.videos.length > 0 ? videoList() : noVideos()}
         </div>
     )
 }

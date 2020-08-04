@@ -59,28 +59,28 @@ export default (state = {}, action) => {
 
     case RECEIVE_ALL_VIDEOS_FROM_AUTHOR:
       // let author = action.payload.author;
-      debugger
+      // debugger
       newState = action.payload.videos;
-      debugger
+      // debugger
       return newState;
 
     case RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR:
       let video = action.video;
-      debugger
+      // debugger
       if (video.id === null) {
-        debugger
+        // debugger
         return [];
       } else {
-        debugger
+        // debugger
         return [video];
       }
 
     case REMOVE_VIDEOS_FROM_CHANNEL:
-      debugger
+      // debugger
       return [];
 
     case RECEIVE_CONTENT_CREATOR_ABOUT:
-      debugger
+      // debugger
       return [];
     
     default:

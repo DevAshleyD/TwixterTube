@@ -18,7 +18,9 @@ const About = (props) => {
                 {/* <p>{props.author.about ? props.author.about : 
                 "User has no description."
                 }</p> */}
-                <p>{props.author.about}</p>
+                <p>{props.author.about ? props.author.about : 
+                    "User has no description about channel."
+                }</p>
             </div>
 
             <div className="details-container">

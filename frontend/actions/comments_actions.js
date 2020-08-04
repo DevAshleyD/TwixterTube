@@ -21,7 +21,6 @@ const removeComment = (comment) => ({
 
 // input should be object with comment_id and parent_id
 const removeChildComment = ({ parentId, commentId }) => {
-  // debugger;
   return {
     type: REMOVE_CHILD_COMMENT,
     parentId,

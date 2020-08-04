@@ -6,7 +6,7 @@ import {
     createSubscription,
     destroySubscription
 } from '../../actions/subscription_actions';
-
+    
 import {
     fetchContentCreator,
     fetchContentCreatorAbout
@@ -49,7 +49,7 @@ const mdp = (dispatch) => {
     
     return {
         removeSubscriptionData: () => dispatch(removeSubscriptionData()),
-        destroySubscription: () => dispatch(destroySubscription()),
+        destroySubscription: (subscriptionData) => dispatch(destroySubscription(subscriptionData)),
         getSubscription: (subscriptionData) => dispatch(getSubscription(subscriptionData)),
         createSubscription: (subscriptionData) => dispatch(createSubscription(subscriptionData)),
         fetchContentCreatorVids: (authorId) => dispatch(fetchContentCreatorVids(authorId)),
