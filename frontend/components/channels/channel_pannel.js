@@ -64,7 +64,9 @@ const ChannelPannel = (props) => {
                     <span>{props.author.subscriber_count} subscribers</span>
                 </div>
                 {/* <button className="subscribe-button">SUBSCRIBE</button> */}
-                {subscribeButton()}
+                {props.currentUser ?
+                    ( props.currentUser.id === props.author.id ? null : subscribeButton() )
+                : subscribeButton()}
             </div>
         </div>
         )

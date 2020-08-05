@@ -65,6 +65,10 @@ class User < ApplicationRecord
         return self.subscriptions.length
     end
 
+    def number_of_videos
+        return self.videos.length
+    end
+
     def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)
