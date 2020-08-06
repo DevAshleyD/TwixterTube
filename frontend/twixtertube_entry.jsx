@@ -10,7 +10,7 @@ import {
   addComment,
   deleteComment,
 } from "./actions/comments_actions";
-import { fetchSubscriptions } from './util/subscription_util'
+import { fetchSubscriptions } from './util/subscription_util';
 import {
   removeSubscriptionData,
   getSubscription,
@@ -19,13 +19,15 @@ import {
 } from './actions/subscription_actions';
 
 import {
-  fetchMostViewedVideo
+  fetchMostViewedVideo,
+  fetchVideos
 } from './actions/videos_actions';
 
 // import {fetchContentCreatorVids} from './actions/videos_actions';
 import { 
   fetchContentCreatorVids,
   fetchVideo,
+  // fetchVideos
   // fetchMostViewedVideo
 } from './util/videos_util';
 
@@ -57,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   // FOR DEVELOPMENT ONLY!!!!
+
+  window.fetchVideos = fetchVideos;
   
   window.getState = store.getState;
   window.dispatch = store.dispatch;

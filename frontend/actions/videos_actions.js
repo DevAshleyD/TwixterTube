@@ -18,6 +18,8 @@ export const RECEIVE_ALL_VIDEOS_FROM_AUTHOR = "RECEIVE_ALL_VIDEOS_FROM_AUTHOR"
 export const RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR = "RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR";
 export const REMOVE_VIDEOS_FROM_CHANNEL = "REMOVE_VIDEOS_FROM_CHANNEL";
 
+export const RECEIVE_SEARCH_RESULTS_USERS_AND_OR_VIDEOS = "RECEIVE_SEARCH_RESULTS_USERS_AND_OR_VIDEOS";
+
 const receiveAllVideos = (payload) => ({
   type: RECEIVE_ALL_VIDEOS,
   payload,
@@ -75,10 +77,24 @@ export const removeVideoShow = () => ({
   type: REMOVE_VIDEO_SHOW,
 });
 
+// payload argument is an array with users objects first and then video objects
+const receiveSearchResults = (payload) => ({
+  type: RECEIVE_SEARCH_RESULTS_USERS_AND_OR_VIDEOS,
+  payload
+})
+
 export const fetchVideos = (query) => (dispatch) =>
-  VideoUtil.fetchVideos(query).then((payload) =>
-    dispatch(receiveAllVideos(payload))
-  );
+  VideoUtil.fetchVideos(query).then((payload) => {
+
+    if ( Array.isArray(payload) ) {
+      debugger
+      dispatch(receiveSearchResults(payload))
+    } else {
+      debugger
+      dispatch(receiveAllVideos(payload))
+    }
+    
+  });
 
 export const fetchVideo = (id) => (dispatch) => {
   return VideoUtil.fetchVideo(id).then((payload) => {

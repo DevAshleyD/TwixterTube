@@ -7,17 +7,44 @@ class Api::VideosController < ApplicationController
         render :show
     end
 
+    # 
+
     def index(query = '')
         query = params['query'] || ''
 
         if query == ''
             @videos = Video.first(20)
+            
+            render :index
+
         else
+
             query = "%" + query.downcase + "%"
-            @videos = Video.where('lower(title) like ? or lower(description) like ?', query, query);
+            @users = User.where('lower(username) like ? or lower(about) like ?', query, query)
+
+            if @users.length > 0
+                # @videos = Video.where('lower(title) like ? or lower(description) like ?', query, query)
+                
+                # probably don't need to put videos that match query due to query matching with details of
+                # user model in database
+
+                @videos = []
+
+                @users.each do |user| 
+                    user.videos.each do |vid|
+                        @videos << vid
+                    end
+                end
+
+                render :search_index
+            else
+                @videos = Video.where('lower(title) like ? or lower(description) like ?', query, query)
+                render :index
+            end
+
+
         end
 
-        render :index
     end
 
     def create

@@ -10,10 +10,20 @@ const SearchVideoIndex = (props) => {
     window.scrollTo(0, 0);
     props.fetchVideos(props.match.params.query);
 
+    
+
     return () => {
       props.removeAllVideos();
     };
   }, []);
+
+  useEffect(() => {
+    
+    console.log("WhAT ARE VIDEOS IN SEARCH:  ", props.videos)
+
+    console.log("WHAT ARE SEARCH RESULTS IN SEARCH:   ", props.searchResults)
+
+  }, [props.searchResults, props.videos])
 
   useEffect(() => {
     props.fetchVideos(props.match.params.query);
