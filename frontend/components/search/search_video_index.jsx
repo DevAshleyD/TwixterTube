@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import NavBarContainer from "../nav_bar/nav_bar_container";
+
 import SearchVideoIndexItem from "./search_video_index_item";
+import SearchUserIndexItem from "./search_user_index_item";
+
 import ModalSideBarContainer from "../sidebar/modal_sidebar_container";
 import SideBarContainer from "../sidebar/sidebar_container";
 
@@ -11,17 +14,16 @@ const SearchVideoIndex = (props) => {
     props.fetchVideos(props.match.params.query);
 
     
-
     return () => {
       props.removeAllVideos();
+      props.removeSearchResults();
     };
   }, []);
 
   useEffect(() => {
-    
-    console.log("WhAT ARE VIDEOS IN SEARCH:  ", props.videos)
 
-    console.log("WHAT ARE SEARCH RESULTS IN SEARCH:   ", props.searchResults)
+    console.log("WhAT ARE VIDEOS IN SEARCH:  ",  (props.videos)  )
+    console.log("WHAT ARE SEARCH RESULTS IN SEARCH:   ",  (props.searchResults)  )
 
   }, [props.searchResults, props.videos])
 
@@ -30,7 +32,8 @@ const SearchVideoIndex = (props) => {
   }, [props.match.params.query]);
 
   let content =
-    props.videos.length == 0 ? (
+    props.videos.length == 0 && props.searchResults.length == 0 ? (
+      
       <div>
         <NavBarContainer url={props.url} />
         <div className="search-container">
@@ -53,8 +56,12 @@ const SearchVideoIndex = (props) => {
           </div>
         </div>
       </div>
+
     ) : (
-      <div>
+      
+      props.searchResults.length == 0 ? 
+      
+      (<div>
         <NavBarContainer url={props.url} />
         <ModalSideBarContainer />
 
@@ -78,9 +85,57 @@ const SearchVideoIndex = (props) => {
             </ul>
           </div>
         </div>
-      </div>
-    );
+      </div>) 
+      
+      :
 
+      (
+        <div>
+          <NavBarContainer url={props.url} />
+          <ModalSideBarContainer />
+
+          <div className="search-container">
+            {/* <div className="sidebar-main"></div> */}
+            <SideBarContainer />
+
+            <div className="search-video-index-container">
+              <header className="search-results-header">Search Results</header>
+              <ul className="search-video-list">
+                {props.searchResults.map((data, idx) => {
+
+                  if (data.user) {
+                    return (
+                      <SearchUserIndexItem
+                        key={`user-${data.id}-${idx}`}
+                        user={data}
+                        currentUser={props.currentUser}
+                        createSubscription={props.createSubscription}
+                        getSubscription={props.getSubscription}
+                        destroySubscription={props.destroySubscription}
+                        removeSubscriptionData={props.removeSubscriptionData}
+                      />
+                    )
+                  } else {
+                    let uploader = data.uploader;
+                    debugger
+                    return (
+                      <SearchVideoIndexItem
+                        video={data}
+                        key={`video-${data.id}-${idx}`}
+                        uploader={uploader}
+                      />
+                    );
+                  }
+
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )
+      
+    );
+    
   return content;
 };
 

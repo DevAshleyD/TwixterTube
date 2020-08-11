@@ -15,7 +15,8 @@ import {
 import {
     fetchContentCreatorVids,
     fetchMostViewedVideo,
-    removeVideosFromChannel
+    removeVideosFromChannel,
+    removeAllVideos
 } from '../../actions/videos_actions';
     
 const msp = (state, ownProps) => {
@@ -56,7 +57,8 @@ const mdp = (dispatch) => {
         fetchContentCreator: (authorId) => dispatch(fetchContentCreator(authorId)),
         fetchMostViewedVideo: (authorId) => dispatch(fetchMostViewedVideo(authorId)),
         removeVideosFromChannel: () => dispatch(removeVideosFromChannel()),
-        fetchContentCreatorAbout: (authorId) => dispatch(fetchContentCreatorAbout(authorId))
+        fetchContentCreatorAbout: (authorId) => dispatch(fetchContentCreatorAbout(authorId)),
+        removeAllVideos: () => dispatch(removeAllVideos())
     }
     
 }   

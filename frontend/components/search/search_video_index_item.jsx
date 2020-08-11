@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 const SearchVideoIndexItem = props => {
+
+  debugger
+
+  
   function handleVideoClick(e) {
     props.history.push(`/videos/${props.video.id}`);
   }

@@ -14,6 +14,13 @@ json.array!(@videos) do |video|
     json.thumbnailUrl url_for(video.thumbnail)
     json.published video.created_at.strftime('%B %d, %Y')
     json.publishedAgo time_ago_in_words(video.created_at)
+    
+    user = User.find(video.uploader_id)
+
+    json.uploader do 
+        json.username user.username
+        json.id user.id
+    end
 end
 
 

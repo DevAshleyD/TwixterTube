@@ -19,6 +19,7 @@ export const RECEIVE_MOST_VIEWED_VIDEO_FROM_AUTHOR = "RECEIVE_MOST_VIEWED_VIDEO_
 export const REMOVE_VIDEOS_FROM_CHANNEL = "REMOVE_VIDEOS_FROM_CHANNEL";
 
 export const RECEIVE_SEARCH_RESULTS_USERS_AND_OR_VIDEOS = "RECEIVE_SEARCH_RESULTS_USERS_AND_OR_VIDEOS";
+export const REMOVE_SEARCH_RESULTS = "REMOVE_SEARCH_RESULTS";
 
 const receiveAllVideos = (payload) => ({
   type: RECEIVE_ALL_VIDEOS,
@@ -83,14 +84,18 @@ const receiveSearchResults = (payload) => ({
   payload
 })
 
+export const removeSearchResults = () => ({
+  type: REMOVE_SEARCH_RESULTS
+})
+
 export const fetchVideos = (query) => (dispatch) =>
   VideoUtil.fetchVideos(query).then((payload) => {
 
     if ( Array.isArray(payload) ) {
-      debugger
+      // debugger
       dispatch(receiveSearchResults(payload))
     } else {
-      debugger
+      // debugger
       dispatch(receiveAllVideos(payload))
     }
     

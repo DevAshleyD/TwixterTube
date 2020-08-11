@@ -12,17 +12,17 @@ const ChannelPannel = (props) => {
 
     const subscribe = () => {
         if (props.currentUser === null) {
-            debugger
+            // debugger
             return history.push("/login");
         } else {
 
             const subscriptionData = { ["content_creator_id"]: props.author.id, ["subscriber_id"]: props.currentUser.id };
 
             if (props.subscription === false) {
-                debugger
+                // debugger
                 props.createSubscription(subscriptionData);
             } else {
-                debugger
+                // debugger
                 props.destroySubscription(subscriptionData);
             }
 

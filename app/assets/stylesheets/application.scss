@@ -1172,6 +1172,51 @@ textarea {
   margin-bottom: 16px;
 }
 
+.search-user-index-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  cursor: pointer;
+
+  span {
+    margin-left: 55px;
+    margin-right: 55px;
+    height: 136px;
+    width: 136px;
+    background: #fd4d29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 70px;
+  }
+
+}
+
+.user-index-item-details {
+
+  padding-top: 20px;
+
+  h3 {
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  
+  
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Roboto", Arial, sans-serif;
+    color: #606060;
+    padding-bottom: 5px;
+  }
+  
+}
+
 .search-video-index-container {
   margin-top: 85px;
   margin-left: 110px;

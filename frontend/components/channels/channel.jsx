@@ -88,6 +88,7 @@ const Channel = (props) => {
             // debugger
             props.removeSubscriptionData();
             props.removeVideosFromChannel();
+            props.removeAllVideos();
         }
     }, [])
     

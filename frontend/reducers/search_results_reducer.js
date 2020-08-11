@@ -1,6 +1,7 @@
 import {
     RECEIVE_SEARCH_RESULTS_USERS_AND_OR_VIDEOS,
-    RECEIVE_ALL_VIDEOS
+    RECEIVE_ALL_VIDEOS,
+    REMOVE_SEARCH_RESULTS
 } from '../actions/videos_actions';
 
 export default (state = [], action) => {
@@ -17,6 +18,12 @@ export default (state = [], action) => {
 
         case RECEIVE_ALL_VIDEOS:
         
+            debugger
+
+            return [];
+
+        case REMOVE_SEARCH_RESULTS:
+
             debugger
 
             return [];

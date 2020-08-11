@@ -34,16 +34,14 @@ export const removeSubscriptionData = () => ({
 })
 
 export const getSubscription = (subscription) => dispatch => {
-
     return SubUtil.getSubscription(subscription).then( 
         () => dispatch(fetchSubscribe()),
         err => dispatch(addSubError())
     )
-
 }
 
 export const createSubscription = (subscription) => dispatch => {
-    debugger
+    // debugger
     return SubUtil.createSubscription(subscription).then( 
         () => dispatch(subscribe()),
         err => dispatch(addSubError())
