@@ -49,7 +49,7 @@ class VideoShow extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
 
-    console.log("VIDEO SHOW WHAT IS UPLOADER:  ", this.props.uploader)
+    // console.log("VIDEO SHOW WHAT IS UPLOADER:  ", this.props.uploader)
 
     let that = this;
     let id = this.props.match.params.videoId;
@@ -123,7 +123,7 @@ class VideoShow extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     let that = this;
     let id = this.props.match.params.videoId;
-    console.log("COMPONENT-DID-UPDATE UPLOADER:  ", this.props.uploader)
+    // console.log("COMPONENT-DID-UPDATE UPLOADER:  ", this.props.uploader)
 
     if (this.props.match.url !== prevProps.match.url) {
       this.props.removeAllComments();

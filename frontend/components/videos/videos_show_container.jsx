@@ -25,8 +25,8 @@ const msp = (state, ownProps) => {
   // let video = state.entities.videoShow;
   let uploader = video ? state.entities.users[video.uploader_id] : null;
   let url = ownProps.match.url;
-  console.log("VIDEO IN CONTAINER:   ", video);
-  console.log("UPLOADER IN VIDEO CONTAINER:  ", uploader)
+  // console.log("VIDEO IN CONTAINER:   ", video);
+  // console.log("UPLOADER IN VIDEO CONTAINER:  ", uploader)
   return {
     videos: videos,
     video: video,

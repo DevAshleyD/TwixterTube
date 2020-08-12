@@ -80,8 +80,8 @@ const Channel = (props) => {
         })
     }
     
-    console.log("HERE IS THE URL TERMINATION VARIABLE:  ", location)
-    console.log("WHAT DOES MATCH LOOK LIKE:  ", match)
+    // console.log("HERE IS THE URL TERMINATION VARIABLE:  ", location)
+    // console.log("WHAT DOES MATCH LOOK LIKE:  ", match)
     
     useEffect(() => {
         return function cleanUp() {
@@ -95,18 +95,18 @@ const Channel = (props) => {
     useEffect( () => {
         
         if (props.currentUser) {
-            console.log('IN CURRENTUSER CONDITIONAL:  ');
+            // console.log('IN CURRENTUSER CONDITIONAL:  ');
             props.getSubscription({
                 content_creator_id: authorId,
                 subscriber_id: props.currentUser.id
             }).then( 
                 () => {
-                    console.log("CURRENT USER NO ERROR");
+                    // console.log("CURRENT USER NO ERROR");
                     // setState({ ...state, loadedSubscription: true })
                     setLoadedSubscription(true);
                 },
                 (err) => {
-                    console.log("CURRENT USER ERROR");
+                    // console.log("CURRENT USER ERROR");
                     // setState({ ...state, loadedSubscription: true })
                     setLoadedSubscription(true);
                 }
@@ -132,7 +132,7 @@ const Channel = (props) => {
         
     }, [location, urlString])
 
-    console.log("STATUS OF VARIABLES: ", loaded, loadedSubscription, props.author, loadedCreator)
+    // console.log("STATUS OF VARIABLES: ", loaded, loadedSubscription, props.author, loadedCreator)
 
     const loadingScreen = () => {
         return (
@@ -160,7 +160,7 @@ const Channel = (props) => {
             return loadingScreen();
     }
 
-    console.log("LOADED, HERE IZ THE PROPPSSSSSS!!:  ", props);
+    // console.log("LOADED, HERE IZ THE PROPPSSSSSS!!:  ", props);
 
     let subscribedStying = props.currentUser && props.subscription ?
         "subscribed-styling-button" : "non-subscribed-styling-button"

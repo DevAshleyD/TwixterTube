@@ -60,32 +60,32 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // FOR DEVELOPMENT ONLY!!!!
 
-  window.fetchVideos = fetchVideos;
+  // window.fetchVideos = fetchVideos;
   
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   
-  window.fetchSubscriptions = fetchSubscriptions;
+  // window.fetchSubscriptions = fetchSubscriptions;
 
-  window.fetchAuthor = fetchAuthor;
+  // window.fetchAuthor = fetchAuthor;
 
-  window.fetchAuthorAbout = fetchAuthorAbout;
+  // window.fetchAuthorAbout = fetchAuthorAbout;
   
   // sub actions
   
-  window.removeSubscriptionData = removeSubscriptionData;
-  window.createSubscription = createSubscription;
-  window.getSubscription = getSubscription;
-  window.destroySubscription = destroySubscription;
+  // window.removeSubscriptionData = removeSubscriptionData;
+  // window.createSubscription = createSubscription;
+  // window.getSubscription = getSubscription;
+  // window.destroySubscription = destroySubscription;
 
   // content creator actions videos
 
-  window.fetchContentCreatorVids = fetchContentCreatorVids;
-  window.fetchVideo = fetchVideo;
+  // window.fetchContentCreatorVids = fetchContentCreatorVids;
+  // window.fetchVideo = fetchVideo;
 
-  window.fetchMostViewedVideo = fetchMostViewedVideo;
+  // window.fetchMostViewedVideo = fetchMostViewedVideo;
 
-  window.fetchBanner = fetchBanner;
+  // window.fetchBanner = fetchBanner;
 
   // window.deleteChildComment = deleteChildComment;
   // window.addComment = addComment;

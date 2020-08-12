@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:create, :index]
     post '/subscriptions/delete', to: 'subscriptions#destroy'
     post '/subscription/show', to: 'subscriptions#show'
+    get '/subscriptions/:user_id/channel', to: 'subscriptions#users_subscriptions'
     
     # playlist routes
     resources :playlists, only: [:index, :show, :create, :update, :destroy]

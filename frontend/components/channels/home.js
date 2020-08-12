@@ -6,9 +6,9 @@ const Home = (props) => {
 
     const vid = props.video[0];
 
-    useEffect(() => {
-        console.log("IN HOME COMPONENT, WHAT IS PROPS:  ", props)
-    }, [])
+    // useEffect(() => {
+    //     console.log("IN HOME COMPONENT, WHAT IS PROPS:  ", props)
+    // }, [])
 
     const description = () => (
         <div className="channel-home-description-container">

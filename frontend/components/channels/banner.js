@@ -19,7 +19,7 @@ const Banner = (props) => {
     }
 
     useEffect(() => {
-        console.log('WHAT IS USERID:  ', props.userId)
+        // console.log('WHAT IS USERID:  ', props.userId)
         init();
         setLoaded(true);
     }, [])

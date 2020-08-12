@@ -22,8 +22,8 @@ const SearchVideoIndex = (props) => {
 
   useEffect(() => {
 
-    console.log("WhAT ARE VIDEOS IN SEARCH:  ",  (props.videos)  )
-    console.log("WHAT ARE SEARCH RESULTS IN SEARCH:   ",  (props.searchResults)  )
+    // console.log("WhAT ARE VIDEOS IN SEARCH:  ",  (props.videos)  )
+    // console.log("WHAT ARE SEARCH RESULTS IN SEARCH:   ",  (props.searchResults)  )
 
   }, [props.searchResults, props.videos])
 

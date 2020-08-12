@@ -4,9 +4,9 @@ import {numberWithCommas} from '../../util/videos_util'
 const About = (props) => {
     const [viewEmail, setViewEmail] = useState(false);
 
-    useEffect(() => {
-        console.log("IN THE ABOUT PAGE, HERE ARE PROPS:  ", props)
-    }, [])
+    // useEffect(() => {
+    //     console.log("IN THE ABOUT PAGE, HERE ARE PROPS:  ", props)
+    // }, [])
 
     let emailButtonStyling = viewEmail ? "hidden" : "view-email-address-button";
     let emailStyling = viewEmail ? "email-p-style" : "hidden";

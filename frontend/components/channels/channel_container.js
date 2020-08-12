@@ -26,7 +26,7 @@ const msp = (state, ownProps) => {
     let currentUser = state.session.currentUser ? state.entities.users[state.session.currentUser] : null;
     let author = state.entities.users[authorId] ? state.entities.users[authorId] : null;
 
-    console.log("CHANNEL CONTENT CREATOR:  ", author)
+    // console.log("CHANNEL CONTENT CREATOR:  ", author)
 
     let subscription = state.subscription.subscription ? true : false;
 

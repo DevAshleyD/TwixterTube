@@ -30,8 +30,8 @@ const ChannelPannel = (props) => {
     }
 
     useEffect(() => {
-        console.log("CHANNEL PANNEL PROPS:  ", props)
-        console.log("CHANNEL PANNEL WHAT IS HISTORY:  ", history)
+        // console.log("CHANNEL PANNEL PROPS:  ", props)
+        // console.log("CHANNEL PANNEL WHAT IS HISTORY:  ", history)
     }, [props])
 
     const subscribeButton = () => (

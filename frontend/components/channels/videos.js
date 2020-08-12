@@ -5,10 +5,10 @@ import { faSignal } from "@fortawesome/free-solid-svg-icons";
 
 const Videos = (props) => {
 
-    useEffect(() => {
-        console.log('IN VIDEO COMPONENT, AUTHOR:  ', props.author)
-        console.log('IN VIDEO COMPONENT, VIDEOS:  ', props.videos)
-    }, [])
+    // useEffect(() => {
+    //     console.log('IN VIDEO COMPONENT, AUTHOR:  ', props.author)
+    //     console.log('IN VIDEO COMPONENT, VIDEOS:  ', props.videos)
+    // }, [])
 
     const parseViews = (views) => {
         return views > 1000 ? Math.floor(views / 1000) + "k" : views;

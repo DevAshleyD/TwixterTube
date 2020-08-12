@@ -59,6 +59,12 @@ class Api::SubscriptionsController < ApplicationController
         
     end
 
+    def users_subscriptions
+        
+        
+        
+    end
+
     private
 
     def find_subscription
